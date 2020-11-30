@@ -17,7 +17,7 @@ public class StatusBar extends JPanel{
 		this.setBackground(Color.GRAY);
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-		JLabel labela = new JLabel ("Studentska Slu≈æba");
+		JLabel labela = new JLabel ("Studentska Sluûba");
 		this.add(labela);
 		 this.add(Box.createHorizontalGlue());
 		

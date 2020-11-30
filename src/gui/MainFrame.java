@@ -31,5 +31,8 @@ public class MainFrame extends JFrame {
 		JPanel tabs = new JPanel();
 		tabs.setBackground(Color.lightGray);
 		add(tabs);
+		
+		StatusBar status = new StatusBar();
+		this.add(status, BorderLayout.SOUTH);
 	}
 }
