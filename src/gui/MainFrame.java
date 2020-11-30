@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -22,6 +23,9 @@ public class MainFrame extends JFrame {
 		setSize(3 * screenWidth / 4, 3 * screenHeight / 4);		
 
 		setLocationRelativeTo(null);
+		
+		Toolbar toolbar = new Toolbar();
+		add(toolbar, BorderLayout.NORTH);
 		
 		//TODO: Prikaz entiteta sistema
 		JPanel tabs = new JPanel();
