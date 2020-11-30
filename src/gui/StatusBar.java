@@ -1,3 +1,4 @@
+package gui;
 
 import java.awt.Color;
 import java.text.DateFormat;
@@ -16,7 +17,7 @@ public class StatusBar extends JPanel{
 		this.setBackground(Color.GREEN);
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-		JLabel labela = new JLabel ("Studentska Sluûba");
+		JLabel labela = new JLabel ("Studentska Slu≈æba");
 		this.add(labela);
 		 this.add(Box.createHorizontalGlue());
 		
