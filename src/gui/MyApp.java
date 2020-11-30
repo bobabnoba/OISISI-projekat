@@ -3,8 +3,9 @@ package gui;
 public class MyApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		MainFrame mframe = new MainFrame();
+		mframe.setVisible(true);
 	}
 
 }
