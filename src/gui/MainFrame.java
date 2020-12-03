@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -24,15 +25,18 @@ public class MainFrame extends JFrame {
 
 		setLocationRelativeTo(null);
 		
+		MenuBar menu = new MenuBar(this);
 		Toolbar toolbar = new Toolbar();
-		add(toolbar, BorderLayout.NORTH);
+		StatusBar status = new StatusBar();
+		
+		add(menu, BorderLayout.NORTH);
 		
 		//TODO: Prikaz entiteta sistema
 		JPanel tabs = new JPanel();
 		tabs.setBackground(Color.lightGray);
+		tabs.setLayout(new BorderLayout());
 		add(tabs);
-		
-		StatusBar status = new StatusBar();
+		tabs.add(toolbar, BorderLayout.PAGE_START);		
 		this.add(status, BorderLayout.SOUTH);
 	}
 }

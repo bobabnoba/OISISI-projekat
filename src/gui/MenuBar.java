@@ -54,6 +54,9 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		JMenu help = new JMenu("Help");
 		JMenuItem miHelp = new JMenuItem("Help", KeyEvent.VK_H);
 		JMenuItem miAbout = new JMenuItem("About", KeyEvent.VK_A);
+		miHelp.setIcon(new ImageIcon("icons/help.png"));
+		miAbout.setIcon(new ImageIcon("icons/about.png"));
+
 		
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
