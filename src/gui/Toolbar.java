@@ -9,28 +9,29 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import abstractAction.CreateEntityAction;
+import abstractAction.DeleteEntityAction;
+import abstractAction.EditEntityAction;
+import abstractAction.SearchEntityAction;
+
 public class Toolbar extends JToolBar {
 
 	public Toolbar() {
 	super(SwingConstants.HORIZONTAL);
 	
+	CreateEntityAction cea = new CreateEntityAction();
+	EditEntityAction eea = new EditEntityAction();
+	DeleteEntityAction dea = new DeleteEntityAction();
+	SearchEntityAction sea = new SearchEntityAction();
+	
 	JPanel leftPanel = new JPanel();
 	setLayout(new BorderLayout());
 	
-	JButton btnAdd = new JButton();
-	btnAdd.setToolTipText("Kreiranje entiteta");
-	btnAdd.setIcon(new ImageIcon("icons/add.png"));
+	JButton btnCreate = new JButton(cea);
+	JButton btnEdit = new JButton(eea);
+	JButton btnDelete = new JButton(dea);
 	
-	JButton btnEdit = new JButton();
-	btnEdit.setToolTipText("Izmjena entiteta");
-	btnEdit.setIcon(new ImageIcon("icons/edit.png"));
-
-	
-	JButton btnDelete = new JButton();
-	btnDelete.setToolTipText("Brisanje entiteta");
-	btnDelete.setIcon(new ImageIcon("icons/delete-bin.png"));
-	
-	leftPanel.add(btnAdd);
+	leftPanel.add(btnCreate);
 	leftPanel.add(btnEdit);
 	leftPanel.add(btnDelete);
 	
@@ -38,9 +39,7 @@ public class Toolbar extends JToolBar {
 	
 	JPanel rightPanel = new JPanel();
 	
-	JButton btnSearch = new JButton();
-	btnSearch.setToolTipText("Pretraga entiteta");
-	btnSearch.setIcon(new ImageIcon("icons/search.png"));
+	JButton btnSearch = new JButton(sea);
 	
 	JTextField textField = new JTextField(25);
 	textField.setToolTipText("Pretraga");
