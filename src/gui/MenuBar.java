@@ -12,6 +12,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 
 import dialog.Dialog;
 
@@ -24,9 +25,18 @@ public class MenuBar extends JMenuBar implements ActionListener{
 	
 	public MenuBar(final JFrame parent) {
 		JMenu file = new JMenu("File");
+		file.setMnemonic('F');
 		JMenuItem miNew = new JMenuItem("New", KeyEvent.VK_N);
 		miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		miNew.setIcon(new ImageIcon("icons/add.png"));
+		miNew.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+	        	DodajStudenta ds = new DodajStudenta();
+	        	ds.setVisible(true);
+	        	
+			}});
+		miNew.setActionCommand("napravi");
 		
 		JMenuItem miClose = new JMenuItem("Close", KeyEvent.VK_C);
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
@@ -39,6 +49,7 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		
 		
 		JMenu edit = new JMenu("Edit");
+		edit.setMnemonic('E');
 		JMenuItem miEdit = new JMenuItem("Edit", KeyEvent.VK_E);
 		JMenuItem miDelete = new JMenuItem("Delete", KeyEvent.VK_D);
 		
@@ -52,6 +63,7 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		
 		
 		JMenu help = new JMenu("Help");
+		help.setMnemonic('H');
 		JMenuItem miHelp = new JMenuItem("Help", KeyEvent.VK_H);
 		JMenuItem miAbout = new JMenuItem("About", KeyEvent.VK_A);
 		miHelp.setIcon(new ImageIcon("icons/help.png"));
@@ -111,19 +123,9 @@ public class MenuBar extends JMenuBar implements ActionListener{
 
 		 @Override
 		    public void actionPerformed(ActionEvent e) {
-
-		       if("exit".equals(e.getActionCommand())){
-
-		         int dialogButton = JOptionPane.YES_NO_OPTION;
-		         JOptionPane.showConfirmDialog (null, "Da li zelite da iskljucite aplikaciju?","Upozorenje",dialogButton);
-
-		         if(dialogButton == JOptionPane.YES_OPTION){
-		            System.exit(0);
-		         }
-
+		       System.exit(0);	        
 		    }
-
-		 }}
+		 }
 		
 	
 

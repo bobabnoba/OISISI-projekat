@@ -1,34 +1,50 @@
 package gui;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import studenti.view.AbstractTableModelStudenti;
+import studenti.view.StudentiJTable;
+
 
 public class MainFrame extends JFrame {
+	
+	
+	private static final long serialVersionUID = 4703527718003660405L;
+
+	private static MainFrame instance = null;
+
+	public static MainFrame getInstance() {
+		if (instance == null) {
+			instance = new MainFrame();
+		}
+		return instance;
+	}
+
+	private JTable tabelaStudenata;
 
 	public MainFrame() {
 		super();
-
-		setTitle("Studentska služba");
-		setResizable(true);
-
-		Toolkit tkit = Toolkit.getDefaultToolkit();	
-		Dimension screenSize = tkit.getScreenSize();
-		int screenHeight = screenSize.height;
-		int screenWidth = screenSize.width;
-		setSize(3 * screenWidth / 4, 3 * screenHeight / 4);		
-
+		setTitle("Studentska Sluzba");
+		Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize();
+		setSize(screenDimension.width / 2, screenDimension.height / 2);
 		setLocationRelativeTo(null);
+		setVisible(true);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		JTabbedPane tabbedPane = new JTabbedPane();
+
+		//JPanel mt = new JPanel();
+	
 		
 		MenuBar menu = new MenuBar(this);
 		Toolbar toolbar = new Toolbar();
 		StatusBar status = new StatusBar();
-		
 		add(menu, BorderLayout.NORTH);
 		
 		//TODO: Prikaz entiteta sistema
@@ -37,6 +53,19 @@ public class MainFrame extends JFrame {
 		tabs.setLayout(new BorderLayout());
 		add(tabs);
 		tabs.add(toolbar, BorderLayout.PAGE_START);		
-		this.add(status, BorderLayout.SOUTH);
+		tabs.add(tabbedPane, BorderLayout.CENTER);
+		add(status, BorderLayout.SOUTH);
+		this.add(tabs);
+		
+		
+		
 	}
+	public void azurirajPrikaz(String akcija, int vrednost) {
+		// azuriranje modela tabele, kao i njenog prikaza
+		AbstractTableModelStudenti model = (AbstractTableModelStudenti) tabelaStudenata.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
+
+
 }

@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,6 +30,13 @@ public class Toolbar extends JToolBar {
 	setLayout(new BorderLayout());
 	
 	JButton btnCreate = new JButton(cea);
+	btnCreate.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+        	DodajStudenta ds = new DodajStudenta();
+        	ds.setVisible(true);
+        
+		}});
 	JButton btnEdit = new JButton(eea);
 	JButton btnDelete = new JButton(dea);
 	
