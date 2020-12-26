@@ -39,8 +39,14 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		JTabbedPane tabbedPane = new JTabbedPane();
 
-		//JPanel mt = new JPanel();
-	
+		JPanel mt = new JPanel();
+		TableTab mt1 = new TableTab("Profesori");
+		TableTab mt2 = new TableTab("Predmeti");
+		
+		tabbedPane.addTab("Studenti", mt);
+		tabbedPane.addTab("Profesori", mt1);
+		tabbedPane.addTab("Predmeti", mt2);
+		
 		
 		MenuBar menu = new MenuBar(this);
 		Toolbar toolbar = new Toolbar();
@@ -55,8 +61,16 @@ public class MainFrame extends JFrame {
 		tabs.add(toolbar, BorderLayout.PAGE_START);		
 		tabs.add(tabbedPane, BorderLayout.CENTER);
 		add(status, BorderLayout.SOUTH);
-		this.add(tabs);
 		
+		tabelaStudenata = new StudentiJTable();
+
+		JScrollPane scrollPane = new JScrollPane(tabelaStudenata);
+		//DORADITI
+		scrollPane.setPreferredSize(new Dimension(800,800));
+		mt.add(scrollPane);
+		
+		
+		this.azurirajPrikaz(null, -1);
 		
 		
 	}
