@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -32,8 +33,11 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		miNew.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				if(MainFrame.getTab() == 0) {
 	        	DodajStudenta ds = new DodajStudenta();
+	        	ds.setLocationRelativeTo(parent);
 	        	ds.setVisible(true);
+				}
 	        	
 			}});
 		miNew.setActionCommand("napravi");

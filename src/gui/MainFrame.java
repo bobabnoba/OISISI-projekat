@@ -9,12 +9,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import studenti.view.AbstractTableModelStudenti;
 import studenti.view.StudentiJTable;
 
 
 public class MainFrame extends JFrame {
 	
+	public static int TAB;
 	
 	private static final long serialVersionUID = 4703527718003660405L;
 
@@ -40,16 +44,24 @@ public class MainFrame extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane();
 
 		JPanel mt = new JPanel();
-		TableTab mt1 = new TableTab("Profesori");
-		TableTab mt2 = new TableTab("Predmeti");
+		TableTab mt1 = new TableTab("");
+		TableTab mt2 = new TableTab("");
 		
 		tabbedPane.addTab("Studenti", mt);
 		tabbedPane.addTab("Profesori", mt1);
 		tabbedPane.addTab("Predmeti", mt2);
 		
 		
+		tabbedPane.addChangeListener(new ChangeListener() {
+
+	        public void stateChanged(ChangeEvent e) {
+
+	            setTab(tabbedPane.getSelectedIndex());	           
+	        }
+	    });
+		
 		MenuBar menu = new MenuBar(this);
-		Toolbar toolbar = new Toolbar();
+		Toolbar toolbar = new Toolbar(this);
 		StatusBar status = new StatusBar();
 		add(menu, BorderLayout.NORTH);
 		
@@ -80,6 +92,8 @@ public class MainFrame extends JFrame {
 		model.fireTableDataChanged();
 		validate();
 	}
-
+	
+	public static void setTab(int index) {TAB = index;}
+	public static int getTab() {return TAB;}
 
 }

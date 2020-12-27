@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
@@ -18,7 +19,7 @@ import abstractAction.SearchEntityAction;
 
 public class Toolbar extends JToolBar {
 
-	public Toolbar() {
+	public Toolbar(final JFrame parent) {
 	super(SwingConstants.HORIZONTAL);
 	
 	CreateEntityAction cea = new CreateEntityAction();
@@ -33,9 +34,12 @@ public class Toolbar extends JToolBar {
 	btnCreate.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			if(MainFrame.getTab() == 0) {
         	DodajStudenta ds = new DodajStudenta();
+        	ds.setLocationRelativeTo(parent);
         	ds.setVisible(true);
-        
+			}
+        	
 		}});
 	JButton btnEdit = new JButton(eea);
 	JButton btnDelete = new JButton(dea);

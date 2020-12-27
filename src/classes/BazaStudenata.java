@@ -36,10 +36,10 @@ public class BazaStudenata {
 
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
-		studenti.add(new Student("Mika", "Mikic", "ra172", "23-10-1990" , "Petra Drapsina 10", "656448998", "mm@gmail.com", "2018", 3, 's' , 9.2   ));
-		studenti.add(new Student("Deki", "Dekic", "ra170", "22-10-1962" , "Petra Drapsina 1", "656448998", "mm@gmail.com", "2018", 2, 'b' , 8.42   ));
-		studenti.add(new Student("Ristana", "Cukic", "ra12", "23-03-1999" , "Petra Drapsina 10", "656448998", "mm@gmail.com", "2018", 1, 'b' , 7.06   ));
-		studenti.add(new Student("Ristana", "Cukic", "ra12", "23-03-1999" , "Petra Drapsina 10", "656448998", "mm@gmail.com", "2018", 1, 'b' , 7.06   ));
+		studenti.add(new Student("Mika", "Mikic", "ra172", "1999-10-12" , "Petra Drapsina 10", "656448998", "mm@gmail.com", "2018", 3, "s" , 9.2   ));
+		studenti.add(new Student("Deki", "Dekic", "ra170", "1989-02-01" , "Petra Drapsina 1", "656448998", "mm@gmail.com", "2018", 2, "b" , 8.42   ));
+		studenti.add(new Student("Ristana", "Cukic", "ra12", "1999-02-01"  , "Petra Drapsina 10", "656448998", "mm@gmail.com", "2018", 1, "b" , 7.06   ));
+		studenti.add(new Student("Dejana", "Pavlovic", "ra12", "1999-03-1999" , "Petra Drapsina 10", "656448998", "mm@gmail.com", "2018", 1, "s" , 6.06   ));
 
 
 	}
@@ -78,17 +78,20 @@ public class BazaStudenata {
 		case 3:
 			return String.valueOf(student.getTrenutnaGodinaStudija());
 		case 4:
-			return String.valueOf(student.getStatus());
+			return student.getStatus();
 		case 5:
 			return String.valueOf(student.getProsek());
 		default:
 			return null;
 		}
 	}
-	public void dodajStudenta(String ime, String prezime, String brojIndeksa, String i, String adresaStanovanja, String kontaktTelefon, String mailAdresa, String j, int trenutnaGodinaStudija, 
-			char status, double prosek	) {
+	public void dodajStudenta(String ime, String prezime, String brojIndeksa, String i, String adresaStanovanja,
+			String kontaktTelefon, String mailAdresa, String j, int trenutnaGodinaStudija, String status,
+			double prosek) {
 		this.studenti.add(new Student(ime,prezime, brojIndeksa, i, adresaStanovanja, kontaktTelefon, mailAdresa, j, trenutnaGodinaStudija,status, prosek));
 	}
+
+	
 	
 	
 

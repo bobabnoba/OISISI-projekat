@@ -20,7 +20,7 @@ public class Student {
 	private String mailAdresa;
 	private String godinaUpisa;
 	private int trenutnaGodinaStudija;
-	private char status;
+	private String status;
 	private double prosek; 
 	 ArrayList<Ocena> spisakPolozenihIspita = new ArrayList<Ocena>();
 	
@@ -29,7 +29,7 @@ public class Student {
 	
 	
 	public Student(String ime, String prezime, String brojIndeksa, String i, String adresaStanovanja, String kontaktTelefon2, String mailAdresa, String j, int trenutnaGodinaStudija, 
-		char status, double prosek	) {
+		String status, double prosek	) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -126,7 +126,7 @@ public class Student {
 		this.godinaUpisa = j;
 	}
 
-	public char getStatus() {
+	public String getStatus() {
 		return status;
 	}
 

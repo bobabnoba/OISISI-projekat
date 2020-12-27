@@ -6,6 +6,10 @@ import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.Date;
 
 import javax.swing.Box;
@@ -17,6 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import classes.BazaStudenata;
 import controllers.StudentiController;
@@ -39,7 +45,7 @@ public class DodajStudenta extends JFrame{
 	String godinaUpisa= "";
 	int godUpisa;
 	int trenutnaGodinaStudija;
-	char status;
+	String status = "";
 	double prosek; 
 	
 	
@@ -53,7 +59,7 @@ public class DodajStudenta extends JFrame{
 		int screenWidth = screenSize.width;
 		setSize(1 * screenWidth / 5, 1 * screenHeight / 5);	
 		setLocationRelativeTo(null);
-		
+		setPreferredSize(new Dimension(350,600));
 		setTitle("Dodavanje Studenta");
 		setVisible(true);
 	
@@ -65,7 +71,16 @@ public class DodajStudenta extends JFrame{
 		FocusList focusListener1 = new FocusList();
 		
 		Dimension dim=new Dimension(150,20);
-
+		Dimension dim2=new Dimension(150,70);
+		
+		JLabel losUnos = new JLabel("<html> Popunite sva polja <br>"
+				+ "Kada se uverite da ste uneli inofrmaciju <br>"
+				+ "u dobrom formatu  pritisnite ENTER");
+		losUnos.setPreferredSize(new Dimension(150,100));
+		panCenter.add(losUnos);
+		JLabel losUnos2 = new JLabel("          ");
+		losUnos2.setPreferredSize(dim2);
+		//panCenter.add(losUnos2 );
 		
 		JPanel panIme=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblIme=new JLabel("Ime:");
@@ -73,6 +88,44 @@ public class DodajStudenta extends JFrame{
         JTextField txtIme=new JTextField();
         lblIme.setPreferredSize(dim);
         txtIme.setPreferredSize(dim);
+        txtIme.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				try {
+        			txtIme.getText().matches("[A-Za-z]+");
+					losUnos2.setText(" ");
+
+        		}catch (Exception ex) {
+        			losUnos2.setText("Pogresno uneto ime!");
+        			
+        			//ime = "";
+        		}
+				if (!txtIme.getText().matches("[A-Z a-z]+")) {
+					losUnos2.setText("Pogresno uneto ime!");
+        			losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
+        			ime = "";	
+				}
+        	}
+        });
+        	
+        
+        
+        
         
         txtIme.addActionListener(new ActionListener() {
         	@Override
@@ -100,7 +153,40 @@ public class DodajStudenta extends JFrame{
         });
         panPrezime.add(lblPrezime);
         panPrezime.add(txtPrezime);
-        
+        txtPrezime.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				try {
+        			txtIme.getText().matches("[A-Z a-z]+");
+					losUnos2.setText(" ");
+
+        		}catch (Exception ex) {
+        			losUnos2.setText("Pogresno uneto prezime!");
+        			
+        			prezime = "";
+        		}
+				if (!txtPrezime.getText().matches("[A-Z a-z]+")) {
+					losUnos2.setText("Pogresno uneto prezime!");
+        			losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
+        			prezime = "";	
+				}
+        	}
+        });
         
         JPanel panDatumRodjenja=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblDatumRodjenja=new JLabel("Datum rodjenja:");
@@ -117,7 +203,41 @@ public class DodajStudenta extends JFrame{
         });
         panDatumRodjenja.add(lblDatumRodjenja);
         panDatumRodjenja.add(txtDatumRodjenja);
-        
+        txtDatumRodjenja.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				try {
+        			txtDatumRodjenja.getText().matches("\\d{4}-\\d{2}-\\d{2}");
+					losUnos2.setText("    ");
+
+        		}catch (Exception ex) {
+        			losUnos2.setText("<html>Lose unet datum rodjenja!<br>"
+        					+ " Format je YYYY-MM-DD");
+        			
+        			datumRodjenja = "";
+        		}
+				if (!txtDatumRodjenja.getText().matches("\\d{4}-\\d{2}-\\d{2}")) {
+					losUnos2.setText("<html>Lose unet datum rodjenja!<br>"
+							+ " Format je YYYY-MM-DD");
+        			
+					datumRodjenja = "";	
+				}
+        	}
+        });
         
         JPanel panAdresaStanovanja=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblAdresaStanovanja=new JLabel("Adresa stanovanja:");
@@ -142,7 +262,7 @@ public class DodajStudenta extends JFrame{
         JTextField txtBrojTelefona=new JTextField();
         lblBrojTelefona.setPreferredSize(dim);
         txtBrojTelefona.setPreferredSize(dim);
-        txtDatumRodjenja.addActionListener(new ActionListener() {
+        txtBrojTelefona.addActionListener(new ActionListener() {
         	@Override
         	public void actionPerformed(ActionEvent arg0) {
         		kontaktTelefon =arg0.getActionCommand();  
@@ -152,7 +272,39 @@ public class DodajStudenta extends JFrame{
         panBrojTelefona.add(lblBrojTelefona);
         panBrojTelefona.add(txtBrojTelefona);
         
-        
+        txtBrojTelefona.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					txtBrojTelefona.getText().matches("[0-9]+");
+					losUnos2.setText("    ");
+
+        		}catch (Exception ex) {
+        			losUnos2.setText("<html>Lose unet broj telefona!<br>");
+        			
+        			kontaktTelefon = "";
+        		}
+				if (!txtBrojTelefona.getText().matches("[0-9]+")) {
+					losUnos2.setText("<html>Lose unet broj telefona!<br>");
+        			
+					kontaktTelefon = "";	
+				}
+        	}
+        });
         JPanel panMail=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblMail=new JLabel("E-mail adresa:");
         lblIme.setPreferredSize(dim);
@@ -164,6 +316,43 @@ public class DodajStudenta extends JFrame{
         	public void actionPerformed(ActionEvent arg0) {
         		mailAdresa = arg0.getActionCommand();  
         		System.out.println(mailAdresa);
+        	}
+        });
+        txtMail.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					txtMail.getText().matches("[a-z0-9]+\\@uns.ns.rs");
+					losUnos2.setText("    ");
+
+        		}catch (Exception ex) {
+        			losUnos2.setText("<html>Lose unet mail!<br>"
+        					+ "Mora se zavrsiti sa <br>"
+        					+ "@uns.ns.rs");
+        			
+        			mailAdresa = "";
+        		}
+				if (!txtMail.getText().matches("[a-z0-9]+\\@uns.ns.rs")) {
+					losUnos2.setText("<html>Lose unet mail!<br>"
+							+  "Mora se zavrsiti sa <br>"
+							+ "@uns.ns.rs");
+        			
+					mailAdresa = "";	
+				}
         	}
         });
         mailAdresa = txtMail.getText();
@@ -201,6 +390,41 @@ public class DodajStudenta extends JFrame{
         		System.out.println(godinaUpisa);
         	}
         });
+        txtGodUpisa.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					txtGodUpisa.getText().matches("\\d{4}");
+					losUnos2.setText("    ");
+
+        		}catch (Exception ex) {
+        			losUnos2.setText("<html>Lose uneta godina upisa!<br>"
+        					+ " Format je YYYY");
+        			
+        			godinaUpisa = "";
+        		}
+				if (!txtGodUpisa.getText().matches("\\d{4}")) {
+					losUnos2.setText("<html>Lose uneta godina upisa!<br>"
+							+ " Format je YYYY");
+        			
+					godinaUpisa = "";	
+				}
+        	}
+        });
         godinaUpisa= txtGodUpisa.getText();
         panGodUpisa.add(lblGodUpisa);
         panGodUpisa.add(txtGodUpisa);
@@ -208,13 +432,30 @@ public class DodajStudenta extends JFrame{
         JPanel panTrenutnaGod = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblTrenutnaGod= new JLabel("Trenutna godina studija:");
         lblTrenutnaGod.setPreferredSize(dim);
-        String[] godine = { "I (prva)", "II (druga)", "III (treca)", "IV (cetvrta)"};
+        String[] godine = { " ","I (prva)", "II (druga)", "III (treca)", "IV (cetvrta)"};
 		final JComboBox<String> combo = new JComboBox<String>(godine);
 		combo.addActionListener(new ActionListener() {
+
+			
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String temp = (String) combo.getSelectedItem();
+				if (temp == "I (prva)") {
+					trenutnaGodinaStudija = 1 ;
+					}else if (temp == "II (druga)") {
+						trenutnaGodinaStudija = 2 ;
+					}else if (temp == "III (treca)") {
+						trenutnaGodinaStudija = 3 ;
+					}else if (temp == "IV (cetvrta)") {
+						trenutnaGodinaStudija = 4 ;
+					} else {
+						trenutnaGodinaStudija = 0 ;
+					}
 				
 			}
+			
+			
 		});
 		
 		panTrenutnaGod.add(lblTrenutnaGod);
@@ -225,9 +466,28 @@ public class DodajStudenta extends JFrame{
 		JPanel panFinansiranje = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblFinansiranje = new JLabel("Nacin finansiranja:");
 		lblFinansiranje.setPreferredSize(dim);
-		String[] nacini = {"Budzet", "Samofinansiranje" };
+		String[] nacini = {" ", "Budzet", "Samofinansiranje" };
 		final JComboBox<String> combo2 = new JComboBox<String>(nacini);
-		panFinansiranje.add(lblFinansiranje);
+		combo2.addActionListener(new ActionListener() {
+
+			
+			@Override
+			public void actionPerformed(ActionEvent e2) {
+				// TODO Auto-generated method stub
+				String temp2 = (String) combo2.getSelectedItem();
+				if (temp2 == "Samofinansiranje") {
+					status = "s";
+					}else if (temp2 == "Budzet") {
+						status = "b";
+					
+				
+			} else {
+				status = "";
+			}
+			}
+			
+		});
+		panFinansiranje.add(lblFinansiranje); 
 		panFinansiranje.add(combo2);
 		combo.setSelectedIndex(0);
         
@@ -251,8 +511,6 @@ public class DodajStudenta extends JFrame{
 		BoxLayout box=new BoxLayout(panBottom, BoxLayout.X_AXIS);
 		panBottom.setLayout(box);
 		
-		JLabel losUnos = new JLabel("");
-		panCenter.add(losUnos);
 		
 		
 		JButton btnOk=new JButton("Potvrdi");
@@ -260,28 +518,40 @@ public class DodajStudenta extends JFrame{
 		btnOk.addActionListener(new ActionListener() {
         	@Override
         	public void actionPerformed(ActionEvent arg0) {
-        		try {
-        			int a = Integer.valueOf(godinaUpisa);
-        		}catch (Exception e) {
-        			losUnos.setText("Pogresno uneta godina upisa!");
-        			losUnos.setVisible(true);
-        			panCenter.add(losUnos);
-        			godinaUpisa = "";
-        		}
+        		if (2021 - (Integer.parseInt(godinaUpisa)  ) <  trenutnaGodinaStudija ){
+			losUnos2.setText("<html>Proverite godinu upisa<br>"
+					+ " i trenutnu godinu studija!"
+					);
+				godinaUpisa = "";
+				txtGodUpisa.setText(" ");
+		}
         		if(ime == ""  | prezime == " " | brojIndeksa == "" | datumRodjenja == "" |
-        				 adresaStanovanja == "" | kontaktTelefon  == " " | mailAdresa == "" | godinaUpisa == ""){
-        			losUnos.setText("Popunite sva polja!");
-        			losUnos.setVisible(true);
-        			panCenter.add(losUnos);
+        				 adresaStanovanja == "" | kontaktTelefon  == " " | mailAdresa == "" | godinaUpisa == "" | trenutnaGodinaStudija == 0 | status == "" ){
+        			losUnos.setText("<html>Niste popunili valjano sva polja!<br>"
+        					+ " Pritisnite ENTER nakon<br>"
+        					+ " svakog unosa!");
+        			
         			
         		}else {
         	StudentiController.getInstance().dodajStudenta(ime,prezime,brojIndeksa,datumRodjenja, 
     				adresaStanovanja, kontaktTelefon,mailAdresa, godinaUpisa, trenutnaGodinaStudija, status,prosek);
-        		
+        	losUnos.setText("Popunite sva polja");
+        	txtIme.setText(" ");
+        	txtPrezime.setText(" ");
+        	txtIndeks.setText(" ");
+        	txtMail.setText(" ");
+        	txtBrojTelefona.setText(" ");
+        	txtAdresaStanovanja.setText(" ");
+        	txtDatumRodjenja.setText(" ");
+        	txtGodUpisa.setText(" ");
+        	combo.setSelectedIndex(0);
+        	combo2.setSelectedIndex(0);
         	}
         	}
         });
 		
+		
+
 		
 		
 		
