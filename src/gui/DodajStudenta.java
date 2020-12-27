@@ -380,6 +380,7 @@ public class DodajStudenta extends JFrame{
         		System.out.println(brojIndeksa);
         	}
         });
+        
         panIndeks.add(lblIndeks);
         panIndeks.add(txtIndeks);
         
@@ -425,6 +426,7 @@ public class DodajStudenta extends JFrame{
     								+ "sa ovim indeksom!");
     						brojIndeksa = "";
     						txtIndeks.setText("");
+    						txtGodUpisa.setText("");
     						return;
     					}
     					if(Integer.parseInt(godinaUpisa) < 1960  |Integer.parseInt(godinaUpisa) > 2021) {
@@ -434,6 +436,7 @@ public class DodajStudenta extends JFrame{
     	    						);
     							
     	    					txtGodUpisa.setText("");
+
     	    					losUnos2.setVisible(true);
     	            			panCenter.add(losUnos2);
     	            			
