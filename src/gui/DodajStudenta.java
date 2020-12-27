@@ -416,7 +416,9 @@ public class DodajStudenta extends JFrame{
 				// TODO Auto-generated method stub
 				try {
 					txtGodUpisa.getText().matches("\\d{4}");
-					losUnos2.setText("    ");
+					losUnos2.setText("   ");
+					losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
 					for(Student stud: BazaStudenata.getInstance().getStudenti()) {
     					if((txtIndeks.getText()+ "-" + txtGodUpisa.getText()).equals(stud.getIndeks())) {
     						losUnos2.setText("<html>Vec postoji student <br>"
@@ -425,12 +427,24 @@ public class DodajStudenta extends JFrame{
     						txtIndeks.setText("");
     						return;
     					}
+    					if(Integer.parseInt(godinaUpisa) < 1960  |Integer.parseInt(godinaUpisa) > 2021) {
+    						losUnos2.setText("<html>Fakultet Tehnickih nauka <br>"
+    	    						+ " u Novom Sadu osnovan je <br>"
+    	    						+ "1960. godine!"
+    	    						);
+    							
+    	    					txtGodUpisa.setText("");
+    	    					losUnos2.setVisible(true);
+    	            			panCenter.add(losUnos2);
+    	            			
+    					}
     				}
 
         		}catch (Exception ex) {
-        			losUnos2.setText("<html>Lose uneta godina upisa!<br>"
-        					+ " Format je YYYY");
-        			
+        			losUnos2.setText("<html>Fakultet Tehnickih nauka <br>"
+    						+ " u Novom Sadu osnovan je <br>"
+    						+ "1960. godine!"
+    						);
         			godinaUpisa = "";
         		}
 				if (!txtGodUpisa.getText().matches("\\d{4}")) {
@@ -440,6 +454,8 @@ public class DodajStudenta extends JFrame{
         			panCenter.add(losUnos2);
 					godinaUpisa = "";	
 				}
+				
+				
         	}
         });
         godinaUpisa= txtGodUpisa.getText();
@@ -476,6 +492,8 @@ public class DodajStudenta extends JFrame{
         						);
         					godinaUpisa = "";
         					txtGodUpisa.setText(" ");
+        					losUnos2.setVisible(true);
+                			panCenter.add(losUnos2);
         			}
         			} catch (Exception ex) {
         				godinaUpisa = "";
