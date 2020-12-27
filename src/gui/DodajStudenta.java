@@ -18,13 +18,17 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import classes.BazaProfesora;
 import classes.BazaStudenata;
+import classes.Profesor;
+import classes.Student;
 import controllers.StudentiController;
 import dialog.Dialog;
 import listeners.FocusList;
@@ -233,7 +237,8 @@ public class DodajStudenta extends JFrame{
 				if (!txtDatumRodjenja.getText().matches("\\d{4}-\\d{2}-\\d{2}")) {
 					losUnos2.setText("<html>Lose unet datum rodjenja!<br>"
 							+ " Format je YYYY-MM-DD");
-        			
+					losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
 					datumRodjenja = "";	
 				}
         	}
@@ -295,12 +300,13 @@ public class DodajStudenta extends JFrame{
 
         		}catch (Exception ex) {
         			losUnos2.setText("<html>Lose unet broj telefona!<br>");
-        			
+        			losUnos2.setVisible(true);
         			kontaktTelefon = "";
         		}
 				if (!txtBrojTelefona.getText().matches("[0-9]+")) {
 					losUnos2.setText("<html>Lose unet broj telefona!<br>");
-        			
+					losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
 					kontaktTelefon = "";	
 				}
         	}
@@ -350,7 +356,8 @@ public class DodajStudenta extends JFrame{
 					losUnos2.setText("<html>Lose unet mail!<br>"
 							+  "Mora se zavrsiti sa <br>"
 							+ "@uns.ns.rs");
-        			
+					losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
 					mailAdresa = "";	
 				}
         	}
@@ -410,6 +417,15 @@ public class DodajStudenta extends JFrame{
 				try {
 					txtGodUpisa.getText().matches("\\d{4}");
 					losUnos2.setText("    ");
+					for(Student stud: BazaStudenata.getInstance().getStudenti()) {
+    					if((txtIndeks.getText()+ "-" + txtGodUpisa.getText()).equals(stud.getIndeks())) {
+    						losUnos2.setText("<html>Vec postoji student <br>"
+    								+ "sa ovim indeksom!");
+    						brojIndeksa = "";
+    						txtIndeks.setText("");
+    						return;
+    					}
+    				}
 
         		}catch (Exception ex) {
         			losUnos2.setText("<html>Lose uneta godina upisa!<br>"
@@ -420,7 +436,8 @@ public class DodajStudenta extends JFrame{
 				if (!txtGodUpisa.getText().matches("\\d{4}")) {
 					losUnos2.setText("<html>Lose uneta godina upisa!<br>"
 							+ " Format je YYYY");
-        			
+					losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
 					godinaUpisa = "";	
 				}
         	}
@@ -452,7 +469,17 @@ public class DodajStudenta extends JFrame{
 					} else {
 						trenutnaGodinaStudija = 0 ;
 					}
-				
+				try {
+        			if (2021 - (Integer.parseInt(godinaUpisa)  ) <  trenutnaGodinaStudija ){
+        				losUnos2.setText("<html>Proverite godinu upisa<br>"
+        						+ " i trenutnu godinu studija!"
+        						);
+        					godinaUpisa = "";
+        					txtGodUpisa.setText(" ");
+        			}
+        			} catch (Exception ex) {
+        				godinaUpisa = "";
+        			}
 			}
 			
 			
@@ -523,7 +550,12 @@ public class DodajStudenta extends JFrame{
         				 adresaStanovanja == "" | kontaktTelefon  == " " | mailAdresa == "" | godinaUpisa == "" | trenutnaGodinaStudija == 0 | status == "" ){
         			losUnos.setText("<html>Niste popunili valjano sva polja!<br>"
         					+ " Pritisnite ENTER nakon<br>"
-        					+ " svakog unosa!");
+        					+ " svakog unosa!");	
+        			
+        			
+        			
+        			
+        			
         			
         			
         		}else {
@@ -545,24 +577,6 @@ public class DodajStudenta extends JFrame{
         });
 		
 		
-
-		
-		
-		
-		
-		/* String ime;
-			String prezime;
-			String brojIndeksa;
-			String datumRodjenja;
-			String adresaStanovanja;
-			String kontaktTelefon;
-			String mailAdresa;
-			String godinaUpisa;
-			int trenutnaGodinaStudija;
-			char status;
-			double prosek; 
-			
-		*/
 		JButton btnCancel=new JButton("Odustani");
 		btnCancel.addActionListener(new ActionListener() {
 
