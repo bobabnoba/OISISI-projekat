@@ -16,6 +16,7 @@ import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
 import dialog.Dialog;
+import view.DodajProfesora;
 
 
 public class MenuBar extends JMenuBar implements ActionListener{
@@ -33,11 +34,29 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		miNew.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(MainFrame.getTab() == 0) {
+				switch(MainFrame.getInstance().selectedTab()) {
+				case 0: 
+					DodajStudenta ds = new DodajStudenta();
+		        	ds.setLocationRelativeTo(parent);
+		        	ds.setVisible(true);
+		        	break;
+				case 1:
+					DodajProfesora dp = new DodajProfesora();
+					dp.setLocationRelativeTo(parent);
+					dp.setVisible(true);
+					break;
+				case 2:
+					//dodaj predmet
+					break;
+				default:
+					break;
+				}
+			//	if(MainFrame.getTab() == 0) {
+			/*	if(MainFrame.getInstance().selectedTab() == 0) {
 	        	DodajStudenta ds = new DodajStudenta();
 	        	ds.setLocationRelativeTo(parent);
 	        	ds.setVisible(true);
-				}
+				}*/ 
 	        	
 			}});
 		miNew.setActionCommand("napravi");

@@ -4,21 +4,25 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import studenti.view.AbstractTableModelStudenti;
 import studenti.view.StudentiJTable;
+import view.ATMProfesori;
+import view.ProfesoriTable;
 
 
 public class MainFrame extends JFrame {
 	
-	public static int TAB;
+	//public static int TAB;
 	
 	private static final long serialVersionUID = 4703527718003660405L;
 
@@ -31,17 +35,31 @@ public class MainFrame extends JFrame {
 		return instance;
 	}
 
+	private ProfesoriTable profTable;
+	JTabbedPane tabbedPane;
+	JPanel tabsPanel;
 	private JTable tabelaStudenata;
 
 	public MainFrame() {
 		super();
 		setTitle("Studentska Sluzba");
-		Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize();
+		setResizable(true);
+		
+		Toolkit tkit = Toolkit.getDefaultToolkit();	
+		Dimension screenSize = tkit.getScreenSize();
+		int screenHeight = screenSize.height;
+		int screenWidth = screenSize.width;
+		setSize(3 * screenWidth / 4, 3 * screenHeight / 4);		
+
+		setLocationRelativeTo(null);
+		
+		/*Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(screenDimension.width / 2, screenDimension.height / 2);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		JTabbedPane tabbedPane = new JTabbedPane();
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);*/
+		
+		/*JTabbedPane tabbedPane = new JTabbedPane();
 
 		JPanel mt = new JPanel();
 		TableTab mt1 = new TableTab("");
@@ -51,30 +69,32 @@ public class MainFrame extends JFrame {
 		tabbedPane.addTab("Profesori", mt1);
 		tabbedPane.addTab("Predmeti", mt2);
 		
-		
 		tabbedPane.addChangeListener(new ChangeListener() {
 
 	        public void stateChanged(ChangeEvent e) {
 
 	            setTab(tabbedPane.getSelectedIndex());	           
 	        }
-	    });
+	    });*/
 		
 		MenuBar menu = new MenuBar(this);
 		Toolbar toolbar = new Toolbar(this);
 		StatusBar status = new StatusBar();
-		add(menu, BorderLayout.NORTH);
+		//add(menu, BorderLayout.NORTH);
+		this.setJMenuBar(menu);
 		
 		//TODO: Prikaz entiteta sistema
-		JPanel tabs = new JPanel();
-		tabs.setBackground(Color.lightGray);
-		tabs.setLayout(new BorderLayout());
-		add(tabs);
-		tabs.add(toolbar, BorderLayout.PAGE_START);		
-		tabs.add(tabbedPane, BorderLayout.CENTER);
-		add(status, BorderLayout.SOUTH);
+		tabsPanel = new JPanel();
+		tabsPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+		tabsPanel.setBackground(Color.lightGray);
+		tabsPanel.setLayout(new BorderLayout());		
+		this.add(tabsPanel, BorderLayout.CENTER);
+		this.add(toolbar, BorderLayout.NORTH);		
+		this.add(status, BorderLayout.SOUTH);
 		
-		tabelaStudenata = new StudentiJTable();
+		createTabbedPane();
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		/*tabelaStudenata = new StudentiJTable();
 
 		JScrollPane scrollPane = new JScrollPane(tabelaStudenata);
 		//DORADITI
@@ -83,7 +103,7 @@ public class MainFrame extends JFrame {
 		
 		
 		this.azurirajPrikaz(null, -1);
-		
+		*/
 		
 	}
 	public void azurirajPrikaz(String akcija, int vrednost) {
@@ -93,7 +113,58 @@ public class MainFrame extends JFrame {
 		validate();
 	}
 	
-	public static void setTab(int index) {TAB = index;}
-	public static int getTab() {return TAB;}
-
+	//public static void setTab(int index) {TAB = index;}
+	//public static int getTab() {return TAB;}
+	
+	
+	private void createTabbedPane() {
+		tabbedPane = new JTabbedPane();
+		
+		JScrollPane studentiTab = showStudentiTable();
+		JScrollPane profesoriTab = showProfesoriTable();
+		JScrollPane predmetiTab = showPredmetiTable();
+		
+		tabbedPane.add("Studenti", studentiTab);
+		tabbedPane.add("Profesori", profesoriTab);
+		tabbedPane.add("Predmeti", predmetiTab);
+		
+		tabsPanel.add(tabbedPane, BorderLayout.CENTER);
+		
+	}
+		
+	
+	private JScrollPane showStudentiTable() {
+		tabelaStudenata = new StudentiJTable();
+		JScrollPane sppstud = new JScrollPane(tabelaStudenata);
+		sppstud.setBorder(new EmptyBorder(20, 20, 20, 20));
+		this.azurirajPrikaz(null, -1);
+		return sppstud;
+		
+		
+	}
+	
+	private JScrollPane showProfesoriTable() {
+		profTable = new ProfesoriTable();
+		JScrollPane spprof = new JScrollPane(profTable);
+		spprof.setBorder(new EmptyBorder(20, 20, 20, 20));
+		this.updateViewProf();
+		return spprof;
+	}
+	
+	private JScrollPane showPredmetiTable() {
+		JScrollPane spppred = new JScrollPane();
+		spppred.setBorder(new EmptyBorder(20, 20, 20, 20));
+		//this.updateViewPred();
+		return spppred;
+	}
+	
+	public void updateViewProf() {
+    	ATMProfesori model = (ATMProfesori) profTable.getModel();
+    	model.fireTableDataChanged();
+    	validate();
+    }
+	
+	public int selectedTab() {
+		return tabbedPane.getSelectedIndex();
+	}
 }

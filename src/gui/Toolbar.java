@@ -34,8 +34,9 @@ public class Toolbar extends JToolBar {
 	btnCreate.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			if(MainFrame.getTab() == 0) {
-        	DodajStudenta ds = new DodajStudenta();
+			//if(MainFrame.getTab() == 0) {
+			if(MainFrame.getInstance().selectedTab() == 0) { 
+			DodajStudenta ds = new DodajStudenta();
         	ds.setLocationRelativeTo(parent);
         	ds.setVisible(true);
 			}
