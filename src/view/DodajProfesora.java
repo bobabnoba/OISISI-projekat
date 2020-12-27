@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.ParseException;
@@ -75,6 +77,23 @@ public class DodajProfesora extends JDialog{
 		
 	}
 	
+	
+	FocusListener focus = new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(!(tfPrezime.getText().trim().isEmpty() || tfIme.getText().trim().isEmpty() || tfDatRodj.getText().trim().isEmpty() || tfAdresa.getText().trim().isEmpty() || tfEmail.getText().trim().isEmpty() || tfBrLK.getText().trim().isEmpty())) {
+					btnOK.setEnabled(true);
+				}
+			}
+			
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+	
 	private void initComponents() {
 		panelPolja = new JPanel();
 		panelDugmad = new JPanel();
@@ -89,21 +108,27 @@ public class DodajProfesora extends JDialog{
 		
 		lblPrezime = new JLabel("Prezime*");
 		tfPrezime = new JTextField(30);
+		tfPrezime.addFocusListener(focus);
 
 		lblIme = new JLabel("Ime*");
 		tfIme = new JTextField(30);
+		tfIme.addFocusListener(focus);
 		
 		lblDatRodj = new JLabel("Datum rodjenja*");
 		tfDatRodj = new JTextField(30);
+		tfDatRodj.addFocusListener(focus);
 		
 		lblAdresa = new JLabel("Adresa*");
 		tfAdresa = new JTextField(30);
+		tfAdresa.addFocusListener(focus);
 		
 		lblEmail = new JLabel("Email*");
 		tfEmail = new JTextField(30);
+		tfEmail.addFocusListener(focus);
 		
 		lblBrLK = new JLabel("Broj licne karte*");
 		tfBrLK = new JTextField(30);
+		tfBrLK.addFocusListener(focus);
 		
 		lblTitula = new JLabel("Titula*");
 		cbTitula = new JComboBox<Titula>(Titula.values());
@@ -112,6 +137,7 @@ public class DodajProfesora extends JDialog{
 		cbZvanje = new JComboBox<Zvanje>(Zvanje.values());
 		
 		btnOK = new JButton("Potvrdi");
+		btnOK.setEnabled(false);
 		btnCancel = new JButton("Odustani");
 		
 		panelPolja.add(lblPrezime);
@@ -191,10 +217,10 @@ btnOK.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				if(tfPrezime.getText().trim().isEmpty() || tfIme.getText().trim().isEmpty() || tfDatRodj.getText().trim().isEmpty() || tfAdresa.getText().trim().isEmpty() || tfEmail.getText().trim().isEmpty() || tfBrLK.getText().trim().isEmpty()) {
+				/*if(tfPrezime.getText().trim().isEmpty() || tfIme.getText().trim().isEmpty() || tfDatRodj.getText().trim().isEmpty() || tfAdresa.getText().trim().isEmpty() || tfEmail.getText().trim().isEmpty() || tfBrLK.getText().trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Sva polja su obavezna!", "Greška", JOptionPane.ERROR_MESSAGE);
 					return;
-				}
+				}*/
 			
 				for(Profesor pr: BazaProfesora.getInstance().getProfesori()) {
 					if(tfBrLK.getText().trim().equals(pr.getBrojLicneKarte())) {
