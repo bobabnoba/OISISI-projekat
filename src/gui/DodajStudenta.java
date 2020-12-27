@@ -518,13 +518,7 @@ public class DodajStudenta extends JFrame{
 		btnOk.addActionListener(new ActionListener() {
         	@Override
         	public void actionPerformed(ActionEvent arg0) {
-        		if (2021 - (Integer.parseInt(godinaUpisa)  ) <  trenutnaGodinaStudija ){
-			losUnos2.setText("<html>Proverite godinu upisa<br>"
-					+ " i trenutnu godinu studija!"
-					);
-				godinaUpisa = "";
-				txtGodUpisa.setText(" ");
-		}
+        		
         		if(ime == ""  | prezime == " " | brojIndeksa == "" | datumRodjenja == "" |
         				 adresaStanovanja == "" | kontaktTelefon  == " " | mailAdresa == "" | godinaUpisa == "" | trenutnaGodinaStudija == 0 | status == "" ){
         			losUnos.setText("<html>Niste popunili valjano sva polja!<br>"
