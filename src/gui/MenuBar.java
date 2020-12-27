@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,6 +13,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 
 import dialog.Dialog;
 
@@ -24,9 +26,21 @@ public class MenuBar extends JMenuBar implements ActionListener{
 	
 	public MenuBar(final JFrame parent) {
 		JMenu file = new JMenu("File");
+		file.setMnemonic('F');
 		JMenuItem miNew = new JMenuItem("New", KeyEvent.VK_N);
 		miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		miNew.setIcon(new ImageIcon("icons/add.png"));
+		miNew.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(MainFrame.getTab() == 0) {
+	        	DodajStudenta ds = new DodajStudenta();
+	        	ds.setLocationRelativeTo(parent);
+	        	ds.setVisible(true);
+				}
+	        	
+			}});
+		miNew.setActionCommand("napravi");
 		
 		JMenuItem miClose = new JMenuItem("Close", KeyEvent.VK_C);
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
@@ -39,6 +53,7 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		
 		
 		JMenu edit = new JMenu("Edit");
+		edit.setMnemonic('E');
 		JMenuItem miEdit = new JMenuItem("Edit", KeyEvent.VK_E);
 		JMenuItem miDelete = new JMenuItem("Delete", KeyEvent.VK_D);
 		
@@ -52,8 +67,12 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		
 		
 		JMenu help = new JMenu("Help");
+		help.setMnemonic('H');
 		JMenuItem miHelp = new JMenuItem("Help", KeyEvent.VK_H);
 		JMenuItem miAbout = new JMenuItem("About", KeyEvent.VK_A);
+		miHelp.setIcon(new ImageIcon("icons/help.png"));
+		miAbout.setIcon(new ImageIcon("icons/about.png"));
+
 		
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
@@ -108,19 +127,9 @@ public class MenuBar extends JMenuBar implements ActionListener{
 
 		 @Override
 		    public void actionPerformed(ActionEvent e) {
-
-		       if("exit".equals(e.getActionCommand())){
-
-		         int dialogButton = JOptionPane.YES_NO_OPTION;
-		         JOptionPane.showConfirmDialog (null, "Da li zelite da iskljucite aplikaciju?","Upozorenje",dialogButton);
-
-		         if(dialogButton == JOptionPane.YES_OPTION){
-		            System.exit(0);
-		         }
-
+		       System.exit(0);	        
 		    }
-
-		 }}
+		 }
 		
 	
 
