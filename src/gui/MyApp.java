@@ -11,9 +11,12 @@ import controllers.StudentiController;
 public class MyApp {
 
 	public static void main(String[] args) {
-		BazaStudenata.getInstance();
+	/*	BazaStudenata.getInstance();
 		StudentiController.getInstance();
-		MainFrame.getInstance();
+		MainFrame.getInstance();*/
+		
+		MainFrame mframe = MainFrame.getInstance();
+		mframe.setVisible(true);
 		
 	}
 
