@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import classes.BazaProfesora;
 import classes.Predmet;
@@ -62,7 +63,7 @@ public class DodajProfesora extends JDialog{
 		d = kit.getScreenSize();
 		d.setSize(d.width/3, d.height/1.5);
 		setSize(d);
-
+		
 		this.setModal(true);
 		this.setResizable(false);
 		this.setLocationRelativeTo(MainFrame.getInstance());
@@ -70,14 +71,15 @@ public class DodajProfesora extends JDialog{
 
 		initComponents();
 		
-		//pack();
+		pack();
 		
 	}
 	
 	private void initComponents() {
 		panelPolja = new JPanel();
 		panelDugmad = new JPanel();
-		panelPolja.setLayout(new MigLayout());
+		panelPolja.setLayout(new MigLayout(null, "[]50[]", "[]30[]30[]30[]30[]30[]30[]30[]30"));
+
 		panelDugmad.setLayout(new MigLayout());
 		
 		panelPolja.setBackground(Color.WHITE);
@@ -112,10 +114,10 @@ public class DodajProfesora extends JDialog{
 		btnOK = new JButton("Potvrdi");
 		btnCancel = new JButton("Odustani");
 		
-		panelPolja.add(lblPrezime, "cell 0 0");
-		panelPolja.add(tfPrezime, "cell 1 0, wrap");
+		panelPolja.add(lblPrezime);
+		panelPolja.add(tfPrezime,  "wrap");
 		panelPolja.add(lblIme);
-		panelPolja.add(tfIme, "wrap");
+		panelPolja.add(tfIme, " wrap");
 		panelPolja.add(lblDatRodj);
 		panelPolja.add(tfDatRodj, " wrap");
 		panelPolja.add(lblAdresa);
@@ -226,6 +228,8 @@ btnOK.addMouseListener(new MouseListener() {
 			}
 		});
 		
+		panelPolja.setBorder(new EmptyBorder(30, 30, 10, 30));
+		panelDugmad.setBorder(new EmptyBorder(10, 30, 10, 30));
 		add(panelPolja, BorderLayout.NORTH);
 		add(panelDugmad, BorderLayout.EAST);
 		
