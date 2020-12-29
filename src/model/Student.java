@@ -23,7 +23,7 @@ public class Student {
 	private String status;
 	private double prosek; 
 	 ArrayList<Ocena> spisakPolozenihIspita = new ArrayList<Ocena>();
-	
+	ArrayList<Predmet> spisakNepolozenihIspita = new ArrayList<Predmet>();
 	
 	public Student() {}
 	

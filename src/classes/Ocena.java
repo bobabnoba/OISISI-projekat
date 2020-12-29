@@ -10,7 +10,8 @@ public class Ocena {
 	
 	private int ocena;
 	private Date datumPolaganja;
-	
+	Student student;
+	Predmet predmet;
 	
 	public Ocena(Student studentKojiJePolozio, int ocena, Date datumPolaganja) {
 	
@@ -27,3 +28,5 @@ public class Ocena {
 	
 
 }
+
+
