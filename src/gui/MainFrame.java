@@ -141,6 +141,7 @@ public class MainFrame extends JFrame {
 	
 	private JScrollPane showStudentiTable() {
 		tabelaStudenata = new StudentiJTable();
+		tabelaStudenata.setAutoCreateRowSorter(true);
 		JScrollPane sppstud = new JScrollPane(tabelaStudenata);
 		sppstud.setBorder(new EmptyBorder(20, 20, 20, 20));
 		this.azurirajPrikaz(null, -1);
