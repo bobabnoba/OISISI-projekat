@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import controller.ProfesoriController;
 import controller.StudentiController;
 import edit.IzmeniStudenta;
 import gui.MainFrame;
@@ -41,7 +42,18 @@ public class DeleteEntityAction extends AbstractAction {
 		    }
 			break;
 		case 1:
-			
+			JFrame frame1 = new JFrame();
+			String[] options1 = new String[2];
+			options1[0] = new String("Da");
+			options1[1] = new String("Ne");
+			int n1 = JOptionPane.showOptionDialog(frame1.getContentPane(),"Da li ste sigurni da zelite da obrisete profesora?","Brisanje profesora", 0,JOptionPane.INFORMATION_MESSAGE,null,options1,null);				   
+			if(n1 == JOptionPane.YES_OPTION) {
+			MainFrame.getInstance();
+			ProfesoriController.getInstance().izbrisiProfesora(MainFrame.profTable.getSelectedRow());
+		    }
+		    if(n1 == JOptionPane.NO_OPTION) {
+		          return;
+		    }
 		}
 	}
 	
