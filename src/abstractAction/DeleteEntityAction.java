@@ -5,7 +5,13 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+
+import controller.StudentiController;
+import edit.IzmeniStudenta;
+import gui.MainFrame;
 
 public class DeleteEntityAction extends AbstractAction {
 	
@@ -18,6 +24,26 @@ public class DeleteEntityAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		switch(MainFrame.getInstance().selectedTab()) {
+		case 0: 
+			
+			JFrame frame = new JFrame();
+			String[] options = new String[2];
+			options[0] = new String("Da");
+			options[1] = new String("Ne");
+			int n = JOptionPane.showOptionDialog(frame.getContentPane(),"Da li ste sigurni da zelite da obrisete studenta?","Brisanje studenta", 0,JOptionPane.INFORMATION_MESSAGE,null,options,null);				   
+			if(n == JOptionPane.YES_OPTION) {
+			MainFrame.getInstance();
+			StudentiController.getInstance().izbrisiStudenta(MainFrame.tabelaStudenata.getSelectedRow());
+		    }
+		    if(n == JOptionPane.NO_OPTION) {
+		          return;
+		    }
+			break;
+		case 1:
+			
+		}
 	}
+	
 	
 }
