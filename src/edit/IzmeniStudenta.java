@@ -68,7 +68,7 @@ public class IzmeniStudenta extends JFrame {
 		String status = "";
 		double prosek; 
 		
-		private PolozeniJTable pol;
+		private static PolozeniJTable pol;
 		private JTabbedPane tabs;
 		private JTextField txtIme;
 		private JTextField txtPrezime;
@@ -689,6 +689,7 @@ public IzmeniStudenta() {
 
 
 	JButton ponistiOcenu = new JButton("Ponisti ocenu");
+	
 	polozeniTop.add(ponistiOcenu);
 	polozeniTop.add(Box.createHorizontalGlue());
 	izmena.add(panCenter);
@@ -707,6 +708,34 @@ public IzmeniStudenta() {
 	pack();
 
 	add(tabs);
+	
+	
+	
+	ponistiOcenu.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			JFrame frame1 = new JFrame();
+			String[] options1 = new String[2];
+			options1[0] = new String("Da");
+			options1[1] = new String("Ne");
+			int n1 = JOptionPane.showOptionDialog(frame1.getContentPane(),"Da li ste sigurni da zelite da ponistite ocenu?","Ponistavanje ocene", 0,JOptionPane.INFORMATION_MESSAGE,null,options1,null);				   
+			if(n1 == JOptionPane.YES_OPTION) {
+			BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).removePolozeni(Polozeni.getInstance().getRow(IzmeniStudenta.pol.getSelectedRow()));
+			azuriraj(null, -1);
+		    espb.setText(("ESPB:\t" + String.valueOf(BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getEspb())));
+			polozeniBot2.add(espb);
+			prosek.setText(("Prosek:\t" + String.valueOf(	BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getProsek())));
+			polozeniBot.add(prosek);
+			}
+			if(n1 == JOptionPane.NO_OPTION) {
+		          return;
+		    }
+
+		}
+		
+	});
 }
 
 private JScrollPane showPolozeni() {

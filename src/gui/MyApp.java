@@ -35,15 +35,24 @@ public class MyApp {
 				new Profesor(), 7,new ArrayList<Student>(), new ArrayList<Student>()	);
 			
 		Ocena o = new Ocena(10, d,BazaStudenata.getInstance().getRow(0) , p);
+		
 		Ocena o1 = new Ocena(10, d,BazaStudenata.getInstance().getRow(1) , p);
 		Ocena o2 = new Ocena(10, d,BazaStudenata.getInstance().getRow(2) , p);
 		Ocena o3 = new Ocena(10, d,BazaStudenata.getInstance().getRow(3) , p);
 		Ocena o12 = new Ocena(6, d,BazaStudenata.getInstance().getRow(0) , p2);
 
 		BazaStudenata.getInstance().getRow(0).dodajPolozeni(o);
+		BazaStudenata.getInstance().getRow(0).dodajPolozeni(o);
+		BazaStudenata.getInstance().getRow(0).dodajPolozeni(o);
+		BazaStudenata.getInstance().getRow(0).dodajPolozeni(o);
+		BazaStudenata.getInstance().getRow(0).dodajPolozeni(o);
+		BazaStudenata.getInstance().getRow(0).dodajPolozeni(o);
+
 		BazaStudenata.getInstance().getRow(0).dodajPolozeni(o12);
 
 		BazaStudenata.getInstance().getRow(1).dodajPolozeni(o1);
+		BazaStudenata.getInstance().getRow(1).dodajPolozeni(o1);
+
 		BazaStudenata.getInstance().getRow(2).dodajPolozeni(o2);
 		BazaStudenata.getInstance().getRow(3).dodajPolozeni(o3);
 		

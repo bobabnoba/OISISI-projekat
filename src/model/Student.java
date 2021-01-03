@@ -175,4 +175,7 @@ public class Student {
 	public String getIndeks() {
 		return brojIndeksa + "-" + godinaUpisa;
 	}
+	public void removePolozeni(Ocena o) {
+		this.spisakPolozenihIspita.remove(o);
+	}
 }
