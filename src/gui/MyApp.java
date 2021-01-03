@@ -13,6 +13,7 @@ import model.Profesor;
 import model.Semestar;
 import model.Student;
 import controller.StudentiController;
+import edit.IzmeniStudenta;
 
 
 
@@ -33,7 +34,7 @@ public class MyApp {
 		Predmet p2 = new Predmet("ra122", "analiza 2", Semestar.ZIMSKI, "1", 
 				new Profesor(), 7,new ArrayList<Student>(), new ArrayList<Student>()	);
 			
-		/*Ocena o = new Ocena(10, d,BazaStudenata.getInstance().getRow(0) , p);
+		Ocena o = new Ocena(10, d,BazaStudenata.getInstance().getRow(0) , p);
 		Ocena o1 = new Ocena(10, d,BazaStudenata.getInstance().getRow(1) , p);
 		Ocena o2 = new Ocena(10, d,BazaStudenata.getInstance().getRow(2) , p);
 		Ocena o3 = new Ocena(10, d,BazaStudenata.getInstance().getRow(3) , p);
@@ -45,8 +46,8 @@ public class MyApp {
 		BazaStudenata.getInstance().getRow(1).dodajPolozeni(o1);
 		BazaStudenata.getInstance().getRow(2).dodajPolozeni(o2);
 		BazaStudenata.getInstance().getRow(3).dodajPolozeni(o3);
-
-*/
+		
+		MainFrame.getInstance();
 		
 	}
 

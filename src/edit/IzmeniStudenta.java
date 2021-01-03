@@ -37,13 +37,22 @@ import controller.PredmetiController;
 import model.BazaStudenata;
 import model.Semestar;
 import model.Student;
-//import view.ATMPolozeni;
-//import view.PolozeniJTable;
+import view.ATMPolozeni;
+import view.PolozeniJTable;
 import controller.StudentiController;
 import gui.MainFrame;
-//import model.Polozeni;
+import model.Polozeni;
 public class IzmeniStudenta extends JFrame {
 
+	private static IzmeniStudenta instance = null;
+
+	public static IzmeniStudenta getInstance() {
+		if (instance == null) {
+			instance = new IzmeniStudenta();
+		}
+		return instance;
+	}
+	
 	private SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
 
 	 String ime = "";
@@ -59,7 +68,7 @@ public class IzmeniStudenta extends JFrame {
 		String status = "";
 		double prosek; 
 		
-		//private PolozeniJTable pol;
+		private PolozeniJTable pol;
 		private JTabbedPane tabs;
 		private JTextField txtIme;
 		private JTextField txtPrezime;
@@ -685,7 +694,7 @@ public IzmeniStudenta() {
 	izmena.add(panCenter);
 	izmena.add(panBottom,BorderLayout.SOUTH);
 	JPanel center = new JPanel();
-	//center.add(showPolozeni());
+	center.add(showPolozeni());
 	
 	tabs.add("izmena", izmena);
 	polozeni.add(polozeniTop);
@@ -694,17 +703,18 @@ public IzmeniStudenta() {
 	polozeni.add(polozeniBot2);
 	tabs.add("polozeni", polozeni);
 	
+	
 	pack();
 
 	add(tabs);
-	
 }
 
-/*private JScrollPane showPolozeni() {
+private JScrollPane showPolozeni() {
+	
 	pol = new PolozeniJTable();
 	JScrollPane pol1 = new JScrollPane(pol);
 	pol1.setBorder(new EmptyBorder(20, 20, 20, 20));
-	azuriraj(null, -1);
+	this.azuriraj(null, -1);
 	return pol1;
 }
 
@@ -712,7 +722,8 @@ public void azuriraj(String akcija, int vrednost) {
 	ATMPolozeni model1 = (ATMPolozeni) pol.getModel();
 	model1.fireTableDataChanged();
 	validate();
-}*/
+	model1.setPolozeni();
+}
 
 }
 	
