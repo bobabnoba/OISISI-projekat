@@ -39,4 +39,5 @@ public class StudentiJTable extends JTable {
 		return c;
 	}
 
+	
 }

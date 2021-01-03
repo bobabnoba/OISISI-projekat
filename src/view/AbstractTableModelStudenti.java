@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableRowSorter;
 
 import model.BazaStudenata;
 
@@ -34,6 +35,10 @@ public class AbstractTableModelStudenti extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		return BazaStudenata.getInstance().getValueAt(rowIndex, columnIndex);
+	}
+	
+	private void filter(String query) {
+		
 	}
 
 }

@@ -18,7 +18,7 @@ import abstractAction.EditEntityAction;
 import abstractAction.SearchEntityAction;
 
 public class Toolbar extends JToolBar {
-
+	public static JTextField textField;
 	public Toolbar(final JFrame parent) {
 	super(SwingConstants.HORIZONTAL);
 	
@@ -45,7 +45,7 @@ public class Toolbar extends JToolBar {
 	
 	JButton btnSearch = new JButton(sea);
 	
-	JTextField textField = new JTextField(25);
+	 textField = new JTextField(25);
 	textField.setToolTipText("Pretraga");
 	
 	rightPanel.add(textField);

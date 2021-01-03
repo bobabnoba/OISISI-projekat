@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
+import javax.swing.table.TableRowSorter;
 
 import view.ATMProfesori;
 import view.AbstractTableModelStudenti;
@@ -26,9 +26,8 @@ public class MainFrame extends JFrame {
 	//public static int TAB;
 	
 	private static final long serialVersionUID = 4703527718003660405L;
-
+	public static TableRowSorter<AbstractTableModelStudenti> trs ;
 	private static MainFrame instance = null;
-
 	public static MainFrame getInstance() {
 		if (instance == null) {
 			instance = new MainFrame();
@@ -116,6 +115,7 @@ public class MainFrame extends JFrame {
 		// azuriranje modela tabele, kao i njenog prikaza
 		AbstractTableModelStudenti model = (AbstractTableModelStudenti) tabelaStudenata.getModel();
 		model.fireTableDataChanged();
+		trs = new TableRowSorter<AbstractTableModelStudenti>(model);
 		validate();
 	}
 	
