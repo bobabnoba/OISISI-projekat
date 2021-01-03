@@ -7,7 +7,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
-//import gui.DodajPredmet;
+import gui.DodajPredmet;
 import gui.DodajStudenta;
 import gui.MainFrame;
 import view.DodajProfesora;
@@ -36,9 +36,9 @@ public class CreateEntityAction extends AbstractAction {
 			break;
 		case 2:
 			//dodavanje predmeta
-			//DodajPredmet dpr = new DodajPredmet();
-			//dpr.setLocationRelativeTo(MainFrame.getInstance());
-			//dpr.setVisible(true);
+			DodajPredmet dpr = new DodajPredmet();
+			dpr.setLocationRelativeTo(MainFrame.getInstance());
+			dpr.setVisible(true);
 			break;
 		default: 
 			break;

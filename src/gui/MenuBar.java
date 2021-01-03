@@ -21,7 +21,7 @@ import controller.StudentiController;
 import dialog.Dialog;
 import edit.IzmeniStudenta;
 import view.DodajProfesora;
-
+import gui.DodajPredmet;
 
 public class MenuBar extends JMenuBar implements ActionListener{
 
@@ -49,9 +49,9 @@ public class MenuBar extends JMenuBar implements ActionListener{
 					dp.setVisible(true);
 					break;
 				case 2:
-					//DodajPredmet dpr = new DodajPredmet();
-					//dpr.setLocationRelativeTo(parent);
-					//dpr.setVisible(true);
+					DodajPredmet dpr = new DodajPredmet();
+					dpr.setLocationRelativeTo(parent);
+					dpr.setVisible(true);
 					break;
 				default:
 					break;
