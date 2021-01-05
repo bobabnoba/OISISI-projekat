@@ -79,6 +79,7 @@ public class BazaStudenata {
 		studenti.add(new Student("Deki", "Dekic", "ra170", d2 , "Petra Drapsina 1", "656448900", "mm32@uns.ac.rs.com", "2018", 2, "b" , 8.42  ,new ArrayList<Ocena>()  ));
 		studenti.add(new Student("Ristana", "Cukic", "ra12", d3  , "Petra Drapsina 10", "656448118", "xnm3@uns.ac.rs.com", "2018", 1, "b" , 7.06 ,new ArrayList<Ocena>()   ));
 		studenti.add(new Student("Dejana", "Pavlovic", "ra12", d4 , "Petra Drapsina 10", "656448268", "m2n@uns.ac.rs.com", "2017", 1, "s" , 6.06 ,new ArrayList<Ocena>()   ));
+		studenti.add(new Student("Mario", "Jocic", "ra173",d1 , "Potok ", "656448998", "makijatom@uns.ac.rs", "2018", 3, "s" , 6.02, new ArrayList<Ocena>()   ));
 
 
 	}

@@ -47,6 +47,7 @@ public class MyApp {
 		BazaStudenata.getInstance().getRow(0).dodajPolozeni(o);
 		BazaStudenata.getInstance().getRow(0).dodajPolozeni(o);
 		BazaStudenata.getInstance().getRow(0).dodajPolozeni(o);
+		BazaStudenata.getInstance().getRow(4).dodajPolozeni(o);
 
 		BazaStudenata.getInstance().getRow(0).dodajPolozeni(o12);
 

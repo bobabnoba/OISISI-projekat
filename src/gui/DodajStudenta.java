@@ -12,7 +12,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
@@ -604,7 +604,7 @@ public class DodajStudenta extends JFrame{
         			
         			
     				try {
-    					datumRodjenjaa = (Date) sdf.parse(txtDatumRodjenja.getText());
+    					datumRodjenjaa =  sdf.parse(txtDatumRodjenja.getText());
     				} catch (ParseException ex1) {
     					
     					ex1.printStackTrace();
