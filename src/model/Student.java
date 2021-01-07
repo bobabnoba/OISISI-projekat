@@ -178,4 +178,8 @@ public class Student {
 	public void removePolozeni(Ocena o) {
 		this.spisakPolozenihIspita.remove(o);
 	}
+	
+	public ArrayList<Predmet> getSpisakNepolozenihIspita() {
+		return spisakNepolozenihIspita;
+	}
 }
