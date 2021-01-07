@@ -7,7 +7,7 @@ public class Predmet {
 	private String sifraPredmeta;
 	private String nazivPredmeta;
 	private Semestar semestar;
-	private String godinaStudija;
+	private int godinaStudija;
 	private Profesor predmetniProfesor;
 	private int espb;
 	private List<Student> polozili;
@@ -17,7 +17,7 @@ public class Predmet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Predmet(String sifraPredmeta, String nazivPredmeta, Semestar semestar, String godinaStudija,
+	public Predmet(String sifraPredmeta, String nazivPredmeta, Semestar semestar, int godinaStudija,
 			Profesor predmetniProfesor, int espb, List<Student> polozili, List<Student> nisuPolozili) {
 		super();
 		this.sifraPredmeta = sifraPredmeta;
@@ -28,6 +28,15 @@ public class Predmet {
 		this.espb = espb;
 		this.polozili = polozili;
 		this.nisuPolozili = nisuPolozili;
+	}
+	
+	public Predmet(String sifraPredmeta, String nazivPredmeta, int espb,  int godinaStudija, Semestar semestar) {
+		super();
+		this.sifraPredmeta = sifraPredmeta;
+		this.nazivPredmeta = nazivPredmeta;
+		this.espb = espb;
+		this.godinaStudija = godinaStudija;
+		this.semestar = semestar;
 	}
 
 	public String getSifraPredmeta() {
@@ -54,11 +63,11 @@ public class Predmet {
 		this.semestar = semestar;
 	}
 
-	public String getGodinaStudija() {
+	public int getGodinaStudija() {
 		return godinaStudija;
 	}
 
-	public void setGodinaStudija(String godinaStudija) {
+	public void setGodinaStudija(int godinaStudija) {
 		this.godinaStudija = godinaStudija;
 	}
 
