@@ -16,15 +16,9 @@ import abstractAction.CreateEntityAction;
 import abstractAction.DeleteEntityAction;
 import abstractAction.EditEntityAction;
 import abstractAction.SearchEntityAction;
-<<<<<<< HEAD
-
-public class Toolbar extends JToolBar {
-
-=======
 
 public class Toolbar extends JToolBar {
 	public static JTextField textField;
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 	public Toolbar(final JFrame parent) {
 	super(SwingConstants.HORIZONTAL);
 	
@@ -37,20 +31,7 @@ public class Toolbar extends JToolBar {
 	setLayout(new BorderLayout());
 	
 	JButton btnCreate = new JButton(cea);
-<<<<<<< HEAD
-	btnCreate.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			if(MainFrame.getTab() == 0) {
-        	DodajStudenta ds = new DodajStudenta();
-        	ds.setLocationRelativeTo(parent);
-        	ds.setVisible(true);
-			}
-        	
-		}});
-=======
 
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 	JButton btnEdit = new JButton(eea);
 	JButton btnDelete = new JButton(dea);
 	

@@ -2,11 +2,6 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-<<<<<<< HEAD
-
-import classes.BazaStudenata;
-import controllers.StudentiController;
-=======
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,19 +14,12 @@ import model.Semestar;
 import model.Student;
 import controller.StudentiController;
 import edit.IzmeniStudenta;
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 
 
 
 public class MyApp {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-		BazaStudenata.getInstance();
-		StudentiController.getInstance();
-		MainFrame.getInstance();
-		
-=======
 	/*	BazaStudenata.getInstance();
 		StudentiController.getInstance();
 		MainFrame.getInstance();*/
@@ -41,9 +29,9 @@ public class MyApp {
 		
 		Date d = new Date();
 		
-		Predmet p = new Predmet("ra12", "analiza 1", Semestar.ZIMSKI, "1", 
+		Predmet p = new Predmet("ra12", "analiza 1", Semestar.ZIMSKI, 1, 
 			new Profesor(), 9,new ArrayList<Student>(), new ArrayList<Student>()	);
-		Predmet p2 = new Predmet("ra122", "analiza 2", Semestar.ZIMSKI, "1", 
+		Predmet p2 = new Predmet("ra122", "analiza 2", Semestar.ZIMSKI, 1, 
 				new Profesor(), 7,new ArrayList<Student>(), new ArrayList<Student>()	);
 			
 		Ocena o = new Ocena(10, d,BazaStudenata.getInstance().getRow(0) , p);
@@ -71,7 +59,6 @@ public class MyApp {
 		
 		MainFrame.getInstance();
 		
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 	}
 
 }

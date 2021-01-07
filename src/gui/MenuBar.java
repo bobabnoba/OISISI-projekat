@@ -1,10 +1,7 @@
 package gui;
 
 import java.awt.Dimension;
-<<<<<<< HEAD
-=======
 import java.awt.Image;
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -19,14 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
-<<<<<<< HEAD
-import dialog.Dialog;
-
-
-public class MenuBar extends JMenuBar implements ActionListener{
-
-	
-=======
 import controller.ProfesoriController;
 import controller.StudentiController;
 import dialog.Dialog;
@@ -36,7 +25,6 @@ import gui.DodajPredmet;
 
 public class MenuBar extends JMenuBar implements ActionListener{
 
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 	private static final long serialVersionUID = -7863806568418316202L;
 
 	
@@ -49,13 +37,6 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		miNew.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-<<<<<<< HEAD
-				if(MainFrame.getTab() == 0) {
-	        	DodajStudenta ds = new DodajStudenta();
-	        	ds.setLocationRelativeTo(parent);
-	        	ds.setVisible(true);
-				}
-=======
 				switch(MainFrame.getInstance().selectedTab()) {
 				case 0: 
 					DodajStudenta ds = new DodajStudenta();
@@ -81,7 +62,6 @@ public class MenuBar extends JMenuBar implements ActionListener{
 	        	ds.setLocationRelativeTo(parent);
 	        	ds.setVisible(true);
 				}*/ 
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 	        	
 			}});
 		miNew.setActionCommand("napravi");
@@ -99,8 +79,6 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		JMenu edit = new JMenu("Edit");
 		edit.setMnemonic('E');
 		JMenuItem miEdit = new JMenuItem("Edit", KeyEvent.VK_E);
-<<<<<<< HEAD
-=======
 		miEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -114,15 +92,12 @@ public class MenuBar extends JMenuBar implements ActionListener{
 				}
 			}
 		});
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 		JMenuItem miDelete = new JMenuItem("Delete", KeyEvent.VK_D);
 		
 		miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		miEdit.setIcon(new ImageIcon("icons/edit.png"));
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		miDelete.setIcon(new ImageIcon("icons/delete.png"));
-<<<<<<< HEAD
-=======
 		miDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -166,7 +141,6 @@ public class MenuBar extends JMenuBar implements ActionListener{
 	        	
 			}});
 		
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 		
 		edit.add(miEdit);
 		edit.add(miDelete);
@@ -176,17 +150,12 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		help.setMnemonic('H');
 		JMenuItem miHelp = new JMenuItem("Help", KeyEvent.VK_H);
 		JMenuItem miAbout = new JMenuItem("About", KeyEvent.VK_A);
-<<<<<<< HEAD
-		miHelp.setIcon(new ImageIcon("icons/help.png"));
-		miAbout.setIcon(new ImageIcon("icons/about.png"));
-=======
 		
 		ImageIcon imageIcon1 = new ImageIcon(new ImageIcon("icons/help.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		miHelp.setIcon(imageIcon1);
 		ImageIcon imageIcon2 = new ImageIcon(new ImageIcon("icons/about.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 
 		miAbout.setIcon(imageIcon2);
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 
 		
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
@@ -247,4 +216,3 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		 }
 		
 	
-
