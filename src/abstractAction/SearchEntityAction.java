@@ -2,23 +2,17 @@ package abstractAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
-<<<<<<< HEAD
-=======
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
 import gui.MainFrame;
 import gui.Toolbar;
 import view.AbstractTableModelStudenti;
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 
 public class SearchEntityAction extends AbstractAction {
 	
@@ -31,9 +25,6 @@ public class SearchEntityAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-<<<<<<< HEAD
-	}
-=======
 		
 		MainFrame.getInstance();
 		MainFrame.tabelaStudenata.setRowSorter(MainFrame.trs);
@@ -88,5 +79,4 @@ public class SearchEntityAction extends AbstractAction {
 	}
 	}
 	
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 }

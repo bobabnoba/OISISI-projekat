@@ -5,10 +5,6 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
-<<<<<<< HEAD
-import javax.swing.KeyStroke;
-
-=======
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
@@ -18,7 +14,6 @@ import controller.StudentiController;
 import edit.IzmeniStudenta;
 import gui.MainFrame;
 
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 public class DeleteEntityAction extends AbstractAction {
 	
 	public DeleteEntityAction() {
@@ -30,10 +25,6 @@ public class DeleteEntityAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-<<<<<<< HEAD
-	}
-	
-=======
 		switch(MainFrame.getInstance().selectedTab()) {
 		case 0: 
 			
@@ -67,5 +58,4 @@ public class DeleteEntityAction extends AbstractAction {
 	}
 	
 	
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 }
