@@ -39,4 +39,16 @@ private static ProfesoriController instance = null;
 		BazaProfesora.getInstance().izbrisiProfesora(profesor.getBrojLicneKarte());
 		MainFrame.getInstance().updateViewProf();
 	}
+	
+	public void izmijeniProfesora(String prezime, String ime, Date datRodj, String adresa, String email, String blk, Titula titula, Zvanje zvanje, ArrayList<Predmet> predmeti) {
+		List<Predmet> p = (List<Predmet>) predmeti;
+		BazaProfesora.getInstance().izmijeniProfesora(prezime, ime, datRodj, adresa, email, blk, titula, zvanje, p);
+		MainFrame.getInstance().updateViewProf();
+	}
+	
+	public void dodajPredmetProfesoru(Profesor profesor, String nazivPred) {
+		BazaProfesora.getInstance().dodajPredmetProfesoru(profesor, nazivPred);
+	}
+	
+	
 }

@@ -5,14 +5,16 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-<<<<<<< HEAD
-=======
 import edit.IzmeniStudenta;
 import gui.MainFrame;
+import model.BazaProfesora;
+import model.Profesor;
+import view.IzmjenaProfesora;
 
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 public class EditEntityAction  extends AbstractAction {
 	
 	public EditEntityAction() {
@@ -24,8 +26,6 @@ public class EditEntityAction  extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-<<<<<<< HEAD
-=======
 		switch(MainFrame.getInstance().selectedTab()) {
 		case 0: 
 			
@@ -33,8 +33,23 @@ public class EditEntityAction  extends AbstractAction {
         	is.setLocationRelativeTo(MainFrame.getInstance());
         	is.setVisible(true);
         	break;
+	case 1:			
+		if(!MainFrame.getInstance().indexCheckProf()) {
+			int rowp = MainFrame.getInstance().selectedProf();
+			Profesor profesor = BazaProfesora.getInstance().getRow(rowp);
+			IzmjenaProfesora ip = new IzmjenaProfesora(profesor);
+			ip.setLocationRelativeTo(MainFrame.getInstance());
+			ip.setVisible(true);
+		} else {
+			JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati profesora kog želite da editujete!", "Profesor nije izabran!", JOptionPane.ERROR_MESSAGE);
 		}
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
-	}
+		break;
+	case 2:
+		//izmjena predmeta
+		break;
+	default: 
+		break;
+		}
+	}	
 		
 }

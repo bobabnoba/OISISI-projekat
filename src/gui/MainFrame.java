@@ -9,52 +9,30 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-<<<<<<< HEAD
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import studenti.view.AbstractTableModelStudenti;
-import studenti.view.StudentiJTable;
-=======
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.table.TableRowSorter;
 
+import view.ATMPredmeti;
 import view.ATMProfesori;
 import view.AbstractTableModelStudenti;
+import view.PredmetiTable;
 import view.ProfesoriTable;
 import view.StudentiJTable;
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 
 
 public class MainFrame extends JFrame {
 	
-<<<<<<< HEAD
-	public static int TAB;
-	
-	private static final long serialVersionUID = 4703527718003660405L;
-
-	private static MainFrame instance = null;
-
-=======
 	//public static int TAB;
 	
 	private static final long serialVersionUID = 4703527718003660405L;
 	public static TableRowSorter<AbstractTableModelStudenti> trs ;
 	private static MainFrame instance = null;
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 	public static MainFrame getInstance() {
 		if (instance == null) {
 			instance = new MainFrame();
 		}
 		return instance;
 	}
-<<<<<<< HEAD
-
-	private JTable tabelaStudenata;
-=======
 	
 	public static int rowStud;
 	
@@ -62,32 +40,12 @@ public class MainFrame extends JFrame {
 	JTabbedPane tabbedPane;
 	JPanel tabsPanel;
 	public static StudentiJTable tabelaStudenata;
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
+	private PredmetiTable predTable;
+
 
 	public MainFrame() {
 		super();
 		setTitle("Studentska Sluzba");
-<<<<<<< HEAD
-		Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize();
-		setSize(screenDimension.width / 2, screenDimension.height / 2);
-		setLocationRelativeTo(null);
-		setVisible(true);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		JTabbedPane tabbedPane = new JTabbedPane();
-
-		JPanel mt = new JPanel();
-		TableTab mt1 = new TableTab("");
-		TableTab mt2 = new TableTab("");
-		
-		tabbedPane.addTab("Studenti", mt);
-		tabbedPane.addTab("Profesori", mt1);
-		tabbedPane.addTab("Predmeti", mt2);
-		
-		
-		tabbedPane.addChangeListener(new ChangeListener() {
-
-	        public void stateChanged(ChangeEvent e) {
-=======
 		setResizable(true);
 		
 		Toolkit tkit = Toolkit.getDefaultToolkit();	
@@ -95,39 +53,9 @@ public class MainFrame extends JFrame {
 		int screenHeight = screenSize.height;
 		int screenWidth = screenSize.width;
 		setSize(3 * screenWidth / 4, 3 * screenHeight / 4);		
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 
-	            setTab(tabbedPane.getSelectedIndex());	           
-	        }
-	    });
+		setLocationRelativeTo(null);
 		
-<<<<<<< HEAD
-		MenuBar menu = new MenuBar(this);
-		Toolbar toolbar = new Toolbar(this);
-		StatusBar status = new StatusBar();
-		add(menu, BorderLayout.NORTH);
-		
-		//TODO: Prikaz entiteta sistema
-		JPanel tabs = new JPanel();
-		tabs.setBackground(Color.lightGray);
-		tabs.setLayout(new BorderLayout());
-		add(tabs);
-		tabs.add(toolbar, BorderLayout.PAGE_START);		
-		tabs.add(tabbedPane, BorderLayout.CENTER);
-		add(status, BorderLayout.SOUTH);
-		
-		tabelaStudenata = new StudentiJTable();
-
-		JScrollPane scrollPane = new JScrollPane(tabelaStudenata);
-		//DORADITI
-		scrollPane.setPreferredSize(new Dimension(800,800));
-		mt.add(scrollPane);
-		
-		
-		this.azurirajPrikaz(null, -1);
-		
-		
-=======
 		/*Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(screenDimension.width / 2, screenDimension.height / 2);
 		setLocationRelativeTo(null);
@@ -135,7 +63,6 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);*/
 		
 		/*JTabbedPane tabbedPane = new JTabbedPane();
-
 		JPanel mt = new JPanel();
 		TableTab mt1 = new TableTab("");
 		TableTab mt2 = new TableTab("");
@@ -145,9 +72,7 @@ public class MainFrame extends JFrame {
 		tabbedPane.addTab("Predmeti", mt2);
 		
 		tabbedPane.addChangeListener(new ChangeListener() {
-
 	        public void stateChanged(ChangeEvent e) {
-
 	            setTab(tabbedPane.getSelectedIndex());	           
 	        }
 	    });*/
@@ -172,7 +97,6 @@ public class MainFrame extends JFrame {
 		createTabbedPane();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		/*tabelaStudenata = new StudentiJTable();
-
 		JScrollPane scrollPane = new JScrollPane(tabelaStudenata);
 		//DORADITI
 		scrollPane.setPreferredSize(new Dimension(800,800));
@@ -232,9 +156,10 @@ public class MainFrame extends JFrame {
 	}
 	
 	private JScrollPane showPredmetiTable() {
-		JScrollPane spppred = new JScrollPane();
+		predTable = new PredmetiTable();
+		JScrollPane spppred = new JScrollPane(predTable);
 		spppred.setBorder(new EmptyBorder(20, 20, 20, 20));
-		//this.updateViewPred();
+		this.updateViewPred();
 		return spppred;
 	}
 	
@@ -244,18 +169,38 @@ public class MainFrame extends JFrame {
     	validate();
     }
 	
-	public int selectedTab() {
-		return tabbedPane.getSelectedIndex();
->>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
-	}
-	public void azurirajPrikaz(String akcija, int vrednost) {
-		// azuriranje modela tabele, kao i njenog prikaza
-		AbstractTableModelStudenti model = (AbstractTableModelStudenti) tabelaStudenata.getModel();
+	public void updateViewPred() {
+		ATMPredmeti model = (ATMPredmeti) predTable.getModel();
 		model.fireTableDataChanged();
 		validate();
 	}
 	
-	public static void setTab(int index) {TAB = index;}
-	public static int getTab() {return TAB;}
-
+	public int selectedTab() {
+		return tabbedPane.getSelectedIndex();
+	}
+	
+	public int selectedProf() {
+		return profTable.convertRowIndexToModel(profTable.getSelectedRow());
+	}
+	
+	public int selectedPred() {
+		return predTable.convertRowIndexToModel(predTable.getSelectedRow());
+	}
+	
+	public int selectedStud() {
+		return tabelaStudenata.getSelectedRow();
+	}
+	
+	public boolean indexCheckStud() {
+		return tabelaStudenata.getSelectionModel().isSelectionEmpty();
+	}
+	
+	public boolean indexCheckProf() {
+		return profTable.getSelectionModel().isSelectionEmpty();
+	}
+	
+	public boolean indexCheckPred() {
+		return predTable.getSelectionModel().isSelectionEmpty();
+	}
+	
 }
