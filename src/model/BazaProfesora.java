@@ -1,5 +1,8 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,8 +20,13 @@ public class BazaProfesora {
 	
 	private List<Profesor> profesori;
 	private List<String> kolone;
+	private DateFormat sdf;
+
 	
 	private BazaProfesora() {
+		
+		sdf = new SimpleDateFormat("dd.MM.yyyy.");
+
 		
 		initProf();
 		
@@ -31,8 +39,20 @@ public class BazaProfesora {
 	
 	public void initProf() {
 		this.profesori = new ArrayList<Profesor>();
-		this.profesori.add(new Profesor("Mirko", "Mirković", Titula.DR, Zvanje.REDOVNI));
-		this.profesori.add(new Profesor("Marko", "Marković", Titula.PROF, Zvanje.REDOVNI));
+		ArrayList<Predmet> pred = new ArrayList<Predmet>();
+		pred.add(BazaPredmeta.getInstance().getPredmet(2));
+		ArrayList<Predmet> pred2 = new ArrayList<Predmet>();
+		pred2.add(BazaPredmeta.getInstance().getPredmet(3));
+		pred2.add(BazaPredmeta.getInstance().getPredmet(0));
+		try {
+			this.profesori.add(new Profesor("Mirković", "Mirko", sdf.parse("12.12.1987."), 
+					"Puškinova 14, Novi Sad", "mirkom@uns.ac.rs", "45J697E2", Titula.DR, Zvanje.REDOVNI, pred));
+			this.profesori.add(new Profesor("Marković", "Marko",sdf.parse("03.07.1974."), 
+					"Rumenački put 66, Novi Sad", "markom@uns.ac.rs", "6E43RJ77", Titula.PROF, Zvanje.REDOVNI, pred2));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public List<Profesor> getProfesori() {
@@ -42,6 +62,17 @@ public class BazaProfesora {
 	public void setProfesori(List<Profesor> profesori) {
 		this.profesori = profesori;
 	}
+	
+	public Profesor getProfesor(String blk) {
+		Profesor ret = null;
+		for(Profesor p : this.profesori) {
+			if (p.getBrojLicneKarte().equals(blk)){
+				ret = p;
+			} 
+			}
+		return ret;
+	}
+	
 	
 	public int getColumnCount() {
 		return 4;
@@ -83,5 +114,28 @@ public class BazaProfesora {
 			}
 		}
 	}
+	
+	public void izmijeniProfesora(String prezime, String ime, Date datumRodjenja, String adresa, String email, String blk,
+			Titula titula, Zvanje zvanje, List<Predmet> predmeti) {
+		for(Profesor p : this.profesori) {
+			if(p.getBrojLicneKarte().equals(blk)) {
+				p.setPrezime(prezime);
+				p.setIme(ime);
+				p.setDatumRodjenja(datumRodjenja);
+				p.setAdresa(adresa);
+				p.setEmail(email);
+				p.setTitula(titula);
+				p.setZvanje(zvanje);
+				p.setPredmeti(predmeti);
+			}
+		}
+	}
+	
+	
+	public void dodajPredmetProfesoru(Profesor profesor, String nazivPredmeta) {
+		this.getProfesor(profesor.getBrojLicneKarte()).getPredmeti().add(BazaPredmeta.getInstance().findByName(nazivPredmeta));
+	}
+	
+	
 	
 }

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -111,6 +112,14 @@ public class Profesor {
 
 	public void setPredmeti(List<Predmet> predmeti) {
 		this.predmeti = predmeti;
+	}
+	
+	public List<String> getSifrePred(){
+		List<String> sifre = new ArrayList<String>();
+		for(Predmet p : this.predmeti) {
+			sifre.add(p.getSifraPredmeta());
+		}
+		return sifre;
 	}
 
 	@Override
