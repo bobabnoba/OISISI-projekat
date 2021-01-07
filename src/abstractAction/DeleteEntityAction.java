@@ -11,8 +11,10 @@ import javax.swing.KeyStroke;
 
 import controller.ProfesoriController;
 import controller.StudentiController;
-import edit.IzmeniStudenta;
 import gui.MainFrame;
+import model.BazaPredmeta;
+import model.Predmet;
+import view.ObrisiPredmet;
 
 public class DeleteEntityAction extends AbstractAction {
 	
@@ -54,6 +56,19 @@ public class DeleteEntityAction extends AbstractAction {
 		    if(n1 == JOptionPane.NO_OPTION) {
 		          return;
 		    }
+		case 2: 
+			if(!MainFrame.getInstance().indexCheckPred()) {
+				int row = MainFrame.getInstance().selectedPred();
+				Predmet predmet = BazaPredmeta.getInstance().getRow(row);
+				ObrisiPredmet op = new ObrisiPredmet(predmet);
+				op.setVisible(true);
+			} else {
+				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet koji želite da uklonite!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		default: 
+			break;
+		    
 		}
 	}
 	
