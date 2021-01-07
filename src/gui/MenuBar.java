@@ -1,6 +1,10 @@
 package gui;
 
 import java.awt.Dimension;
+<<<<<<< HEAD
+=======
+import java.awt.Image;
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -15,12 +19,24 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
+<<<<<<< HEAD
 import dialog.Dialog;
 
 
 public class MenuBar extends JMenuBar implements ActionListener{
 
 	
+=======
+import controller.ProfesoriController;
+import controller.StudentiController;
+import dialog.Dialog;
+import edit.IzmeniStudenta;
+import view.DodajProfesora;
+import gui.DodajPredmet;
+
+public class MenuBar extends JMenuBar implements ActionListener{
+
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 	private static final long serialVersionUID = -7863806568418316202L;
 
 	
@@ -33,11 +49,39 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		miNew.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+<<<<<<< HEAD
 				if(MainFrame.getTab() == 0) {
 	        	DodajStudenta ds = new DodajStudenta();
 	        	ds.setLocationRelativeTo(parent);
 	        	ds.setVisible(true);
 				}
+=======
+				switch(MainFrame.getInstance().selectedTab()) {
+				case 0: 
+					DodajStudenta ds = new DodajStudenta();
+		        	ds.setLocationRelativeTo(parent);
+		        	ds.setVisible(true);
+		        	break;
+				case 1:
+					DodajProfesora dp = new DodajProfesora();
+					dp.setLocationRelativeTo(parent);
+					dp.setVisible(true);
+					break;
+				case 2:
+					DodajPredmet dpr = new DodajPredmet();
+					dpr.setLocationRelativeTo(parent);
+					dpr.setVisible(true);
+					break;
+				default:
+					break;
+				}
+			//	if(MainFrame.getTab() == 0) {
+			/*	if(MainFrame.getInstance().selectedTab() == 0) {
+	        	DodajStudenta ds = new DodajStudenta();
+	        	ds.setLocationRelativeTo(parent);
+	        	ds.setVisible(true);
+				}*/ 
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 	        	
 			}});
 		miNew.setActionCommand("napravi");
@@ -55,12 +99,74 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		JMenu edit = new JMenu("Edit");
 		edit.setMnemonic('E');
 		JMenuItem miEdit = new JMenuItem("Edit", KeyEvent.VK_E);
+<<<<<<< HEAD
+=======
+		miEdit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				switch(MainFrame.getInstance().selectedTab()) {
+				case 0: 
+					
+					IzmeniStudenta is = new IzmeniStudenta();
+		        	is.setLocationRelativeTo(parent);
+		        	is.setVisible(true);
+		        	break;
+				}
+			}
+		});
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 		JMenuItem miDelete = new JMenuItem("Delete", KeyEvent.VK_D);
 		
 		miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		miEdit.setIcon(new ImageIcon("icons/edit.png"));
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		miDelete.setIcon(new ImageIcon("icons/delete.png"));
+<<<<<<< HEAD
+=======
+		miDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				switch(MainFrame.getInstance().selectedTab()) {
+				case 0: 
+					
+					JFrame frame = new JFrame();
+					String[] options = new String[2];
+					options[0] = new String("Da");
+					options[1] = new String("Ne");
+					int n = JOptionPane.showOptionDialog(frame.getContentPane(),"Da li ste sigurni da zelite da obrisete studenta?","Brisanje studenta", 0,JOptionPane.INFORMATION_MESSAGE,null,options,null);				   
+					if(n == JOptionPane.YES_OPTION) {
+					MainFrame.getInstance();
+					StudentiController.getInstance().izbrisiStudenta(MainFrame.tabelaStudenata.getSelectedRow());
+				    }
+				    if(n == JOptionPane.NO_OPTION) {
+				          return;
+				    }
+					break;
+				case 1:
+					JFrame frame1 = new JFrame();
+					String[] options1 = new String[2];
+					options1[0] = new String("Da");
+					options1[1] = new String("Ne");
+					int n1 = JOptionPane.showOptionDialog(frame1.getContentPane(),"Da li ste sigurni da zelite da obrisete profesora?","Brisanje profesora", 0,JOptionPane.INFORMATION_MESSAGE,null,options1,null);				   
+					if(n1 == JOptionPane.YES_OPTION) {
+					MainFrame.getInstance();
+					ProfesoriController.getInstance().izbrisiProfesora(MainFrame.profTable.getSelectedRow());
+				    }
+				    if(n1 == JOptionPane.NO_OPTION) {
+				          return;
+				    }
+					break;
+				case 2:
+					
+					break;
+				default:
+					break;
+				}
+			
+	        	
+			}});
+		
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 		
 		edit.add(miEdit);
 		edit.add(miDelete);
@@ -70,8 +176,17 @@ public class MenuBar extends JMenuBar implements ActionListener{
 		help.setMnemonic('H');
 		JMenuItem miHelp = new JMenuItem("Help", KeyEvent.VK_H);
 		JMenuItem miAbout = new JMenuItem("About", KeyEvent.VK_A);
+<<<<<<< HEAD
 		miHelp.setIcon(new ImageIcon("icons/help.png"));
 		miAbout.setIcon(new ImageIcon("icons/about.png"));
+=======
+		
+		ImageIcon imageIcon1 = new ImageIcon(new ImageIcon("icons/help.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+		miHelp.setIcon(imageIcon1);
+		ImageIcon imageIcon2 = new ImageIcon(new ImageIcon("icons/about.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+
+		miAbout.setIcon(imageIcon2);
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 
 		
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));

@@ -6,11 +6,23 @@ import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+<<<<<<< HEAD
+=======
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+<<<<<<< HEAD
 import java.sql.Date;
+=======
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -18,6 +30,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+<<<<<<< HEAD
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -30,6 +43,17 @@ import dialog.Dialog;
 import listeners.FocusList;
 
 import studenti.view.AbstractTableModelStudenti;
+=======
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+
+
+import model.BazaStudenata;
+import model.Student;
+import controller.StudentiController;
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 
 
 public class DodajStudenta extends JFrame{
@@ -48,7 +72,20 @@ public class DodajStudenta extends JFrame{
 	String status = "";
 	double prosek; 
 	
+<<<<<<< HEAD
 	
+=======
+	private JTextField txtIme;
+	private JTextField txtPrezime;
+	private JTextField txtMail;
+	private JTextField txtBrojTelefona;
+	private JTextField txtAdresaStanovanja;
+	private JTextField txtGodUpisa;
+	private JTextField txtIndeks;
+	private JTextField txtDatumRodjenja;
+	private Date datumRodjenjaa;
+	private SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 	
 	public DodajStudenta() {
 		super();
@@ -67,15 +104,49 @@ public class DodajStudenta extends JFrame{
 		BoxLayout boxCenter=new BoxLayout(panCenter, BoxLayout.Y_AXIS);
 		panCenter.setLayout(boxCenter);
 	    
+<<<<<<< HEAD
 		FocusList focusListener = new FocusList();
 		FocusList focusListener1 = new FocusList();
+=======
+		
+		
+		JButton btnOk=new JButton("Potvrdi");
+		btnOk.setEnabled(false);
+		btnOk.setPreferredSize(new Dimension(75,25));
+		
+		
+		FocusListener focus = new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(!(ime == "" || prezime == "" || mailAdresa == "" || kontaktTelefon == "" || txtAdresaStanovanja.getText().trim().isEmpty() || godinaUpisa == ""
+					||	txtIndeks.getText().trim().isEmpty() )) {
+					btnOk.setEnabled(true);
+				} else {
+					btnOk.setEnabled(false);
+				}
+			}
+			
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+		
+	
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 		
 		Dimension dim=new Dimension(150,20);
 		Dimension dim2=new Dimension(150,70);
 		
+<<<<<<< HEAD
 		JLabel losUnos = new JLabel("<html> Popunite sva polja <br>"
 				+ "Kada se uverite da ste uneli inofrmaciju <br>"
 				+ "u dobrom formatu  pritisnite ENTER");
+=======
+		JLabel losUnos = new JLabel("<html> Popunite sva polja <br>");
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 		losUnos.setPreferredSize(new Dimension(150,100));
 		panCenter.add(losUnos);
 		JLabel losUnos2 = new JLabel("          ");
@@ -85,9 +156,16 @@ public class DodajStudenta extends JFrame{
 		JPanel panIme=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblIme=new JLabel("Ime:");
         lblIme.setPreferredSize(dim);
+<<<<<<< HEAD
         JTextField txtIme=new JTextField();
         lblIme.setPreferredSize(dim);
         txtIme.setPreferredSize(dim);
+=======
+        txtIme=new JTextField();
+        lblIme.setPreferredSize(dim);
+        txtIme.setPreferredSize(dim);
+     
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         txtIme.addKeyListener(new KeyListener() {
 
 			@Override
@@ -105,6 +183,10 @@ public class DodajStudenta extends JFrame{
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
+<<<<<<< HEAD
+=======
+				ime  = txtIme.getText();
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 				try {
         			txtIme.getText().matches("[A-Za-z]+");
 					losUnos2.setText(" ");
@@ -141,7 +223,11 @@ public class DodajStudenta extends JFrame{
         JPanel panPrezime=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblPrezime=new JLabel("Prezime:");
         lblIme.setPreferredSize(dim);
+<<<<<<< HEAD
         JTextField txtPrezime=new JTextField();
+=======
+        txtPrezime=new JTextField();
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         lblPrezime.setPreferredSize(dim);
         txtPrezime.setPreferredSize(dim);       
         txtPrezime.addActionListener(new ActionListener() {
@@ -169,11 +255,19 @@ public class DodajStudenta extends JFrame{
 
 			@Override
 			public void keyReleased(KeyEvent e) {
+<<<<<<< HEAD
+=======
+				prezime  = txtPrezime.getText();
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 				// TODO Auto-generated method stub
 				try {
         			txtIme.getText().matches("[A-Z a-z]+");
 					losUnos2.setText(" ");
+<<<<<<< HEAD
 
+=======
+					
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         		}catch (Exception ex) {
         			losUnos2.setText("Pogresno uneto prezime!");
         			
@@ -190,7 +284,11 @@ public class DodajStudenta extends JFrame{
         
         JPanel panDatumRodjenja=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblDatumRodjenja=new JLabel("Datum rodjenja:");
+<<<<<<< HEAD
         JTextField txtDatumRodjenja=new JTextField();
+=======
+        txtDatumRodjenja=new JTextField();
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         lblDatumRodjenja.setPreferredSize(dim);
         txtDatumRodjenja.setPreferredSize(dim);
         txtDatumRodjenja.setPreferredSize(dim);
@@ -220,6 +318,10 @@ public class DodajStudenta extends JFrame{
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
+<<<<<<< HEAD
+=======
+				datumRodjenja  = txtDatumRodjenja.getText();
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 				try {
         			txtDatumRodjenja.getText().matches("\\d{4}-\\d{2}-\\d{2}");
 					losUnos2.setText("    ");
@@ -233,7 +335,12 @@ public class DodajStudenta extends JFrame{
 				if (!txtDatumRodjenja.getText().matches("\\d{4}-\\d{2}-\\d{2}")) {
 					losUnos2.setText("<html>Lose unet datum rodjenja!<br>"
 							+ " Format je YYYY-MM-DD");
+<<<<<<< HEAD
         			
+=======
+					losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 					datumRodjenja = "";	
 				}
         	}
@@ -242,7 +349,11 @@ public class DodajStudenta extends JFrame{
         JPanel panAdresaStanovanja=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblAdresaStanovanja=new JLabel("Adresa stanovanja:");
         lblIme.setPreferredSize(dim);
+<<<<<<< HEAD
         JTextField txtAdresaStanovanja=new JTextField();
+=======
+        txtAdresaStanovanja=new JTextField();
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         lblAdresaStanovanja.setPreferredSize(dim);
         txtAdresaStanovanja.setPreferredSize(dim);
         txtAdresaStanovanja.addActionListener(new ActionListener() {
@@ -259,7 +370,11 @@ public class DodajStudenta extends JFrame{
         JPanel panBrojTelefona=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblBrojTelefona=new JLabel("Broj telefona:");
         lblIme.setPreferredSize(dim);
+<<<<<<< HEAD
         JTextField txtBrojTelefona=new JTextField();
+=======
+        txtBrojTelefona=new JTextField();
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         lblBrojTelefona.setPreferredSize(dim);
         txtBrojTelefona.setPreferredSize(dim);
         txtBrojTelefona.addActionListener(new ActionListener() {
@@ -289,18 +404,31 @@ public class DodajStudenta extends JFrame{
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
+<<<<<<< HEAD
+=======
+				kontaktTelefon  = txtBrojTelefona.getText();
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 				try {
 					txtBrojTelefona.getText().matches("[0-9]+");
 					losUnos2.setText("    ");
 
         		}catch (Exception ex) {
         			losUnos2.setText("<html>Lose unet broj telefona!<br>");
+<<<<<<< HEAD
         			
+=======
+        			losUnos2.setVisible(true);
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         			kontaktTelefon = "";
         		}
 				if (!txtBrojTelefona.getText().matches("[0-9]+")) {
 					losUnos2.setText("<html>Lose unet broj telefona!<br>");
+<<<<<<< HEAD
         			
+=======
+					losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 					kontaktTelefon = "";	
 				}
         	}
@@ -308,7 +436,11 @@ public class DodajStudenta extends JFrame{
         JPanel panMail=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblMail=new JLabel("E-mail adresa:");
         lblIme.setPreferredSize(dim);
+<<<<<<< HEAD
         JTextField txtMail=new JTextField();
+=======
+        txtMail=new JTextField();
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         lblMail.setPreferredSize(dim);
         txtMail.setPreferredSize(dim);
         txtMail.addActionListener(new ActionListener() {
@@ -335,13 +467,20 @@ public class DodajStudenta extends JFrame{
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
+<<<<<<< HEAD
 				try {
 					txtMail.getText().matches("[a-z0-9]+\\@uns.ns.rs");
+=======
+				mailAdresa  = txtMail.getText();
+				try {
+					txtMail.getText().matches("[a-z0-9]+\\@uns.ac.rs");
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 					losUnos2.setText("    ");
 
         		}catch (Exception ex) {
         			losUnos2.setText("<html>Lose unet mail!<br>"
         					+ "Mora se zavrsiti sa <br>"
+<<<<<<< HEAD
         					+ "@uns.ns.rs");
         			
         			mailAdresa = "";
@@ -351,6 +490,18 @@ public class DodajStudenta extends JFrame{
 							+  "Mora se zavrsiti sa <br>"
 							+ "@uns.ns.rs");
         			
+=======
+        					+ "@uns.ac.rs");
+        			
+        			mailAdresa = "";
+        		}
+				if (!txtMail.getText().matches("[a-z0-9]+\\@uns.ac.rs")) {
+					losUnos2.setText("<html>Lose unet mail!<br>"
+							+  "Mora se zavrsiti sa <br>"
+							+ "@uns.ac.rs");
+					losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 					mailAdresa = "";	
 				}
         	}
@@ -363,7 +514,11 @@ public class DodajStudenta extends JFrame{
         JPanel panIndeks=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblIndeks=new JLabel("Broj indeksa:");
         lblIme.setPreferredSize(dim);
+<<<<<<< HEAD
         JTextField txtIndeks=new JTextField();
+=======
+        txtIndeks=new JTextField();
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         lblIndeks.setPreferredSize(dim);
         txtIndeks.setPreferredSize(dim);
         txtIndeks.addActionListener(new ActionListener() {
@@ -373,6 +528,10 @@ public class DodajStudenta extends JFrame{
         		System.out.println(brojIndeksa);
         	}
         });
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         panIndeks.add(lblIndeks);
         panIndeks.add(txtIndeks);
         
@@ -380,6 +539,7 @@ public class DodajStudenta extends JFrame{
         JPanel panGodUpisa=new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel lblGodUpisa=new JLabel("Godina upisa:");
         lblGodUpisa.setPreferredSize(dim);
+<<<<<<< HEAD
         JTextField txtGodUpisa=new JTextField();
         txtGodUpisa.setPreferredSize(dim);
         txtGodUpisa.addActionListener(new ActionListener() {
@@ -390,6 +550,11 @@ public class DodajStudenta extends JFrame{
         		System.out.println(godinaUpisa);
         	}
         });
+=======
+        txtGodUpisa=new JTextField();
+        txtGodUpisa.setPreferredSize(dim);
+      
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         txtGodUpisa.addKeyListener(new KeyListener() {
 
 			@Override
@@ -407,6 +572,7 @@ public class DodajStudenta extends JFrame{
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
+<<<<<<< HEAD
 				try {
 					txtGodUpisa.getText().matches("\\d{4}");
 					losUnos2.setText("    ");
@@ -415,14 +581,59 @@ public class DodajStudenta extends JFrame{
         			losUnos2.setText("<html>Lose uneta godina upisa!<br>"
         					+ " Format je YYYY");
         			
+=======
+				godinaUpisa  = txtGodUpisa.getText();
+				try {
+					godinaUpisa.matches("\\d{4}");
+					losUnos2.setText("   ");
+					losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
+					for(Student stud: BazaStudenata.getInstance().getStudenti()) {
+    					if((txtIndeks.getText()+ "-" + txtGodUpisa.getText()).equals(stud.getIndeks())) {
+    						losUnos2.setText("<html>Vec postoji student <br>"
+    								+ "sa ovim indeksom!");
+    						brojIndeksa = "";
+    						txtIndeks.setText("");
+    						txtGodUpisa.setText("");
+    						return;
+    					}
+    					if(Integer.parseInt(txtGodUpisa.getText()) < 1960  |Integer.parseInt(txtGodUpisa.getText()) > 2021) {
+    						losUnos2.setText("<html>Fakultet Tehnickih nauka <br>"
+    	    						+ " u Novom Sadu osnovan je <br>"
+    	    						+ "1960. godine!"
+    	    						);
+    							
+    	    					godinaUpisa = "";
+    	    					losUnos2.setVisible(true);
+    	            			panCenter.add(losUnos2);
+    	            			
+    					}
+    					
+    				}
+
+        		}catch (Exception ex) {
+        			losUnos2.setText("<html>Fakultet Tehnickih nauka <br>"
+    						+ " u Novom Sadu osnovan je <br>"
+    						+ "1960. godine!"
+    						);
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         			godinaUpisa = "";
         		}
 				if (!txtGodUpisa.getText().matches("\\d{4}")) {
 					losUnos2.setText("<html>Lose uneta godina upisa!<br>"
 							+ " Format je YYYY");
+<<<<<<< HEAD
         			
 					godinaUpisa = "";	
 				}
+=======
+					losUnos2.setVisible(true);
+        			panCenter.add(losUnos2);
+					godinaUpisa = "";	
+				}
+				
+				
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         	}
         });
         godinaUpisa= txtGodUpisa.getText();
@@ -452,7 +663,23 @@ public class DodajStudenta extends JFrame{
 					} else {
 						trenutnaGodinaStudija = 0 ;
 					}
+<<<<<<< HEAD
 				
+=======
+				try {
+        			if (2021 - (Integer.parseInt(godinaUpisa)  ) <  trenutnaGodinaStudija ){
+        				losUnos2.setText("<html>Proverite godinu upisa<br>"
+        						+ " i trenutnu godinu studija!"
+        						);
+        					godinaUpisa = "";
+        					txtGodUpisa.setText("");
+        					losUnos2.setVisible(true);
+                			panCenter.add(losUnos2);
+        			}
+        			} catch (Exception ex) {
+        				godinaUpisa = "";
+        			}
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 			}
 			
 			
@@ -506,6 +733,7 @@ public class DodajStudenta extends JFrame{
         add(panCenter,BorderLayout.CENTER);
        
       
+<<<<<<< HEAD
 		
 		JPanel panBottom=new JPanel();
 		BoxLayout box=new BoxLayout(panBottom, BoxLayout.X_AXIS);
@@ -544,12 +772,56 @@ public class DodajStudenta extends JFrame{
         	txtAdresaStanovanja.setText(" ");
         	txtDatumRodjenja.setText(" ");
         	txtGodUpisa.setText(" ");
+=======
+
+		
+		
+		
+		btnOk.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent arg0) {
+        		
+        		if(ime == ""  | prezime == "" | txtIndeks.getText().trim().isEmpty() | datumRodjenja == "" |
+        				txtAdresaStanovanja.getText().trim().isEmpty() | kontaktTelefon  == " " | mailAdresa == "" | godinaUpisa == "" | trenutnaGodinaStudija == 0 | status == "" ){
+        			losUnos.setText("<html>Niste popunili valjano sva polja!<br>");	
+        			
+        			
+        		
+        			
+        			
+        		}else {
+        			
+        			
+    				try {
+    					datumRodjenjaa =  sdf.parse(txtDatumRodjenja.getText());
+    				} catch (ParseException ex1) {
+    					
+    					ex1.printStackTrace();
+    					return;
+    				}
+        			
+        			
+        	
+				StudentiController.getInstance().dodajStudenta(ime,prezime,txtIndeks.getText(),datumRodjenjaa, 
+						txtAdresaStanovanja.getText(), kontaktTelefon,mailAdresa, godinaUpisa, trenutnaGodinaStudija, status,prosek);
+			
+        	losUnos.setText("Popunite sva polja");
+        	txtIme.setText("");
+        	txtPrezime.setText("");
+        	txtIndeks.setText("");
+        	txtMail.setText("");
+        	txtBrojTelefona.setText("");
+        	txtAdresaStanovanja.setText("");
+        	txtDatumRodjenja.setText("");
+        	txtGodUpisa.setText("");
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
         	combo.setSelectedIndex(0);
         	combo2.setSelectedIndex(0);
         	}
         	}
         });
 		
+<<<<<<< HEAD
 		
 
 		
@@ -569,6 +841,18 @@ public class DodajStudenta extends JFrame{
 			double prosek; 
 			
 		*/
+=======
+		txtIme.addFocusListener(focus);
+		txtPrezime.addFocusListener(focus);
+		txtMail.addFocusListener(focus);
+		txtBrojTelefona.addFocusListener(focus);
+		txtAdresaStanovanja.addFocusListener(focus);
+		txtIndeks.addFocusListener(focus);
+		txtGodUpisa.addFocusListener(focus);
+		combo.addFocusListener(focus);
+		combo2.addFocusListener(focus);
+		
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 		JButton btnCancel=new JButton("Odustani");
 		btnCancel.addActionListener(new ActionListener() {
 
@@ -579,6 +863,13 @@ public class DodajStudenta extends JFrame{
 		});
 		
 		btnCancel.setPreferredSize(new Dimension(90,25));
+<<<<<<< HEAD
+=======
+		
+		JPanel panBottom=new JPanel();
+		BoxLayout box=new BoxLayout(panBottom, BoxLayout.X_AXIS);
+		panBottom.setLayout(box);	
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 		panBottom.add(Box.createGlue());
 		panBottom.add(btnOk);
 		panBottom.add(Box.createHorizontalStrut(10));

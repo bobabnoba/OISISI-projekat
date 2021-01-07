@@ -7,6 +7,12 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+<<<<<<< HEAD
+=======
+import edit.IzmeniStudenta;
+import gui.MainFrame;
+
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 public class EditEntityAction  extends AbstractAction {
 	
 	public EditEntityAction() {
@@ -18,6 +24,17 @@ public class EditEntityAction  extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+<<<<<<< HEAD
+=======
+		switch(MainFrame.getInstance().selectedTab()) {
+		case 0: 
+			
+			IzmeniStudenta is = new IzmeniStudenta();
+        	is.setLocationRelativeTo(MainFrame.getInstance());
+        	is.setVisible(true);
+        	break;
+		}
+>>>>>>> 41735e3534d92b397c2226209f01fdd4ba863615
 	}
 		
 }
