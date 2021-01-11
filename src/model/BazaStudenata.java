@@ -74,6 +74,9 @@ public class BazaStudenata {
 
 	private void initStudente()  {
 		
+		
+		
+		
 		try {
 			 d1 = sdf.parse("12.03.2001.");
 		} catch (ParseException e) {
@@ -285,6 +288,10 @@ public class BazaStudenata {
 		return 6;
 	}
 
+	public Student getStudent(int index) {
+		return studenti.get(index);
+	}
+	
 	public String getColumnName(int index) {
 		return this.kolone.get(index);
 	}

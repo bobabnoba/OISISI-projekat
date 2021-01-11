@@ -13,7 +13,7 @@ public class Polozeni extends AbstractTableModel {
 	
 
 	private Student s;
-	private List<Ocena> polozeni;
+	private static List<Ocena> polozeni;
 	private List<String> kolone;
 	
 	public Polozeni(ArrayList<Ocena> polozeni) {
@@ -62,8 +62,8 @@ public class Polozeni extends AbstractTableModel {
 	public String getColumnName(int index) {
 		return this.kolone.get(index );
 	}
-	public Ocena getRow(int rowIndex) {
-		return this.polozeni.get(rowIndex);
+	public static Ocena getRow(int rowIndex) {
+		return polozeni.get(rowIndex);
 	}
 
 

@@ -41,6 +41,7 @@ public class MainFrame extends JFrame {
 	JPanel tabsPanel;
 	public static StudentiJTable tabelaStudenata;
 	private PredmetiTable predTable;
+	
 
 
 	public MainFrame() {
@@ -141,7 +142,7 @@ public class MainFrame extends JFrame {
 		
 	}
 	
-	private JScrollPane showProfesoriTable() {
+	public  JScrollPane showProfesoriTable() {
 		profTable = new ProfesoriTable();
 		JScrollPane spprof = new JScrollPane(profTable);
 		profTable.setAutoCreateRowSorter(true);

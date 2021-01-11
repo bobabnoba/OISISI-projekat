@@ -147,7 +147,7 @@ public class DodajStudenta extends JFrame{
 					losUnos2.setText(" ");
 
         		}catch (Exception ex) {
-        			losUnos2.setText("Pogresno uneto ime!");
+        			//losUnos2.setText("Pogresno uneto ime!");
         			
         			//ime = "";
         		}

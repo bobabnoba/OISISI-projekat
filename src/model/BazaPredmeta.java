@@ -87,6 +87,17 @@ private static BazaPredmeta instance = null;
 				predmeti.remove(predmet);
 	}
 	
+	public void izmeniPredmet(String sifra, String naziv, int espb, int godinaStudija, Semestar semestar) {
+		for(Predmet pred : this.predmeti) {
+			if(pred.getSifraPredmeta().equals(sifra)) {
+				pred.setSifraPredmeta(sifra);
+				pred.setNazivPredmeta(naziv);
+				pred.setEspb(espb);
+				pred.setGodinaStudija(godinaStudija);
+			}
+		}
+	}
+	
 	public Predmet findByName(String name) {
 		Predmet retVal = null;
 		for(Predmet p : this.predmeti) {

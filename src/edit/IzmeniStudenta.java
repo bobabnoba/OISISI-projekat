@@ -627,24 +627,14 @@ public IzmeniStudenta(Student student) {
 			
     		if(txtIme.getText() == ""  | txtPrezime.getText() == "" | txtIndeks.getText().isEmpty() | 
     				txtAdresaStanovanja.getText().isEmpty() | txtBrojTelefona.getText()  == " " | mailAdresa == "" | txtGodUpisa.getText() == "" | trenutnaGodinaStudija == 0 | status == "" ){
-    			losUnos.setText("<html>Niste popunili valjano sva polja!<br>");	
-    			
-    			
-    		
-    			
-    			
-    		}else {
-    			
-    			
+    			losUnos.setText("<html>Niste popunili valjano sva polja!<br>");		
+    		}else {    			
 				try {
 					datumRodjenjaa = sdf.parse(txtDatumRodjenja.getText());
-				} catch (ParseException ex1) {
-					
+				} catch (ParseException ex1) {					
 					ex1.printStackTrace();
 					return;
-				}
-    			
-    	
+				}    	
 		
 			StudentiController.getInstance().izmeniStudenta(txtIme.getText(),txtPrezime.getText(),txtIndeks.getText(),datumRodjenjaa, 
 					txtAdresaStanovanja.getText(), txtBrojTelefona.getText(),txtMail.getText(), godinaUpisa, trenutnaGodinaStudija, status,prosek, new ArrayList<Ocena>(), new ArrayList<Predmet>());
@@ -711,7 +701,7 @@ public IzmeniStudenta(Student student) {
 			options1[1] = new String("Ne");
 			int n1 = JOptionPane.showOptionDialog(frame1.getContentPane(),"Da li ste sigurni da zelite da ponistite ocenu?","Ponistavanje ocene", 0,JOptionPane.INFORMATION_MESSAGE,null,options1,null);				   
 			if(n1 == JOptionPane.YES_OPTION) {
-			//student.removePolozeni(Polozeni.getRow(IzmeniStudenta.pol.getSelectedRow()));
+			student.removePolozeni(Polozeni.getRow(IzmeniStudenta.pol.getSelectedRow()));
 			azuriraj(null, -1);
 		    espb.setText(("ESPB:\t" + String.valueOf(student.getEspb())));
 			polozeniBot2.add(espb);

@@ -19,12 +19,15 @@ import javax.swing.WindowConstants;
 import controller.ProfesoriController;
 import controller.StudentiController;
 import dialog.Dialog;
+import edit.IzmenaPredmeta;
 import edit.IzmeniStudenta;
 import view.DodajProfesora;
 import view.IzmjenaProfesora;
 import gui.DodajPredmet;
+import model.BazaPredmeta;
 import model.BazaProfesora;
 import model.BazaStudenata;
+import model.Predmet;
 import model.Profesor;
 import model.Student;
 
@@ -112,6 +115,19 @@ public class MenuBar extends JMenuBar implements ActionListener{
 								JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati profesora kog želite da editujete!", "Profesor nije izabran!", JOptionPane.ERROR_MESSAGE);
 							}
 							break;
+							
+				case 2:
+					if(!MainFrame.getInstance().indexCheckPred()) {
+						int rowpred = MainFrame.getInstance().selectedPred();
+						Predmet predmet = BazaPredmeta.getInstance().getRow(rowpred);
+						IzmenaPredmeta ip = new IzmenaPredmeta(predmet);
+						ip.setLocationRelativeTo(MainFrame.getInstance());
+						ip.setVisible(true);
+						ip.setPreferredSize(new Dimension(500,600));
+					} else {
+						JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet koji želite da editujete!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+					}
+					break;
 				}
 			}
 		});

@@ -35,7 +35,8 @@ private static ProfesoriController instance = null;
 		if(rowSelectedIndex < 0) {
 			return;
 		}
-		Profesor profesor = BazaProfesora.getInstance().getRow(rowSelectedIndex);
+		int rowp = MainFrame.getInstance().selectedProf();
+		Profesor profesor = BazaProfesora.getInstance().getRow(rowp);
 		BazaProfesora.getInstance().izbrisiProfesora(profesor.getBrojLicneKarte());
 		MainFrame.getInstance().updateViewProf();
 	}

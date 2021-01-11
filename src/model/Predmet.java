@@ -103,6 +103,9 @@ public class Predmet {
 		this.nisuPolozili = nisuPolozili;
 	}
 
+	public Profesor getProfesor() {
+		return predmetniProfesor;
+	}
 	@Override
 	public String toString() {
 		return "Predmet [sifraPredmeta=" + sifraPredmeta + ", nazivPredmeta=" + nazivPredmeta + ", semestar=" + semestar

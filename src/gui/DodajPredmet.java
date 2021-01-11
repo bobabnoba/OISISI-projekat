@@ -286,7 +286,7 @@ public DodajPredmet() {
     			
     			
     			
-    	PredmetiController.getInstance().dodajPredmet(sifra, txtNaziv.getText(),sem ,godinaStudija, new model.Profesor(), espb , 
+    	PredmetiController.getInstance().dodajPredmet(sifra, txtNaziv.getText(),sem ,Integer.parseInt(godinaStudija), new model.Profesor(), espb , 
     			new ArrayList<Student>(), new ArrayList<Student>());
     	losUnos.setText("Popunite sva polja");
     	txtSifra.setText("");
