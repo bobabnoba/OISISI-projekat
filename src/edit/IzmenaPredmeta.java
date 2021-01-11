@@ -401,29 +401,7 @@ public class IzmenaPredmeta extends JFrame{
 		
 		
 		
-		
-		minus.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				JFrame frame = new JFrame();
-				String[] options = new String[2];
-				options[0] = new String("Da");
-				options[1] = new String("Ne");
-				int n = JOptionPane.showOptionDialog(frame.getContentPane(),"Da li ste sigurni da zelite da uklonite profesora?","Uklanjanje profesora", 0,JOptionPane.INFORMATION_MESSAGE,null,options,null);				   
-				if(n == JOptionPane.YES_OPTION) {
-					minus.setEnabled(false);
-					plus.setEnabled(true);
-					labProf.setText("Profesor: ");
-					predmet.setPredmetniProfesor(null);
-			    }
-			    if(n == JOptionPane.NO_OPTION) {
-			          return;
-			    }			
-			}
-			
-		});
 		
 		JPanel panBottom=new JPanel();
 		BoxLayout box=new BoxLayout(panBottom, BoxLayout.X_AXIS);
