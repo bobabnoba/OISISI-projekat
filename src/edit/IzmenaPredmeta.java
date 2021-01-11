@@ -19,11 +19,13 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import controller.PredmetiController;
+import controller.StudentiController;
 import gui.MainFrame;
 import model.BazaProfesora;
 import model.Predmet;
@@ -397,16 +399,28 @@ public class IzmenaPredmeta extends JFrame{
 		});
 		
 		
+		
+		
+		
 		minus.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				minus.setEnabled(false);
-				plus.setEnabled(true);
-				labProf.setText("Profesor: ");
-				predmet.setPredmetniProfesor(null);
-				
+				JFrame frame = new JFrame();
+				String[] options = new String[2];
+				options[0] = new String("Da");
+				options[1] = new String("Ne");
+				int n = JOptionPane.showOptionDialog(frame.getContentPane(),"Da li ste sigurni da zelite da uklonite profesora?","Uklanjanje profesora", 0,JOptionPane.INFORMATION_MESSAGE,null,options,null);				   
+				if(n == JOptionPane.YES_OPTION) {
+					minus.setEnabled(false);
+					plus.setEnabled(true);
+					labProf.setText("Profesor: ");
+					predmet.setPredmetniProfesor(null);
+			    }
+			    if(n == JOptionPane.NO_OPTION) {
+			          return;
+			    }			
 			}
 			
 		});
