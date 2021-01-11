@@ -387,9 +387,10 @@ public class IzmenaPredmeta extends JFrame{
 				int row = profT.convertRowIndexToModel(profT.getSelectedRow());
 				Profesor profesor = BazaProfesora.getInstance().getRow(row);
 				predmet.setPredmetniProfesor(profesor);
-				
+				labProf.setText("Profesor: " + profesor.getIme() + " " + profesor.getPrezime());
 				labProf.setVisible(true);
-				panProf.add(labProf);
+				plus.setEnabled(false);
+				minus.setEnabled(true);
 				diag.dispose();
 			}
 			
@@ -401,6 +402,9 @@ public class IzmenaPredmeta extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				minus.setEnabled(false);
+				plus.setEnabled(true);
+				labProf.setText("Profesor: ");
 				predmet.setPredmetniProfesor(null);
 				
 			}
