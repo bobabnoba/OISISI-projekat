@@ -18,6 +18,7 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -27,7 +28,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.ProfesoriController;
+import controller.StudentiController;
 import gui.MainFrame;
+import model.BazaPredmeta;
 import model.Predmet;
 import model.Profesor;
 import model.Titula;
@@ -117,6 +120,37 @@ public class IzmjenaProfesora extends JDialog {
 		JPanel buttons = new JPanel();
 		JButton btnDodaj = new  JButton("Dodaj predmet");
 		JButton btnUkloni = new JButton("Ukloni predmet");
+		
+		btnUkloni.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JFrame frame = new JFrame();
+				String[] options = new String[2];
+				options[0] = new String("Da");
+				options[1] = new String("Ne");
+				int n = JOptionPane.showOptionDialog(frame.getContentPane(),"Da li ste sigurni da zelite da uklonite predmet?","Uklanjanje predmeta", 0,JOptionPane.INFORMATION_MESSAGE,null,options,null);				   
+				if(n == JOptionPane.YES_OPTION) {
+				int row = predmetiTable.convertRowIndexToModel(predmetiTable.getSelectedRow());
+			    Predmet predmet = ATMProfPredmeti.getRow(row);
+			    profesor.getPredmeti().remove(predmet);
+			    
+			    ATMProfPredmeti modelPred = (ATMProfPredmeti) predmetiTable.getModel();
+				modelPred.fireTableDataChanged();
+				validate();
+				}
+			    if(n == JOptionPane.NO_OPTION) {
+			          return;
+			    }
+
+			}
+			
+			
+		});
+		
+		
+		
 		
 		btnDodaj.addActionListener(new ActionListener() {
 

@@ -5,12 +5,13 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import classes.Student;
 import model.Predmet;
 
 public class ATMProfPredmeti extends AbstractTableModel {
 	
 	
-	private List<Predmet> predmeti;
+	private static List<Predmet> predmeti;
 	private List<String> kolone;
 	
 	public ATMProfPredmeti(List<Predmet> predmeti) {
@@ -66,6 +67,9 @@ public class ATMProfPredmeti extends AbstractTableModel {
 			return null;
 		}
 	}
-
+	
+	public static Predmet getRow(int rowIndex) {
+		return predmeti.get(rowIndex);
+	}
 	
 }
