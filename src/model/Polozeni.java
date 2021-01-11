@@ -3,27 +3,24 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.table.AbstractTableModel;
+
 import gui.MainFrame;
 
-public class Polozeni {
+public class Polozeni extends AbstractTableModel {
 
 	private static Polozeni instance = null;
 	
-	public static Polozeni getInstance() {
-		if(instance == null) {
-			instance = new Polozeni();
-		}
-		return instance;
-	}
+
 	private Student s;
 	private List<Ocena> polozeni;
 	private List<String> kolone;
 	
-	public Polozeni() {
-		initPolozene();
+	public Polozeni(ArrayList<Ocena> polozeni) {
+		this.polozeni = polozeni;
 		MainFrame.getInstance();
-
-		this.s = BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow());
+		int rows = MainFrame.getInstance().selectedStud();
+		this.s = BazaStudenata.getInstance().getRow(rows);
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("Sifra predmeta");
 		this.kolone.add("Naziv predmeta");
@@ -32,14 +29,7 @@ public class Polozeni {
 		this.kolone.add("Datum");
 	}
 	
-	private void initPolozene() {
-		this.polozeni = new ArrayList<Ocena>();
-		MainFrame.getInstance();
-		s = BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow());
-		for(Ocena o : s.spisakPolozenihIspita) {
-			polozeni.add(o);
-		}
-	}
+
 	
 	public String getValueAt(int row, int column) {
 		Ocena ocena = this.polozeni.get(row);
@@ -62,8 +52,8 @@ public class Polozeni {
 	public List<Ocena> getPolozeni(){
 		return polozeni;
 	}
-	public void setPolozeni() {
-		this.polozeni =  BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).spisakPolozenihIspita;
+	public void setPolozeni(List<Ocena> polozeni) {
+		this.polozeni =  polozeni;
 	}
 	
 	public int getColumnCount() {
@@ -74,6 +64,14 @@ public class Polozeni {
 	}
 	public Ocena getRow(int rowIndex) {
 		return this.polozeni.get(rowIndex);
+	}
+
+
+
+	@Override
+	public int getRowCount() {
+		// TODO Auto-generated method stub
+		return polozeni.size();
 	}
 	
 }

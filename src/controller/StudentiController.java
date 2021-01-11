@@ -2,12 +2,16 @@ package controller;
 
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
 import gui.MainFrame;
 import model.BazaStudenata;
+import model.Ocena;
+import model.Predmet;
 import model.Student;
 
 public class StudentiController {
@@ -31,17 +35,12 @@ public class StudentiController {
 		MainFrame.getInstance().azurirajPrikaz("dodat", -1);
 	}
 	
-	public void izmeniStudenta(int rowSelectedIndex,String ime, String prezime, String brojIndeksa, Date i, String adresaStanovanja, String kontaktTelefon, String mailAdresa, String j, int trenutnaGodinaStudija, 
-			String status, double prosek) {
-		if(rowSelectedIndex<0) {
-			JOptionPane.showMessageDialog(null,"Izaberite studenta!", "Greska", JOptionPane.ERROR_MESSAGE);
-			return;
-		}
+	public void izmeniStudenta(String ime, String prezime, String brojIndeksa, Date i, String adresaStanovanja, String kontaktTelefon, String mailAdresa, String j, int trenutnaGodinaStudija, 
+			String status, double prosek, ArrayList<Ocena> polozeni, ArrayList<Predmet> nepolozeni) {
 		
-		Student student = BazaStudenata.getInstance().getRow(rowSelectedIndex);
-		BazaStudenata.getInstance().izmeniStudenta(student.getBrojIndeksa(),  ime, prezime, brojIndeksa, i, adresaStanovanja, kontaktTelefon, mailAdresa, j , trenutnaGodinaStudija,
-				status, prosek);
-		
+		List<Ocena> pol = (List<Ocena>) polozeni;
+		List<Predmet> nepol = (List<Predmet>) nepolozeni;
+		BazaStudenata.getInstance().izmeniStudenta( ime, prezime, brojIndeksa, i, adresaStanovanja, kontaktTelefon, mailAdresa, j , trenutnaGodinaStudija, status, prosek, pol, nepol );		
 		MainFrame.getInstance().azurirajPrikaz(null, -1);
 	}
    
@@ -49,8 +48,9 @@ public class StudentiController {
 		if(rowSelectedIndex < 0) {
 			return;
 		}
-		Student student = BazaStudenata.getInstance().getRow(rowSelectedIndex);
-		BazaStudenata.getInstance().izbrisiStudenta(student.getBrojIndeksa());
+		int rows = MainFrame.getInstance().selectedStud();
+		Student student = BazaStudenata.getInstance().getRow(rows);
+		BazaStudenata.getInstance().izbrisiStudenta(student.getIndeks());
 		MainFrame.getInstance().azurirajPrikaz("uklonjen", rowSelectedIndex);
 	}
 	

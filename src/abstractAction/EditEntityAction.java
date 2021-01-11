@@ -12,7 +12,9 @@ import javax.swing.KeyStroke;
 import edit.IzmeniStudenta;
 import gui.MainFrame;
 import model.BazaProfesora;
+import model.BazaStudenata;
 import model.Profesor;
+import model.Student;
 import view.IzmjenaProfesora;
 
 public class EditEntityAction  extends AbstractAction {
@@ -28,10 +30,16 @@ public class EditEntityAction  extends AbstractAction {
 	public void actionPerformed(ActionEvent arg0) {
 		switch(MainFrame.getInstance().selectedTab()) {
 		case 0: 
-			
-			IzmeniStudenta is = new IzmeniStudenta();
+			if(!MainFrame.getInstance().indexCheckStud()) {
+			int rows = MainFrame.getInstance().selectedStud();
+			Student student = BazaStudenata.getInstance().getRow(rows);
+			IzmeniStudenta is = new IzmeniStudenta(student);
         	is.setLocationRelativeTo(MainFrame.getInstance());
         	is.setVisible(true);
+			} else {
+				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati studenta kog želite da editujete!", "Profesor nije izabran!", JOptionPane.ERROR_MESSAGE);
+
+			}
         	break;
 	case 1:			
 		if(!MainFrame.getInstance().indexCheckProf()) {

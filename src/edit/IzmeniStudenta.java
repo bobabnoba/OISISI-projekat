@@ -1,7 +1,6 @@
 package edit;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
@@ -9,16 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -31,37 +26,26 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import model.Profesor;
-import controller.PredmetiController;
-import model.BazaStudenata;
-import model.Semestar;
 import model.Student;
-import view.ATMPolozeni;
+
 import view.PolozeniJTable;
 import controller.StudentiController;
 import gui.MainFrame;
+import model.Ocena;
 import model.Polozeni;
+import model.Predmet;
 public class IzmeniStudenta extends JFrame {
 
-	private static IzmeniStudenta instance = null;
 
-	public static IzmeniStudenta getInstance() {
-		if (instance == null) {
-			instance = new IzmeniStudenta();
-		}
-		return instance;
-	}
-	
-	private SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
 
 	 String ime = "";
 		String prezime= "";
 		String brojIndeksa= "";
 		String datumRodjenja= "";
 		String adresaStanovanja= "";
-		String kontaktTelefon= "";
-		String mailAdresa= "";
+		String kontaktTelefon;
+		String mailAdresa;
 		String godinaUpisa= "";
 		int godUpisa;
 		int trenutnaGodinaStudija;
@@ -80,7 +64,7 @@ public class IzmeniStudenta extends JFrame {
 		private JTextField txtDatumRodjenja;
 		private Date datumRodjenjaa = new Date();
 	
-public IzmeniStudenta() {		
+public IzmeniStudenta(Student student) {		
 	
 	Toolkit tkit = Toolkit.getDefaultToolkit();	
 	Dimension screenSize = tkit.getScreenSize();
@@ -100,7 +84,7 @@ public IzmeniStudenta() {
 	//btnOk.setEnabled(false);
 	btnOk.setPreferredSize(new Dimension(75,25));
 	
-	Dimension dim=new Dimension(150,20);
+	Dimension dim=new Dimension(220,20);
 	Dimension dim2=new Dimension(150,70);
 	
 	JLabel losUnos = new JLabel("<html> Izmenite podatke o studentu <br>");
@@ -109,13 +93,13 @@ public IzmeniStudenta() {
 	JLabel losUnos2 = new JLabel("          ");
 	losUnos2.setPreferredSize(dim2);
 	
-	
+	btnOk.setEnabled(false);
 	
 	FocusListener focus = new FocusListener() {
 		
 		@Override
 		public void focusLost(FocusEvent e) {
-			if(!(txtIme.getText() == "" || txtPrezime.getText()== "" || txtMail.getText() == "" || txtBrojTelefona.getText() == "" || txtAdresaStanovanja.getText().trim().isEmpty() || godinaUpisa == ""
+			if(!(txtIme.getText() == "" || txtPrezime.getText()== "" || mailAdresa == "" || kontaktTelefon == "" || txtAdresaStanovanja.getText().trim().isEmpty() || godinaUpisa == ""
 				||	txtIndeks.getText().trim().isEmpty() )) {
 				btnOk.setEnabled(true);
 			} else {
@@ -272,22 +256,26 @@ public IzmeniStudenta() {
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
+			btnOk.setEnabled(true);
+
 			datumRodjenja  = txtDatumRodjenja.getText();
 			try {
-    			txtDatumRodjenja.getText().matches("\\d{4}-\\d{2}-\\d{2}");
-				losUnos2.setText("    ");
-
-    		}catch (Exception ex) {
-    			losUnos2.setText("<html>Lose unet datum rodjenja!<br>"
-    					+ " Format je YYYY-MM-DD");
-    			
-    			datumRodjenja = "";
-    		}
-			if (!txtDatumRodjenja.getText().matches("\\d{4}-\\d{2}-\\d{2}")) {
+				datumRodjenjaa = sdf.parse(datumRodjenja);
+			} catch (ParseException ex) {
 				losUnos2.setText("<html>Lose unet datum rodjenja!<br>"
-						+ " Format je YYYY-MM-DD");
+						+ " Format je dd.mm.yyyy.");
 				losUnos2.setVisible(true);
     			panCenter.add(losUnos2);
+    			btnOk.setEnabled(false);
+				datumRodjenja = "";
+			}
+			
+			if (datumRodjenja == "") {
+				losUnos2.setText("<html>Lose unet datum rodjenja!<br>"
+						+ " Format je dd.mm.yyyy.");
+				losUnos2.setVisible(true);
+    			panCenter.add(losUnos2);
+    			btnOk.setEnabled(false);
 				datumRodjenja = "";	
 			}
     	}
@@ -408,6 +396,7 @@ public IzmeniStudenta() {
 						+  "Mora se zavrsiti sa <br>"
 						+ "@uns.ac.rs");
 				losUnos2.setVisible(true);
+				btnOk.setEnabled(false);
     			panCenter.add(losUnos2);
 				mailAdresa = "";	
 			}
@@ -552,18 +541,18 @@ public IzmeniStudenta() {
 	
 	
 
-	MainFrame.getInstance();
-	txtMail.setText(BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getMailAdresa());
-	txtIme.setText(BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getIme());
-	txtPrezime.setText(BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getPrezime());
-	txtDatumRodjenja.setText((sdf.format(BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getDatumRodjenja())));
-	txtAdresaStanovanja.setText(BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getAdresaStanovanja());
-	txtBrojTelefona.setText(BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getKontaktTelefon());
-	status = BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getStatus();
-	trenutnaGodinaStudija = BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getTrenutnaGodinaStudija();
-	godinaUpisa = (BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getGodinaUpisa());
-	txtIndeks.setText(BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getBrojIndeksa());
-	txtGodUpisa.setText(BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getGodinaUpisa());
+	
+	txtMail.setText(student.getMailAdresa());
+	txtIme.setText(student.getIme());
+	txtPrezime.setText(student.getPrezime());
+	txtDatumRodjenja.setText((sdf.format(student.getDatumRodjenja())));
+	txtAdresaStanovanja.setText(student.getAdresaStanovanja());
+	txtBrojTelefona.setText(student.getKontaktTelefon());
+	status = student.getStatus();
+	trenutnaGodinaStudija = student.getTrenutnaGodinaStudija();
+	godinaUpisa = student.getGodinaUpisa();
+	txtIndeks.setText(student.getBrojIndeksa());
+	txtGodUpisa.setText(student.getGodinaUpisa());
 
 	
 	if(trenutnaGodinaStudija == 0) {
@@ -636,8 +625,8 @@ public IzmeniStudenta() {
     	@Override
     	public void actionPerformed(ActionEvent arg0) {
 			
-    		if(txtIme.getText() == ""  | txtPrezime.getText() == "" | txtIndeks.getText().isEmpty() | datumRodjenja == "" |
-    				txtAdresaStanovanja.getText().isEmpty() | txtBrojTelefona.getText()  == " " | txtMail.getText() == "" | txtGodUpisa.getText() == "" | trenutnaGodinaStudija == 0 | status == "" ){
+    		if(txtIme.getText() == ""  | txtPrezime.getText() == "" | txtIndeks.getText().isEmpty() | 
+    				txtAdresaStanovanja.getText().isEmpty() | txtBrojTelefona.getText()  == " " | mailAdresa == "" | txtGodUpisa.getText() == "" | trenutnaGodinaStudija == 0 | status == "" ){
     			losUnos.setText("<html>Niste popunili valjano sva polja!<br>");	
     			
     			
@@ -656,9 +645,9 @@ public IzmeniStudenta() {
 				}
     			
     	
-			MainFrame.getInstance();
-			StudentiController.getInstance().izmeniStudenta(MainFrame.tabelaStudenata.getSelectedRow(),txtIme.getText(),txtPrezime.getText(),txtIndeks.getText(),datumRodjenjaa, 
-					txtAdresaStanovanja.getText(), txtBrojTelefona.getText(),txtMail.getText(), godinaUpisa, trenutnaGodinaStudija, status,prosek);
+		
+			StudentiController.getInstance().izmeniStudenta(txtIme.getText(),txtPrezime.getText(),txtIndeks.getText(),datumRodjenjaa, 
+					txtAdresaStanovanja.getText(), txtBrojTelefona.getText(),txtMail.getText(), godinaUpisa, trenutnaGodinaStudija, status,prosek, new ArrayList<Ocena>(), new ArrayList<Predmet>());
 			
 			dispose();
     		}
@@ -675,13 +664,13 @@ public IzmeniStudenta() {
 
 	polozeniBot.setLayout(new BoxLayout(polozeniBot, BoxLayout.X_AXIS));
 
-	JLabel prosek = new JLabel("Prosek:\t" + String.valueOf(	BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getProsek()));
+	JLabel prosek = new JLabel("Prosek:\t" + String.valueOf(	student.getProsek()));
 	polozeniBot.add(Box.createHorizontalGlue());
 
 	polozeniBot.add(prosek);
 	JPanel polozeniBot2 = new JPanel();
 	polozeniBot2.setLayout(new BoxLayout(polozeniBot2, BoxLayout.X_AXIS));
-	JLabel espb = new JLabel("ESPB:\t" + String.valueOf(BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getEspb()));
+	JLabel espb = new JLabel("ESPB:\t" + String.valueOf(student.getEspb()));
 	polozeniBot2.add(Box.createHorizontalGlue());
 
 	polozeniBot2.add(espb);
@@ -695,7 +684,7 @@ public IzmeniStudenta() {
 	izmena.add(panCenter);
 	izmena.add(panBottom,BorderLayout.SOUTH);
 	JPanel center = new JPanel();
-	center.add(showPolozeni());
+	center.add(showPolozeni(student));
 	
 	tabs.add("izmena", izmena);
 	polozeni.add(polozeniTop);
@@ -722,11 +711,11 @@ public IzmeniStudenta() {
 			options1[1] = new String("Ne");
 			int n1 = JOptionPane.showOptionDialog(frame1.getContentPane(),"Da li ste sigurni da zelite da ponistite ocenu?","Ponistavanje ocene", 0,JOptionPane.INFORMATION_MESSAGE,null,options1,null);				   
 			if(n1 == JOptionPane.YES_OPTION) {
-			BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).removePolozeni(Polozeni.getInstance().getRow(IzmeniStudenta.pol.getSelectedRow()));
+			//student.removePolozeni(Polozeni.getRow(IzmeniStudenta.pol.getSelectedRow()));
 			azuriraj(null, -1);
-		    espb.setText(("ESPB:\t" + String.valueOf(BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getEspb())));
+		    espb.setText(("ESPB:\t" + String.valueOf(student.getEspb())));
 			polozeniBot2.add(espb);
-			prosek.setText(("Prosek:\t" + String.valueOf(	BazaStudenata.getInstance().getRow(MainFrame.tabelaStudenata.getSelectedRow()).getProsek())));
+			prosek.setText(("Prosek:\t" + String.valueOf(	student.getProsek())));
 			polozeniBot.add(prosek);
 			}
 			if(n1 == JOptionPane.NO_OPTION) {
@@ -738,9 +727,9 @@ public IzmeniStudenta() {
 	});
 }
 
-private JScrollPane showPolozeni() {
+private JScrollPane showPolozeni(Student student) {
 	
-	pol = new PolozeniJTable();
+	pol = new PolozeniJTable(student);
 	JScrollPane pol1 = new JScrollPane(pol);
 	pol1.setBorder(new EmptyBorder(20, 20, 20, 20));
 	this.azuriraj(null, -1);
@@ -748,10 +737,10 @@ private JScrollPane showPolozeni() {
 }
 
 public void azuriraj(String akcija, int vrednost) {
-	ATMPolozeni model1 = (ATMPolozeni) pol.getModel();
+	Polozeni model1 = (Polozeni) pol.getModel();
 	model1.fireTableDataChanged();
 	validate();
-	model1.setPolozeni();
+	
 }
 
 }

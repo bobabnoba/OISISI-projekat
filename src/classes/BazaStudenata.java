@@ -36,9 +36,9 @@ public class BazaStudenata {
 
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
-		studenti.add(new Student("Mika", "Mikic", "ra172", "1999-10-12" , "Petra Drapsina 10", "656448998", "mm@gmail.com", "2018", 3, "s" , 9.2   ));
-		studenti.add(new Student("Deki", "Dekic", "ra170", "1989-02-01" , "Petra Drapsina 1", "656448998", "mm@gmail.com", "2018", 2, "b" , 8.42   ));
-		studenti.add(new Student("Ristana", "Cukic", "ra12", "1999-02-01"  , "Petra Drapsina 10", "656448998", "mm@gmail.com", "2018", 1, "b" , 7.06   ));
+		studenti.add(new Student("Marko", "Milosevic", "ra2", "2001-12-12" , "Petra Drapsina 10", "656448998", "mm@gmail.com", "2018", 3, "s" , 9.2   ));
+		studenti.add(new Student("Marija", "Milic", "ra170", "1989-02-01" , "Petra Drapsina 1", "656448998", "mm@gmail.com", "2018", 2, "b" , 8.42   ));
+		studenti.add(new Student("Nikola", "Nikolic", "ra12", "1999-02-01"  , "Petra Drapsina 10", "656448998", "mm@gmail.com", "2018", 1, "b" , 7.06   ));
 		studenti.add(new Student("Dejana", "Pavlovic", "ra12", "1999-03-1999" , "Petra Drapsina 10", "656448998", "mm@gmail.com", "2018", 1, "s" , 6.06   ));
 
 

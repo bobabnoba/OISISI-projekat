@@ -12,7 +12,7 @@ enum status { B, S };
 public class Student {
 
 	
-	private SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+	//private SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
 
 	private String ime;
 	private String prezime;
@@ -32,7 +32,7 @@ public class Student {
 	
 	
 	public Student(String ime, String prezime, String brojIndeksa, Date i, String adresaStanovanja, String kontaktTelefon2, String mailAdresa, String j, int trenutnaGodinaStudija, 
-		String status, double prosek, ArrayList<Ocena> polozeni	) {
+		String status, double prosek, ArrayList<Ocena> polozeni, ArrayList<Predmet> nepolozeni	) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -47,6 +47,7 @@ public class Student {
 		this.status = status;
 		this.prosek = prosek;
 		this.spisakPolozenihIspita = polozeni;
+		this.spisakNepolozenihIspita = nepolozeni;
 	}
 	
 	
@@ -86,9 +87,7 @@ public class Student {
 		return (datumRodjenja);
 	}
 	
-	public String getDatumStr() {
-		return sdf.format(datumRodjenja);
-	}
+
 
 
 	public void setDatumRodjenja(Date i) {
@@ -182,4 +181,7 @@ public class Student {
 	public ArrayList<Predmet> getSpisakNepolozenihIspita() {
 		return spisakNepolozenihIspita;
 	}
-}
+	public ArrayList<Ocena> getSpisakPolozenihIspita() {
+		return spisakPolozenihIspita;
+	}
+	}

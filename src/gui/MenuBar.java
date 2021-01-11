@@ -21,7 +21,12 @@ import controller.StudentiController;
 import dialog.Dialog;
 import edit.IzmeniStudenta;
 import view.DodajProfesora;
+import view.IzmjenaProfesora;
 import gui.DodajPredmet;
+import model.BazaProfesora;
+import model.BazaStudenata;
+import model.Profesor;
+import model.Student;
 
 public class MenuBar extends JMenuBar implements ActionListener{
 
@@ -84,11 +89,29 @@ public class MenuBar extends JMenuBar implements ActionListener{
 			public void actionPerformed(ActionEvent arg0) {
 				switch(MainFrame.getInstance().selectedTab()) {
 				case 0: 
-					
-					IzmeniStudenta is = new IzmeniStudenta();
-		        	is.setLocationRelativeTo(parent);
-		        	is.setVisible(true);
-		        	break;
+					if(!MainFrame.getInstance().indexCheckStud()) {
+						int rows = MainFrame.getInstance().selectedStud();
+						Student student = BazaStudenata.getInstance().getRow(rows);
+						IzmeniStudenta is = new IzmeniStudenta(student);
+			        	is.setLocationRelativeTo(MainFrame.getInstance());
+			        	is.setVisible(true);
+						} else {
+							JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati studenta kog želite da editujete!", "Student nije izabran!", JOptionPane.ERROR_MESSAGE);
+
+						}
+			        	break;
+				case 1: 
+							
+							if(!MainFrame.getInstance().indexCheckProf()) {
+								int rowp = MainFrame.getInstance().selectedProf();
+								Profesor profesor = BazaProfesora.getInstance().getRow(rowp);
+								IzmjenaProfesora ip = new IzmjenaProfesora(profesor);
+								ip.setLocationRelativeTo(MainFrame.getInstance());
+								ip.setVisible(true);
+							} else {
+								JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati profesora kog želite da editujete!", "Profesor nije izabran!", JOptionPane.ERROR_MESSAGE);
+							}
+							break;
 				}
 			}
 		});

@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
@@ -59,7 +60,7 @@ public class DodajStudenta extends JFrame{
 	private JTextField txtIndeks;
 	private JTextField txtDatumRodjenja;
 	private Date datumRodjenjaa;
-	private SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
 	
 	public DodajStudenta() {
 		super();
@@ -89,7 +90,7 @@ public class DodajStudenta extends JFrame{
 			
 			@Override
 			public void focusLost(FocusEvent e) {
-				if(!(ime == "" || prezime == "" || mailAdresa == "" || kontaktTelefon == "" || txtAdresaStanovanja.getText().trim().isEmpty() || godinaUpisa == ""
+				if(!(ime == "" || prezime == "" || mailAdresa == ""  || datumRodjenja == ""|| kontaktTelefon == "" || txtAdresaStanovanja.getText().trim().isEmpty() || godinaUpisa == ""
 					||	txtIndeks.getText().trim().isEmpty() )) {
 					btnOk.setEnabled(true);
 				} else {
@@ -259,22 +260,18 @@ public class DodajStudenta extends JFrame{
 				// TODO Auto-generated method stub
 				datumRodjenja  = txtDatumRodjenja.getText();
 				try {
-        			txtDatumRodjenja.getText().matches("\\d{4}-\\d{2}-\\d{2}");
-					losUnos2.setText("    ");
-
-        		}catch (Exception ex) {
-        			losUnos2.setText("<html>Lose unet datum rodjenja!<br>"
-        					+ " Format je YYYY-MM-DD");
-        			
-        			datumRodjenja = "";
-        		}
-				if (!txtDatumRodjenja.getText().matches("\\d{4}-\\d{2}-\\d{2}")) {
-					losUnos2.setText("<html>Lose unet datum rodjenja!<br>"
-							+ " Format je YYYY-MM-DD");
+					datumRodjenjaa =  sdf.parse(datumRodjenja);
 					losUnos2.setVisible(true);
-        			panCenter.add(losUnos2);
-					datumRodjenja = "";	
+					
+				} catch (ParseException ex1) {
+					losUnos2.setText("unesite datum u formatu dd.mm.yyyy.");
+					losUnos2.setVisible(true);
+					datumRodjenja = "";
+				
+					//ex1.printStackTrace();
+				
 				}
+				
         	}
         });
         
@@ -568,7 +565,7 @@ public class DodajStudenta extends JFrame{
 		panFinansiranje.add(lblFinansiranje); 
 		panFinansiranje.add(combo2);
 		combo.setSelectedIndex(0);
-        
+       // panIme.setBackground(Color.WHITE);
         
         panCenter.add(panIme);
         panCenter.add(panPrezime);
@@ -603,13 +600,7 @@ public class DodajStudenta extends JFrame{
         		}else {
         			
         			
-    				try {
-    					datumRodjenjaa =  sdf.parse(txtDatumRodjenja.getText());
-    				} catch (ParseException ex1) {
-    					
-    					ex1.printStackTrace();
-    					return;
-    				}
+    				
         			
         			
         	
@@ -635,6 +626,7 @@ public class DodajStudenta extends JFrame{
 		txtPrezime.addFocusListener(focus);
 		txtMail.addFocusListener(focus);
 		txtBrojTelefona.addFocusListener(focus);
+		txtDatumRodjenja.addFocusListener(focus);
 		txtAdresaStanovanja.addFocusListener(focus);
 		txtIndeks.addFocusListener(focus);
 		txtGodUpisa.addFocusListener(focus);
@@ -660,8 +652,8 @@ public class DodajStudenta extends JFrame{
 		panBottom.add(Box.createHorizontalStrut(10));
 		panBottom.add(btnCancel);
 		panBottom.add(Box.createHorizontalStrut(10));
-		
-		
+		this.setBackground(Color.WHITE);
+	//	panCenter.setBackground(Color.WHITE);
 		
 		add(panBottom,BorderLayout.SOUTH);
 		pack();

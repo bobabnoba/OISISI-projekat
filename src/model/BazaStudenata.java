@@ -1,5 +1,6 @@
 package model;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,12 +18,36 @@ public class BazaStudenata {
 		}
 		return instance;
 	}
-	private SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
-
+	
+	private DateFormat sdf;
 	private Date d1;
 	private Date d2;
 	private Date d3;
 	private Date d4;
+	private Date d5;
+	private Date d6;
+	private Date d7;
+	private Date d8;
+	private Date d9;
+	private Date d10;
+	private Date d11;
+	private Date d12;
+	private Date d13;
+	private Date d14;
+	private Date d15;
+	private Date d16;
+	private Date d17;
+	private Date d18;
+	private Date d19;
+	private Date d20;
+	private Date d21;
+	private Date d22;
+	private Date d23;
+	private Date d24;
+	private Date d25;
+	private Date d26;
+	private Date d27;
+	
 	
 	
 	private List<Student> studenti;
@@ -30,7 +55,7 @@ public class BazaStudenata {
 	
 	private BazaStudenata() {
 	
-		
+		sdf = new SimpleDateFormat("dd.MM.yyyy.");
 		
 		
 		
@@ -50,38 +75,200 @@ public class BazaStudenata {
 	private void initStudente()  {
 		
 		try {
-			 d1 = sdf.parse("1999-12-03");
+			 d1 = sdf.parse("12.03.2001.");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
-			 d2 = sdf.parse("1989-02-01");
+			 d2 = sdf.parse("12.01.2000.");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
-			 d3 = sdf.parse("1999-02-01");
+			 d3 = sdf.parse("30.08.2001.");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
-			 d4 = sdf.parse("2000-03-10");
+			 d4 = sdf.parse("07.06.1995.");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try {
+			 d5 = sdf.parse("06.05.1999.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d6 = sdf.parse("16.05.1999.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d7 = sdf.parse("19.10.2001.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d8 = sdf.parse("02.11.2000.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d9 = sdf.parse("11.10.2000.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d10 = sdf.parse("01.05.1999.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d11 = sdf.parse("11.07.1999.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d12 = sdf.parse("23.07.1999.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d13 = sdf.parse("12.12.2001.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d14 = sdf.parse("05.11.2001.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d15 = sdf.parse("10.09.1998.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d16 = sdf.parse("03.08.1998.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d17 = sdf.parse("01.05.1998.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d18 = sdf.parse("25.02.1996.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d19 = sdf.parse("11.05.1998.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d20 = sdf.parse("22.01.2001.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d21 = sdf.parse("31.12.2000.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d22 = sdf.parse("31.08.1998.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d23 = sdf.parse("21.07.1999.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d24 = sdf.parse("28.09.1998.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			 d25 = sdf.parse("29.02.2000.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d26 = sdf.parse("23.03.1999.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			 d27 = sdf.parse("21.10.2001.");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		this.studenti = new ArrayList<Student>();
 		
-		studenti.add(new Student("Mika", "Mikic", "ra172",d1 , "Petra Drapsina 10", "656448998", "mm@uns.ac.rs.com", "2018", 3, "s" , 9.2, new ArrayList<Ocena>()   ));
-		studenti.add(new Student("Deki", "Dekic", "ra170", d2 , "Petra Drapsina 1", "656448900", "mm32@uns.ac.rs.com", "2018", 2, "b" , 8.42  ,new ArrayList<Ocena>()  ));
-		studenti.add(new Student("Ristana", "Cukic", "ra12", d3  , "Petra Drapsina 10", "656448118", "xnm3@uns.ac.rs.com", "2018", 1, "b" , 7.06 ,new ArrayList<Ocena>()   ));
-		studenti.add(new Student("Dejana", "Pavlovic", "ra12", d4 , "Petra Drapsina 10", "656448268", "m2n@uns.ac.rs.com", "2017", 1, "s" , 6.06 ,new ArrayList<Ocena>()   ));
-		studenti.add(new Student("Mario", "Jocic", "ra173",d1 , "Potok ", "656448998", "makijatom@uns.ac.rs", "2018", 3, "s" , 6.02, new ArrayList<Ocena>()   ));
-
-
+		studenti.add(new Student("Marko", "Milosevic", "ra2",d1 , "Karađorđeva 83, Novi Sad", "021333555", "marko.milosevic@mailinator.com", "2020", 1, "b" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Marija", "Milic", "ra3", d2 , "Stražilovska 12, Novi Sad", "0215552222", "marija.milic@mailinator.com", "2019", 2, "s" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Nikola", "Nikolic", "ra3", d3  , "Knez Mihajlova 16, Beograd", "021135463", "nikola.nikolic@mailinator.com", "2017", 1, "b" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
+		studenti.add(new Student("Pera", "Peric", "ra134", d4 , "Gogoljeva 3, Novi Sad", "021903463", "pera.peric@mailinator.com", "2015", 3, "s" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Sofija", "Ilic", "ra5",d5 , "Miše Dimitrijevića 44, Novi Sad ", "021731067", "sofija.ilic@mailinator.com", "2019", 3, "b" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Martina", "Lukic", "ra8",d6 , "Vojvode Stepe 180, Beograd", "0114333800", "martina.lukic@mailinator.com", "2018", 3, "s" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Stojan", "Stojakovic", "ra10", d7 , "1300 Kaplara, Šabac", "0113130007", "stojan.stojakovic@mailinator.com", "2017", 1, "b" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Milan", "Milanovic", "ra12", d8  , "Surepova 12, Šabac", "015313061", "milan.milanovic@mailinator.com", "2017", 2, "s" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
+		studenti.add(new Student("Miroslav", "Milic", "ra16", d9 , "Milovana Glišića, Valjevo", "021351091", "miroslav.milic@mailinator.com", "2019", 2, "b" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Stefan", "Gojic", "ra21",d10 , "Bulevar Mihajla Pupina, Novi Sad ", "015324500", "stefan.gojic@mailinator.com", "2015", 3, "s" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Anastasija", "Jokic", "ra9",d11 , "Braće Ribnikar 12, Novi Sad", "0112333900", "anastasija.jokic@mailinator.com", "2020", 3, "b" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Bogdan", "Bogdanovic", "ra4", d12 , "Cara Dušana 42, Subotica", "021231114", "bogdan.bogdanovic@mailinator.com", "2017", 3, "s" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Ana", "Dabovic", "ra30", d13  , "Marka Kraljevića 1, Kikinda", "014303007", "ana.dabovic@mailinator.com", "2019", 1, "b" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
+		studenti.add(new Student("Mika", "Mikic", "ra1", d14 , "Nikole Stojanovića 2, Kraljevo", "015101909", "mika.mikic@mailinator.com", "2020", 1, "s" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Jovan", "Deretic", "ra11",d15 , "Marka Bratića 99, Niš ", "002200300", "jovan.deretic@mailinator.com", "2018", 4, "b" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Nikola", "Miskovic", "ra12",d16 , "Cara Dušana 12, Banja Luka", "022123456", "nikola.miskovic@mailinator.com", "2018", 4, "s" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Martin", "Stojanovic", "ra13", d17 , "Borisa Bačkog 1, Bijeljina", "024321775", "martin.stojanovic@mailinator.com", "2018", 4, "s" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Tomislav", "Novakovic", "ra14", d18  , "Mirka Maksića 10, Kruševac", "0111188379", "tomislav.novakovic@mailinator.com", "2018", 4, "b" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
+		studenti.add(new Student("Lena", "Ivic", "ra154", d19 , "Stari Most 6, Sremska Mitrovica", "024333555", "lena.ivic@mailinator.com", "2016", 4, "b" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Jovan", "Lazic", "ra23",d20 , "Nevesinjskih ustanika 10, Nevesinje ", "0251189479", "jovan.lazic@mailinator.com", "2020", 1, "b" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Isidora", "Mikic", "ra1",d21 , "Radničка 11, Novi Sad", "0111122366", "isidora.mikic@mailinator.com", "2019", 2, "b" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Vladimir", "Ilic", "sw4", d22 , "Miloša Obilića 1, Beograd", "0111122366", "vladimir.ilic@mailinator.com", "2014", 4, "b" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Mirko", "Alicic", "sw17", d23  , "Heroja Pinkija 112, Novi Sad", "0121122368", "mirko.alicic@mailinator.com", "2015", 3, "s" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
+		studenti.add(new Student("Milisav", "Perkovic", "sw17", d24 , "Pavla Bakića 26, Novi Sad", "0121122369", "milisav.pejkovic@mailinator.com", "2016", 4, "s" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Purisa", "Djordjevic", "sw27",d25 , "Pavla Papa 1, Novi Sad ", "0111543370", "purisa.djordjevic@mailinator.com", "2018", 2, "b" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Mikica", "Kovacevic", "ra226",d26 , "Valentina Vodnika 112, Novi Sad", "0111992371", "mikica.kovacevic@mailinator.com", "2017", 3, "s" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Milos", "Milic", "sw12", d27 , "Neznanog junaka 12, Beograd", "0118172372", "milos.milic@mailinator.com", "2020", 1, "s" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
+		
 	}
 
 	public List<Student> getStudenti() {
@@ -128,14 +315,14 @@ public class BazaStudenata {
 	public void dodajStudenta(String ime, String prezime, String brojIndeksa, Date i, String adresaStanovanja,
 			String kontaktTelefon, String mailAdresa, String j, int trenutnaGodinaStudija, String status,
 			double prosek) {
-		this.studenti.add(new Student(ime,prezime, brojIndeksa, i, adresaStanovanja, kontaktTelefon, mailAdresa, j, trenutnaGodinaStudija,status, prosek, new ArrayList<Ocena>()));
+		this.studenti.add(new Student(ime,prezime, brojIndeksa, i, adresaStanovanja, kontaktTelefon, mailAdresa, j, trenutnaGodinaStudija,status, prosek, new ArrayList<Ocena>(), new ArrayList<Predmet>() ));
 	}
 	
-	public void izmeniStudenta(String id, String ime, String prezime, String brojIndeksa, Date i, String adresaStanovanja,
+	public void izmeniStudenta( String ime, String prezime, String brojIndeksa, Date i, String adresaStanovanja,
 			String kontaktTelefon, String mailAdresa, String j, int trenutnaGodinaStudija, String status,
-			double prosek) {
-		for(Student st : studenti) {
-			if(st.getBrojIndeksa() == id) {
+			double prosek, List<Ocena> polozeni, List<Predmet> nepolozeni) {
+		for(Student st : this.studenti) {
+			if(st.getIndeks().equals(brojIndeksa+"-"+j) ) {
 				st.setIme(ime);
 				st.setPrezime(prezime);
 				st.setBrojIndeksa(brojIndeksa);
@@ -146,19 +333,22 @@ public class BazaStudenata {
 				st.setGodinaUpisa(j);
 				st.setTrenutnaGodinaStudija(trenutnaGodinaStudija);
 				st.setStatus(status);
+				st.spisakNepolozenihIspita = (ArrayList<Predmet>) nepolozeni;
+				st.spisakPolozenihIspita = (ArrayList<Ocena>) polozeni;
 			}
 		}
 	}
 	
 	public void izbrisiStudenta(String id) {
 		for(Student s : studenti) {
-			if(s.getBrojIndeksa() == id) {
+			if(s.getIndeks().equals(id)) {
 				studenti.remove(s);
 				break;
 			}
 		}
 	}
 
+	
 	
 	
 	

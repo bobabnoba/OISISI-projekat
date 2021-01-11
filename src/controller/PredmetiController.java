@@ -28,6 +28,8 @@ private static PredmetiController instance = null;
 			model.Profesor profesor, int espb, List<Student> polozili, List<Student> nisuPolozili ) {
 		List<Student> p = (List<Student>) polozili;
 		List<Student> np=  (List<Student>) nisuPolozili;
+		BazaPredmeta.getInstance().dodajPredmet(sifraPredmeta, nazivPredmeta, semestar, 2, profesor, espb, p, np);
+		MainFrame.getInstance().updateViewPred();
 	}
 	
 	public void izmeniPredmet(int rowSelectedIndex, String sifraPredmeta, String nazivPredmeta, Semestar semestar, String godinaStudija,

@@ -108,13 +108,7 @@ public class MainFrame extends JFrame {
 		rowStud = tabelaStudenata.getSelectedRow();
 		
 	}
-	public void azurirajPrikaz(String akcija, int vrednost) {
-		// azuriranje modela tabele, kao i njenog prikaza
-		AbstractTableModelStudenti model = (AbstractTableModelStudenti) tabelaStudenata.getModel();
-		model.fireTableDataChanged();
-		trs = new TableRowSorter<AbstractTableModelStudenti>(model);
-		validate();
-	}
+	
 	
 	//public static void setTab(int index) {TAB = index;}
 	//public static int getTab() {return TAB;}
@@ -150,6 +144,8 @@ public class MainFrame extends JFrame {
 	private JScrollPane showProfesoriTable() {
 		profTable = new ProfesoriTable();
 		JScrollPane spprof = new JScrollPane(profTable);
+		profTable.setAutoCreateRowSorter(true);
+
 		spprof.setBorder(new EmptyBorder(20, 20, 20, 20));
 		this.updateViewProf();
 		return spprof;
@@ -168,6 +164,13 @@ public class MainFrame extends JFrame {
     	model.fireTableDataChanged();
     	validate();
     }
+	public void azurirajPrikaz(String akcija, int vrednost) {
+		// azuriranje modela tabele, kao i njenog prikaza
+		AbstractTableModelStudenti model = (AbstractTableModelStudenti) tabelaStudenata.getModel();
+		model.fireTableDataChanged();
+		trs = new TableRowSorter<AbstractTableModelStudenti>(model);
+		validate();
+	}
 	
 	public void updateViewPred() {
 		ATMPredmeti model = (ATMPredmeti) predTable.getModel();
@@ -188,7 +191,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	public int selectedStud() {
-		return tabelaStudenata.getSelectedRow();
+		return tabelaStudenata.convertRowIndexToModel(tabelaStudenata.getSelectedRow());
 	}
 	
 	public boolean indexCheckStud() {
