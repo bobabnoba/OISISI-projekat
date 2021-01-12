@@ -18,7 +18,7 @@ public class ATMProfPredmeti extends AbstractTableModel {
 		
 		this.predmeti = predmeti;
 		kolone = new ArrayList<String>();
-		this.kolone.add("Šifra");
+		this.kolone.add("Å ifra");
 		this.kolone.add("Naziv");
 		this.kolone.add("Godina studija");
 		this.kolone.add("Semestar");
