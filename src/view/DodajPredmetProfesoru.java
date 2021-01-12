@@ -72,9 +72,11 @@ public class DodajPredmetProfesoru extends JDialog {
 		
 		model = new DefaultListModel<String>();
 		for(Predmet predmet : BazaPredmeta.getInstance().getPredmeti()) {
-			if(!profesor.getSifrePred().contains(predmet.getSifraPredmeta())) {
+			if(predmet.getPredmetniProfesor() == null) {		//dozvolimo samo predmete koje nemaju profesora
+				if(!profesor.getSifrePred().contains(predmet.getSifraPredmeta())) {
 					model.addElement(predmet.getNazivPredmeta());
 				}
+			}
 			}
 	
 		list = new JList<String>(model);
@@ -170,7 +172,6 @@ public class DodajPredmetProfesoru extends JDialog {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				//profesor.getPredmeti().add(BazaPredmeta.getInstance().findByName(row));
 				ProfesoriController.getInstance().dodajPredmetProfesoru(profesor, row);
 				ATMProfPredmeti modelPred = (ATMProfPredmeti) predmetiTable.getModel();
 				modelPred.fireTableDataChanged();
