@@ -56,13 +56,12 @@ private static ProfesoriTable instance = null;
 	public static void newFilter(String arg, int column) {
 		RowFilter<? super ATMProfesori, ? super Integer> rf = null;
 		try {
-			rf = RowFilter.regexFilter("(?i)" + arg, column); //ignore case
+			rf = RowFilter.regexFilter("(?i)" + arg, column);
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
 		getSorter().setRowFilter(rf);
 	}
-
 	public ATMProfesori getModel() {
 		return model;
 	}
