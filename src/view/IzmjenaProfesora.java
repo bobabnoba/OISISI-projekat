@@ -127,6 +127,9 @@ public class IzmjenaProfesora extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JFrame frame = new JFrame();
+				if (predmetiTable.getSelectedRow()<0) {
+					JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet  koji zelite ukloniti!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+				}else {
 				String[] options = new String[2];
 				options[0] = new String("Da");
 				options[1] = new String("Ne");
@@ -145,7 +148,7 @@ public class IzmjenaProfesora extends JDialog {
 			    }
 
 			}
-			
+			}
 			
 		});
 		

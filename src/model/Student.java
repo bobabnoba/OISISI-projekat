@@ -25,6 +25,7 @@ public class Student {
 	private int trenutnaGodinaStudija;
 	private String status;
 	private double prosek; 
+	ArrayList<Predmet> spisakPolozenihPredmeta = new ArrayList<Predmet>();
     ArrayList<Ocena> spisakPolozenihIspita = new ArrayList<Ocena>();
 	ArrayList<Predmet> spisakNepolozenihIspita = new ArrayList<Predmet>();
 	
@@ -176,6 +177,14 @@ public class Student {
 	}
 	public void removePolozeni(Ocena o) {
 		this.spisakPolozenihIspita.remove(o);
+	}
+	
+	
+	public ArrayList<Predmet> getSpisakPolozenihPredmeta(){
+		for(Ocena o : this.getSpisakPolozenihIspita()) {
+			this.spisakPolozenihPredmeta.add(o.getPredmet());
+		}
+		return this.spisakPolozenihPredmeta;
 	}
 	
 	public ArrayList<Predmet> getSpisakNepolozenihIspita() {

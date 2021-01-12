@@ -55,5 +55,9 @@ public class StudentiController {
 	}
 	
 	
+	public void dodajPredmetStudentu(Student student, String ispis) {
+		BazaStudenata.getInstance().dodajPredmetStudentu(student,ispis);
+	}
+	
 }
 
