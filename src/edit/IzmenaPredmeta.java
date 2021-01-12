@@ -398,6 +398,17 @@ public class IzmenaPredmeta extends JFrame{
 			
 		});
 		
+		minus.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				labProf.setText("");
+				labProf.setVisible(false);
+				predmet.setPredmetniProfesor(null);
+				plus.setEnabled(true);
+				minus.setEnabled(false);
+			}
+		});
 		
 		
 		
