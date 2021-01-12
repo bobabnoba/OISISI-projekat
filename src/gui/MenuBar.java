@@ -23,6 +23,7 @@ import edit.IzmenaPredmeta;
 import edit.IzmeniStudenta;
 import view.DodajProfesora;
 import view.IzmjenaProfesora;
+import view.ObrisiPredmet;
 import gui.DodajPredmet;
 import model.BazaPredmeta;
 import model.BazaProfesora;
@@ -171,7 +172,14 @@ public class MenuBar extends JMenuBar implements ActionListener{
 				    }
 					break;
 				case 2:
-					
+					if(!MainFrame.getInstance().indexCheckPred()) {
+						int row = MainFrame.getInstance().selectedPred();
+						Predmet predmet = BazaPredmeta.getInstance().getRow(row);
+						ObrisiPredmet op = new ObrisiPredmet(predmet);
+						op.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet koji želite da uklonite!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+					}
 					break;
 				default:
 					break;
