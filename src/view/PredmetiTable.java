@@ -46,35 +46,24 @@ public class PredmetiTable extends JTable {
 			sorter.setSortable(i, true);
 		}
 		this.setRowSorter(sorter);
-		sortKeys = (List<SortKey>) sorter.getSortKeys();
-		 icon = new JLabel();
 	}
 		
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 
 		Component c = super.prepareRenderer(renderer, row, column);
 		if (isRowSelected(row)) {
-			c.setBackground(Color.MAGENTA);
+			c.setBackground(Color.LIGHT_GRAY);
 		} else {
 			c.setBackground(Color.WHITE);
 		}
-		 for (SortKey sortKey : sortKeys) {
-			 	ascIcon = UIManager.getIcon("Table.ascendingSortIcon");
-			 	descIcon = UIManager.getIcon("Table.descendingSortIcon");
-	            if (sortKey.getColumn() == this.convertColumnIndexToModel(column)) {
-	            	SortOrder o = sortKey.getSortOrder();
-	                icon.setIcon(o == SortOrder.ASCENDING ? ascIcon : descIcon);
-	                this.add(icon);
-	                break;
-	           }
-		 }
+		
 		return c;
 	}
 	
 	public static void newFilter(String arg) {
 		RowFilter<? super ATMPredmeti, ? super Integer> rf = null;
 		try {
-			//uvijek samo po nazivu predmeta /kolona1/
+			// samo po nazivu predmeta /kolona1/
 			rf = RowFilter.regexFilter("(?i)" + arg, 1);
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
