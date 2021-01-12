@@ -29,6 +29,7 @@ public class Student {
     ArrayList<Ocena> spisakPolozenihIspita = new ArrayList<Ocena>();
 	ArrayList<Predmet> spisakNepolozenihIspita = new ArrayList<Predmet>();
 	
+	
 	public Student() {}
 	
 	
@@ -177,6 +178,10 @@ public class Student {
 	}
 	public void removePolozeni(Ocena o) {
 		this.spisakPolozenihIspita.remove(o);
+	}
+	
+	public void removeNepolozeni(Predmet p) {
+		this.spisakNepolozenihIspita.remove(p);
 	}
 	
 	
