@@ -41,6 +41,17 @@ private static BazaPredmeta instance = null;
 		return predmeti;
 	}
 	
+	
+	public Predmet getPredmetBySifra(String sifra) {
+		Predmet pr = null;
+		for(Predmet p : this.predmeti) {
+			if(p.getSifraPredmeta().equals(sifra)) {
+				pr = p;
+			}
+		}
+		return pr;
+	}
+	
 	public Predmet getPredmet(int index) {
 		return predmeti.get(index);
 	}

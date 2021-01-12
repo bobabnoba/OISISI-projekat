@@ -18,25 +18,34 @@ import java.util.Date;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import controller.StudentiController;
+import gui.MainFrame;
+import model.BazaPredmeta;
 import model.Ocena;
 import model.Polozeni;
 import model.Predmet;
 import model.Student;
 import view.ATMNepolozeni;
+import view.ATMPredmeti;
 import view.NepolozeniTable;
 import view.PolozeniJTable;
+import view.PredmetiTable;
 public class IzmeniStudenta extends JFrame {
 
 
@@ -55,6 +64,7 @@ public class IzmeniStudenta extends JFrame {
 		String status = "";
 		double prosek; 
 		
+		private String row;
 		private static PolozeniJTable pol;
 		private JTabbedPane tabs;
 		private JTextField txtIme;
@@ -685,12 +695,12 @@ public IzmeniStudenta(Student student) {
 	
 	JPanel nepolozeniTab = showNepolozeni(student);
 
-	tabs.add("izmena", izmena);
+	tabs.add("Informacije", izmena);
 	polozeni.add(polozeniTop);
 	polozeni.add(center);
 	polozeni.add(polozeniBot);
 	polozeni.add(polozeniBot2);
-	tabs.add("polozeni", polozeni);
+	tabs.add("Polozeni", polozeni);
 	tabs.add("Nepoloženi", nepolozeniTab);
 	
 	pack();
@@ -705,6 +715,11 @@ public IzmeniStudenta(Student student) {
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 			JFrame frame1 = new JFrame();
+			
+			if(pol.getSelectedRow() < 0) {
+				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet za koji zelite ponistiti ocenu!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+			}else {
+			
 			String[] options1 = new String[2];
 			options1[0] = new String("Da");
 			options1[1] = new String("Ne");
@@ -722,7 +737,7 @@ public IzmeniStudenta(Student student) {
 		    }
 
 		}
-		
+		}
 	});
 }
 
@@ -753,6 +768,79 @@ public JPanel showNepolozeni(Student student) {
 	JButton btnObrisi = new JButton("Obriši");
 	JButton btnPolaganje = new JButton("Polaganje");
 
+	
+	
+	
+	JDialog diag = new JDialog();
+	JPanel bot = new JPanel();
+	diag.setSize(500,500);
+	JPanel panel1 = new JPanel();
+	diag.add(panel1);
+	diag.add(bot, BorderLayout.SOUTH);
+	
+	JButton ok = new JButton("Dodaj");
+	JButton cancel = new JButton("Odustani");
+	bot.add(ok);
+	bot.add(cancel);
+	
+	diag.setLocationRelativeTo(MainFrame.getInstance());
+	
+	
+	
+	DefaultListModel<String> model = new DefaultListModel<String>();			
+	for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {					
+			if(!(student.getSpisakPolozenihPredmeta().contains(p)) && !student.getSpisakNepolozenihIspita().contains(p)) {
+				model.addElement(p.getSifraPredmeta() + "-" + p.getNazivPredmeta());
+			}			
+		
+	}
+	
+	JList<String> list = new JList<String> (model);
+	JScrollPane scrollPane = new JScrollPane(list);
+	
+	row = "";
+	
+	list.addListSelectionListener(new ListSelectionListener() {
+		@Override
+		public void valueChanged(ListSelectionEvent e) {
+			if(!e.getValueIsAdjusting()) {
+				
+				 row = list.getSelectedValue();
+			}
+		}
+	});
+	
+	panel1.add(scrollPane);	
+	
+	btnDodaj.addActionListener(new ActionListener() {		
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			
+			diag.setVisible(true);
+		}
+		
+	});
+	
+	
+	ok.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			StudentiController.getInstance().dodajPredmetStudentu(student, row);
+			updateNepol();
+			model.removeElement(row);
+			list.updateUI();
+			diag.dispose();
+			}		
+	});
+	
+	
+	
 	btnPolaganje.addActionListener(new ActionListener() {
 
 		@Override
