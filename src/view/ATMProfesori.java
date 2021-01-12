@@ -17,12 +17,13 @@ public class ATMProfesori extends AbstractTableModel {
 	}
 
 	@Override
-	public Object getValueAt(int rowIndex, int columnIndex) {
-		return BazaProfesora.getInstance().getValueAt(rowIndex, columnIndex);
+	public Object getValueAt(int arg0, int arg1) {
+		return BazaProfesora.getInstance().getValueAt(arg0, arg1);
 	}
 	
 	public String getColumnName(int column) {
 		return BazaProfesora.getInstance().getColumnName(column);
 	}
+	
 	
 }

@@ -90,9 +90,9 @@ public class BazaProfesora {
 		Profesor profesor = this.profesori.get(row);
 		switch(column) {
 		case 0:
-			return profesor.getIme();
-		case 1:
 			return profesor.getPrezime();
+		case 1:
+			return profesor.getIme();
 		case 2:
 			return profesor.getTitula().getNaziv();
 		case 3: 
