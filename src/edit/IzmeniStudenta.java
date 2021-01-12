@@ -37,16 +37,14 @@ import javax.swing.event.ListSelectionListener;
 import controller.StudentiController;
 import gui.MainFrame;
 import model.BazaPredmeta;
-import model.BazaStudenata;
 import model.Ocena;
 import model.Polozeni;
 import model.Predmet;
 import model.Student;
 import view.ATMNepolozeni;
-import view.ATMPredmeti;
 import view.NepolozeniTable;
 import view.PolozeniJTable;
-import view.PredmetiTable;
+import view.UpisOcjene;
 public class IzmeniStudenta extends JFrame {
 
 
@@ -66,7 +64,7 @@ public class IzmeniStudenta extends JFrame {
 		double prosek; 
 		private DefaultListModel<String> model;
 		private String row;
-		private static PolozeniJTable pol;
+		public static PolozeniJTable pol;		//izmijenio S2 zbog azuriranja tabele pri dodavanju polozenog predmeta
 		private JTabbedPane tabs;
 		private JTextField txtIme;
 		private JTextField txtPrezime;
@@ -78,7 +76,7 @@ public class IzmeniStudenta extends JFrame {
 		private JTextField txtDatumRodjenja;
 		private Date datumRodjenjaa = new Date();
 		
-		private static NepolozeniTable nepolozeniTable;
+		public static NepolozeniTable nepolozeniTable;
 
 	
 public IzmeniStudenta(Student student) {		
@@ -882,9 +880,9 @@ public JPanel showNepolozeni(Student student) {
 			int row = nepolozeniTable.getSelectedRow();
 			if(row != -1) {
 				Predmet predmet = new ATMNepolozeni(student.getSpisakNepolozenihIspita()).getSelectedPredmet(row);
-				//UpisOcjene uo = new UpisOcjene(predmet, student, nepolozeniTable);
-				//updateNepol();
-				//uo.setVisible(true);
+				UpisOcjene uo = new UpisOcjene(predmet, student);
+				updateNepol();
+				uo.setVisible(true);
 			} else {
 				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet za koji unosite ocjenu!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
 				
