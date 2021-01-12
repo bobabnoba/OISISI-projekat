@@ -224,6 +224,7 @@ public class MenuBar extends JMenuBar implements ActionListener{
 						+ " <u>Dodavanje profesora predmetu:</u> nakon pritiska na + automatski se dodaje profesor. <br>"
 						+ "<u>Ponistavanje ocene:</u> nakon pritiska na 'DA' automatski se ponistava ocena i ispisuje novi prosek.<br>"
 						+ "<u>Pretraga studenta:</u> pretraga se vrsi po prezimenu -> imenu -> broju indeksa. Enter u prazno polje vraca celu listu <br>"
+						+ "<u> Dodavanje predmeta studentu: </u> predmet se dodaje automatski pritiskon na 'dodaj' <br>"
 						+ "</html>"));
 				dialog.setVisible(true);
 				

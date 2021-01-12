@@ -37,6 +37,7 @@ import javax.swing.event.ListSelectionListener;
 import controller.StudentiController;
 import gui.MainFrame;
 import model.BazaPredmeta;
+import model.BazaStudenata;
 import model.Ocena;
 import model.Polozeni;
 import model.Predmet;
@@ -63,7 +64,7 @@ public class IzmeniStudenta extends JFrame {
 		int trenutnaGodinaStudija;
 		String status = "";
 		double prosek; 
-		
+		private DefaultListModel<String> model;
 		private String row;
 		private static PolozeniJTable pol;
 		private JTabbedPane tabs;
@@ -77,7 +78,7 @@ public class IzmeniStudenta extends JFrame {
 		private JTextField txtDatumRodjenja;
 		private Date datumRodjenjaa = new Date();
 		
-		private NepolozeniTable nepolozeniTable;
+		private static NepolozeniTable nepolozeniTable;
 
 	
 public IzmeniStudenta(Student student) {		
@@ -770,10 +771,11 @@ public JPanel showNepolozeni(Student student) {
 
 	
 	
-	
+	// NEPOLOZENI ---------------------------------------------------------------------------
+
 	JDialog diag = new JDialog();
 	JPanel bot = new JPanel();
-	diag.setSize(500,500);
+	diag.setSize(300,300);
 	JPanel panel1 = new JPanel();
 	diag.add(panel1);
 	diag.add(bot, BorderLayout.SOUTH);
@@ -785,15 +787,17 @@ public JPanel showNepolozeni(Student student) {
 	
 	diag.setLocationRelativeTo(MainFrame.getInstance());
 	
+	cancel.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			diag.dispose();
+
+		}
+	});
 	
-	
-	DefaultListModel<String> model = new DefaultListModel<String>();			
-	for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {					
-			if(!(student.getSpisakPolozenihPredmeta().contains(p)) && !student.getSpisakNepolozenihIspita().contains(p)) {
-				model.addElement(p.getSifraPredmeta() + "-" + p.getNazivPredmeta());
-			}			
-		
-	}
+	 initModel(student);
 	
 	JList<String> list = new JList<String> (model);
 	JScrollPane scrollPane = new JScrollPane(list);
@@ -816,14 +820,11 @@ public JPanel showNepolozeni(Student student) {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-			
+			// TODO Auto-generated method stub			
 			diag.setVisible(true);
-		}
-		
+			
+		}		
 	});
-	
 	
 	ok.addActionListener(new ActionListener() {
 
@@ -831,19 +832,47 @@ public JPanel showNepolozeni(Student student) {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			
-			
+			if (row!= "") {
 			
 			StudentiController.getInstance().dodajPredmetStudentu(student, row);
 			updateNepol();
 			model.removeElement(row);
 			list.updateUI();
 			diag.dispose();
-			}		
-		
+			}else {
+				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet koji zelite dodati studentu!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+			}
+		}
 	});
 	
+	btnObrisi.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			JFrame frame = new JFrame();
+
+			if (nepolozeniTable.getSelectedRow()<0) {
+				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet  koji zelite ukloniti!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+			}else {
+				String[] options = new String[2];
+				options[0] = new String("Da");
+				options[1] = new String("Ne");
+				int n = JOptionPane.showOptionDialog(frame.getContentPane(),"Da li ste sigurni da zelite da uklonite predmet? Prozor ce se zatim zatvoriti","Uklanjanje predmeta", 0,JOptionPane.INFORMATION_MESSAGE,null,options,null);				   
+				if(n == JOptionPane.YES_OPTION) {
+			student.removeNepolozeni(ATMNepolozeni.getRow(IzmeniStudenta.nepolozeniTable.getSelectedRow()));
+			
+			updateNepol();
+			list.updateUI();
+			dispose();
+				}
+				 if(n == JOptionPane.NO_OPTION) {
+			          return;
+			    }
+		}	}
+	});
 	
-	
+	//  ---------------------------------------------------------------------------
 	btnPolaganje.addActionListener(new ActionListener() {
 
 		@Override
@@ -858,7 +887,7 @@ public JPanel showNepolozeni(Student student) {
 				//uo.setVisible(true);
 			} else {
 				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet za koji unosite ocjenu!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
-
+				
 			}
 		}
 	});
@@ -884,6 +913,17 @@ public void updateNepol() {
 	ATMNepolozeni model = (ATMNepolozeni) nepolozeniTable.getModel();
 	model.fireTableDataChanged();
 	validate();
+}
+
+public void initModel(Student student) {
+	model = new DefaultListModel<String>();			
+	for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {					
+			if(!(student.getSpisakPolozenihPredmeta().contains(p)) && !student.getSpisakNepolozenihIspita().contains(p)) {
+				model.addElement(p.getSifraPredmeta() + "-" + p.getNazivPredmeta());
+			}			
+		
+	}
+	
 }
 
 }

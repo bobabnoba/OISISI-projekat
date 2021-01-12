@@ -374,12 +374,12 @@ public class BazaStudenata {
 	
 	public void dodajPredmetStudentu(Student student, String ispis) {
 		
-		String[] str = ispis.split("-", 2);
-		if (ispis == "") {
+		
+		if (ispis == "" || ispis == null) {
 			JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet koji zelite dodati studentu!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
 
 		}else {
-		
+			String[] str = ispis.split("-", 2);
 		this.getStudentByIndeks(student.getIndeks()).getSpisakNepolozenihIspita().add(BazaPredmeta.getInstance().getPredmetBySifra(str[0]));
 	}}
 	
