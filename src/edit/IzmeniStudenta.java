@@ -831,12 +831,15 @@ public JPanel showNepolozeni(Student student) {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			
+			
+			
 			StudentiController.getInstance().dodajPredmetStudentu(student, row);
 			updateNepol();
 			model.removeElement(row);
 			list.updateUI();
 			diag.dispose();
 			}		
+		
 	});
 	
 	
