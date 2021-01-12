@@ -56,6 +56,7 @@ public class DeleteEntityAction extends AbstractAction {
 		    if(n1 == JOptionPane.NO_OPTION) {
 		          return;
 		    }
+		    break;
 		case 2: 
 			if(!MainFrame.getInstance().indexCheckPred()) {
 				int row = MainFrame.getInstance().selectedPred();
@@ -63,7 +64,7 @@ public class DeleteEntityAction extends AbstractAction {
 				ObrisiPredmet op = new ObrisiPredmet(predmet);
 				op.setVisible(true);
 			} else {
-				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet koji želite da uklonite!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet koji Å¾elite da uklonite!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
 			}
 			break;
 		default: 

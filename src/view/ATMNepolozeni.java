@@ -17,7 +17,7 @@ public class ATMNepolozeni extends AbstractTableModel {
 		
 		this.predmeti = predmeti;
 		kolone = new ArrayList<String>();
-		this.kolone.add("Šifra predmeta");
+		this.kolone.add("Å ifra predmeta");
 		this.kolone.add("Naziv predmeta");
 		this.kolone.add("ESPB");
 		this.kolone.add("Godina studija");

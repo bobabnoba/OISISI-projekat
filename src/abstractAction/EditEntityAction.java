@@ -37,7 +37,7 @@ public class EditEntityAction  extends AbstractAction {
         	is.setLocationRelativeTo(MainFrame.getInstance());
         	is.setVisible(true);
 			} else {
-				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati studenta kog želite da editujete!", "Profesor nije izabran!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati studenta kog Å¾elite da editujete!", "Student nije izabran!", JOptionPane.ERROR_MESSAGE);
 
 			}
         	break;
@@ -49,7 +49,7 @@ public class EditEntityAction  extends AbstractAction {
 			ip.setLocationRelativeTo(MainFrame.getInstance());
 			ip.setVisible(true);
 		} else {
-			JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati profesora kog želite da editujete!", "Profesor nije izabran!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati profesora kog Å¾elite da editujete!", "Profesor nije izabran!", JOptionPane.ERROR_MESSAGE);
 		}
 		break;
 	case 2:

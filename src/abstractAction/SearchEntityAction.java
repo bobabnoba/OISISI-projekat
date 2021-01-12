@@ -85,7 +85,7 @@ public class SearchEntityAction extends AbstractAction {
 		case 1:
 			String[] split = Toolbar.textField.getText().trim().split(" ");
 			if(split.length > 2) {
-				JOptionPane.showMessageDialog(null, "Argument pretrage mora biti u formatu: dio_prezimena [dio_imena]!","Pogre�an unos", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Argument pretrage mora biti u formatu: prezime [ime]!","Pogrešan unos", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			if(split.length == 0) {
@@ -104,7 +104,7 @@ public class SearchEntityAction extends AbstractAction {
 		case 2:
 			String[] arg = Toolbar.textField.getText().trim().split(" ");
 			if(arg.length > 1) {
-				JOptionPane.showMessageDialog(null, "Argument pretrage mora biti u formatu: dio_naziva!","Pogre�an unos", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Argument pretrage mora biti u formatu: naziv!","Pogrešan unos", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			if(arg.length == 0) {

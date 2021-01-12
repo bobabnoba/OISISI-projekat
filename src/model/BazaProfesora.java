@@ -146,19 +146,6 @@ public class BazaProfesora {
 					if(pred.getSifraPredmeta().equals(predmet.getSifraPredmeta())){
 						zaBrisati.add(pred);
 					}	
-					
-					//p.getPredmeti().removeIf(n -> pred.getSifraPredmeta().equals(predmet.getSifraPredmeta()));
-					
-						
-					//pr = (ArrayList<Predmet>) p.getPredmeti();
-					//pr.removeIf(n -> (pred.getSifraPredmeta().equals(predmet.getSifraPredmeta())));
-					
-					//if(pred.getSifraPredmeta().equals(predmet.getSifraPredmeta())) {
-					//	System.out.println(" iste sifre \n");
-
-						//ArrayList<Predmet> pr = (ArrayList<Predmet>) p.getPredmeti();
-						//pr.removeIf(n -> pred.getSifraPredmeta().equals(predmet.getSifraPredmeta()));
-						//for(Predmet predmett : p.getPredmeti()) System.out.println(predmett);
 				}
 
 				for(Predmet p2 : zaBrisati) {

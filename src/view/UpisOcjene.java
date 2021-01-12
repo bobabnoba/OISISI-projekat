@@ -82,7 +82,7 @@ public class UpisOcjene extends JDialog {
 					datum = sdf.parse(tfDatum.getText());
 					btnOK.setEnabled(true);
 				} catch (ParseException ex) {
-					JOptionPane.showMessageDialog(null, "Datum unesite u formatu (dd.MM.yyyy.)", "Greška", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Datum unesite u formatu (dd.MM.yyyy.)", "GreÅ¡ka", JOptionPane.ERROR_MESSAGE);
 					ex.printStackTrace();
 					return;
 				}
@@ -108,7 +108,7 @@ public class UpisOcjene extends JDialog {
 			
 			setLayout(new BorderLayout());
 			
-			lblSifra = new JLabel("Šifra*");
+			lblSifra = new JLabel("ï¿½ifra*");
 			tfSifra = new JTextField(20);
 			tfSifra.setText(p.getSifraPredmeta());
 			tfSifra.setEditable(false);
@@ -207,7 +207,6 @@ public class UpisOcjene extends JDialog {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					//TODO: ukloniti predmet s liste nepolozenih i dodati ga u listu polozenih!
 					s.getSpisakNepolozenihIspita().remove(p);
 					ATMNepolozeni model = (ATMNepolozeni) IzmeniStudenta.nepolozeniTable.getModel();
 					model.fireTableDataChanged();

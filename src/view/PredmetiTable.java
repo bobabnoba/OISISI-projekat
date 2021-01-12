@@ -28,12 +28,8 @@ public class PredmetiTable extends JTable {
 	
 	private ATMPredmeti model;
 	private static TableRowSorter<ATMPredmeti> sorter;
-	private List<SortKey> sortKeys;
-	private Icon ascIcon;
-	private Icon descIcon;
-	private JLabel icon;
 	
-	@SuppressWarnings("unchecked")
+	
 	public PredmetiTable() {
 		this.setRowSelectionAllowed(true);
 		this.getTableHeader().setReorderingAllowed(false);

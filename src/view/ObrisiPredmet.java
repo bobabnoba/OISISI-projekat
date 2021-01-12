@@ -64,7 +64,7 @@ public class ObrisiPredmet extends JDialog {
 		
 		labela = new JLabel();
 		labela.setBackground(Color.WHITE);
-		labela.setText("Da li ste sigurni da želite da uklonite predmet?");
+		labela.setText("Da li ste sigurni da Å¾elite da uklonite predmet?");
 		
 		
 		panelLabela.add(labela);
@@ -101,8 +101,6 @@ public class ObrisiPredmet extends JDialog {
 				PredmetiController.getInstance().ukloniPredmetIzTabele(predmet);
 				ProfesoriController.getInstance().ukloniSaProfesora(predmet);
 				
-					
-					
 					dispose();
 			}
 		});

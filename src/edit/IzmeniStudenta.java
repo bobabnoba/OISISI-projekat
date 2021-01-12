@@ -700,7 +700,7 @@ public IzmeniStudenta(Student student) {
 	polozeni.add(polozeniBot);
 	polozeni.add(polozeniBot2);
 	tabs.add("Polozeni", polozeni);
-	tabs.add("Nepoloûeni", nepolozeniTab);
+	tabs.add("Nepolo≈æeni", nepolozeniTab);
 	
 	pack();
 
@@ -764,7 +764,7 @@ public JPanel showNepolozeni(Student student) {
 	//nepol.setBorder(new EmptyBorder(20, 30, 30, 30));
 	JPanel buttons = new JPanel();
 	JButton btnDodaj = new  JButton("Dodaj");
-	JButton btnObrisi = new JButton("Obriöi");
+	JButton btnObrisi = new JButton("Obri≈°i");
 	JButton btnPolaganje = new JButton("Polaganje");
 
 	

@@ -19,7 +19,7 @@ public class NepolozeniTable extends JTable {
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 		Component c = super.prepareRenderer(renderer, row, column);
 		if (isRowSelected(row)) {
-			c.setBackground(Color.MAGENTA);
+			c.setBackground(Color.LIGHT_GRAY);
 		} else {
 			c.setBackground(Color.WHITE);
 		}

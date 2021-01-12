@@ -64,9 +64,7 @@ public class IzmjenaProfesora extends JDialog {
 	
 	private JButton btnOK;
 	private JButton btnCancel;
-	
-	//private ProfesoriTable profesoriTable = new ProfesoriTable();
-	
+		
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
 	
 	
@@ -86,7 +84,6 @@ public class IzmjenaProfesora extends JDialog {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		createTabbedPane(profesor);
-		//initComponents(profesor);
 	}
 	
 	private void createTabbedPane(Profesor profesor) {
@@ -111,9 +108,6 @@ public class IzmjenaProfesora extends JDialog {
 	public JPanel showPredmeti(Profesor profesor) {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		//predmetiTable = new ProfPredmetiTable(profesor.getPredmeti());
-		//updatePred();
-		//ProfPredmetiTable predmetiTable = new ProfPredmetiTable(profesor.getPredmeti());
 		JScrollPane predmeti = showPredmetiTable(profesor);
 		//predmeti.setBackground(Color.WHITE);
 		//predmeti.setBorder(new EmptyBorder(20, 30, 30, 30));
@@ -128,12 +122,12 @@ public class IzmjenaProfesora extends JDialog {
 				// TODO Auto-generated method stub
 				JFrame frame = new JFrame();
 				if (predmetiTable.getSelectedRow()<0) {
-					JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet  koji zelite ukloniti!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet  koji želite ukloniti!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
 				}else {
 				String[] options = new String[2];
 				options[0] = new String("Da");
 				options[1] = new String("Ne");
-				int n = JOptionPane.showOptionDialog(frame.getContentPane(),"Da li ste sigurni da zelite da uklonite predmet?","Uklanjanje predmeta", 0,JOptionPane.INFORMATION_MESSAGE,null,options,null);				   
+				int n = JOptionPane.showOptionDialog(frame.getContentPane(),"Da li ste sigurni da želite da uklonite predmet?","Uklanjanje predmeta", 0,JOptionPane.INFORMATION_MESSAGE,null,options,null);				   
 				if(n == JOptionPane.YES_OPTION) {
 				int row = predmetiTable.convertRowIndexToModel(predmetiTable.getSelectedRow());
 			    Predmet predmet = ATMProfPredmeti.getRow(row);
@@ -226,7 +220,7 @@ public class IzmjenaProfesora extends JDialog {
 		tfIme.setText(p.getIme());
 		tfIme.addFocusListener(focus);
 		
-		lblDatRodj = new JLabel("Datum rodjenja*");
+		lblDatRodj = new JLabel("Datum rođenja*");
 		tfDatRodj = new JTextField(30);
 		tfDatRodj.setText(sdf.format(p.getDatumRodjenja()));
 		tfDatRodj.addFocusListener(focus);
@@ -241,7 +235,7 @@ public class IzmjenaProfesora extends JDialog {
 		tfEmail.setText(p.getEmail());
 		tfEmail.addFocusListener(focus);
 		
-		lblBrLK = new JLabel("Broj licne karte*");
+		lblBrLK = new JLabel("Broj lične karte*");
 		tfBrLK = new JTextField(30);
 		tfBrLK.setText(p.getBrojLicneKarte());
 		tfBrLK.addFocusListener(focus);
@@ -341,7 +335,7 @@ btnOK.addMouseListener(new MouseListener() {
 				try {
 					datumRodjenja = sdf.parse(tfDatRodj.getText());
 				} catch (ParseException ex) {
-					JOptionPane.showMessageDialog(null, "Datum unesite u formatu (dd.MM.yyyy.)", "Gre�ka", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Datum unesite u formatu (dd.MM.yyyy.)!", "Greška", JOptionPane.ERROR_MESSAGE);
 					ex.printStackTrace();
 					return;
 				}

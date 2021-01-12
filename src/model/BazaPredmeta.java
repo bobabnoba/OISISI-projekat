@@ -22,7 +22,7 @@ private static BazaPredmeta instance = null;
 		initPred();
 		
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("Šifra predmeta");
+		this.kolone.add("Å ifra predmeta");
 		this.kolone.add("Naziv predmeta");
 		this.kolone.add("Broj ESPB");
 		this.kolone.add("Godina studija");

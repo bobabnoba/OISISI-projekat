@@ -58,7 +58,7 @@ public class DodajProfesora extends JDialog{
 	private JButton btnOK;
 	private JButton btnCancel;
 	
-	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
 	
 	public DodajProfesora() {
 		
@@ -116,7 +116,7 @@ public class DodajProfesora extends JDialog{
 		tfIme = new JTextField(30);
 		tfIme.addFocusListener(focus);
 		
-		lblDatRodj = new JLabel("Datum rodjenja*");
+		lblDatRodj = new JLabel("Datum rođenja*");
 		tfDatRodj = new JTextField(30);
 		tfDatRodj.addFocusListener(focus);
 		
@@ -128,7 +128,7 @@ public class DodajProfesora extends JDialog{
 		tfEmail = new JTextField(30);
 		tfEmail.addFocusListener(focus);
 		
-		lblBrLK = new JLabel("Broj licne karte*");
+		lblBrLK = new JLabel("Broj lične karte*");
 		tfBrLK = new JTextField(30);
 		tfBrLK.addFocusListener(focus);
 		
@@ -219,14 +219,10 @@ btnOK.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				/*if(tfPrezime.getText().trim().isEmpty() || tfIme.getText().trim().isEmpty() || tfDatRodj.getText().trim().isEmpty() || tfAdresa.getText().trim().isEmpty() || tfEmail.getText().trim().isEmpty() || tfBrLK.getText().trim().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Sva polja su obavezna!", "GreÅ¡ka", JOptionPane.ERROR_MESSAGE);
-					return;
-				}*/
 			
 				for(Profesor pr: BazaProfesora.getInstance().getProfesori()) {
 					if(tfBrLK.getText().trim().equals(pr.getBrojLicneKarte())) {
-						JOptionPane.showMessageDialog(null,"VeÄ‡ postoji profesor sa unesenim brojem liÄ�ne karte!", "GreÅ¡ka", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null,"Već postoji profesor sa unesenim brojem lične karte!", "Greška", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 				}
@@ -235,7 +231,7 @@ btnOK.addMouseListener(new MouseListener() {
 				try {
 					datumRodjenja = sdf.parse(tfDatRodj.getText());
 				} catch (ParseException ex) {
-					JOptionPane.showMessageDialog(null, "Datum unesite u formatu (dd/mm/yyyy)", "GreÅ¡ka", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Datum unesite u formatu (dd.mm.yyyy.)!", "Greška", JOptionPane.ERROR_MESSAGE);
 					ex.printStackTrace();
 					return;
 				}
@@ -246,10 +242,6 @@ btnOK.addMouseListener(new MouseListener() {
 				Zvanje zvanje = Zvanje.valueOf(zvanje_str);
 					
 				ProfesoriController.getInstance().dodajProfesora(tfPrezime.getText(), tfIme.getText(), datumRodjenja, tfAdresa.getText(), tfEmail.getText(), tfBrLK.getText(), titula, zvanje, new ArrayList<Predmet>());
-				
-				/*for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
-					System.out.println(p.toString());
-				}*/
 				
 				dispose();
 				
