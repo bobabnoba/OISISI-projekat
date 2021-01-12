@@ -99,7 +99,7 @@ public class MenuBar extends JMenuBar implements ActionListener{
 			        	is.setLocationRelativeTo(MainFrame.getInstance());
 			        	is.setVisible(true);
 						} else {
-							JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati studenta kog želite da editujete!", "Student nije izabran!", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati studenta kog Å¾elite da editujete!", "Student nije izabran!", JOptionPane.ERROR_MESSAGE);
 
 						}
 			        	break;
@@ -112,7 +112,7 @@ public class MenuBar extends JMenuBar implements ActionListener{
 								ip.setLocationRelativeTo(MainFrame.getInstance());
 								ip.setVisible(true);
 							} else {
-								JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati profesora kog želite da editujete!", "Profesor nije izabran!", JOptionPane.ERROR_MESSAGE);
+								JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati profesora kog Å¾elite da editujete!", "Profesor nije izabran!", JOptionPane.ERROR_MESSAGE);
 							}
 							break;
 							
@@ -125,7 +125,7 @@ public class MenuBar extends JMenuBar implements ActionListener{
 						ip.setVisible(true);
 						ip.setPreferredSize(new Dimension(500,600));
 					} else {
-						JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet koji želite da editujete!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet koji Å¾elite da editujete!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
 					}
 					break;
 				}
@@ -205,8 +205,8 @@ public class MenuBar extends JMenuBar implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Dialog dialog = new Dialog(parent, "Help", false);
-				dialog.add(new JLabel("<html> Do sada su definisane klase MainFrame, MenuBar, StatusBar i Toolbar.<br> "
-						+ "Meni bar se sastoji od 3 menija.  <br>"
+				dialog.add(new JLabel("<html> <br> "
+						+ "<u>Meni bar </u>se sastoji od 3 menija.  <br>"
 						+ "1. File, koji se sastoji od stavki:<br>"
 						+ "		New - dodavanje novog entiteta u sistem (precica ctrl+n) <br>"
 						+ "		Close - zatvaranje aplikacije (precica ctrl+c)<br>"
@@ -215,7 +215,16 @@ public class MenuBar extends JMenuBar implements ActionListener{
 						+ "		Delete - brisanje postojeceg entiteta(precica ctrl+d)<br>"
 						+ "3. Help, koji se sastoji od stavki:<br>"
 						+ "		Help - ovde se trenutno nalazite(precica ctrl+d)<br>"
-						+ "		About - bice dodatno implementirano(precica ctrl+a)</html>"));
+						+ "		About - (precica ctrl+a) <br>"
+						+ "<u>Dodavanje studenta:</u> obratiti paznju koje godine je student upisao fakultetl. <br>"
+						+ "FTN je osnovan 1960, a sada je 2020. <br>"
+						+ "Format broja telefona je [0-9]. Format mejla i datuma Ä‡e se ispisati u labeli ako budu loÅ¡e uneti.<br>"
+						+ "<u>Izmena studenta:</u> studentu se ne moze menjati broj indeksa i godina upisa! (namerno ovako implementirano) <br>"
+						+ "<u>Izmena predmeta:</u> predmetu se ne moze promeniti sifra!<br> "
+						+ " <u>Dodavanje profesora predmetu:</u> nakon pritiska na + automatski se dodaje profesor. <br>"
+						+ "<u>Ponistavanje ocene:</u> nakon pritiska na 'DA' automatski se ponistava ocena i ispisuje novi prosek.<br>"
+						+ "<u>Pretraga studenta:</u> pretraga se vrsi po prezimenu -> imenu -> broju indeksa. Enter u prazno polje vraca celu listu <br>"
+						+ "</html>"));
 				dialog.setVisible(true);
 				
 			}
