@@ -136,6 +136,37 @@ public class BazaProfesora {
 		this.getProfesor(profesor.getBrojLicneKarte()).getPredmeti().add(BazaPredmeta.getInstance().findByName(nazivPredmeta));
 	}
 	
+	public void ukloniPredmet( Predmet predmet) {
+		
+		List<Predmet> zaBrisati = new ArrayList<Predmet>();
+		
+			for(Profesor p : this.profesori) {
+
+				for(Predmet pred : p.getPredmeti()) {
+					if(pred.getSifraPredmeta().equals(predmet.getSifraPredmeta())){
+						zaBrisati.add(pred);
+					}	
+					
+					//p.getPredmeti().removeIf(n -> pred.getSifraPredmeta().equals(predmet.getSifraPredmeta()));
+					
+						
+					//pr = (ArrayList<Predmet>) p.getPredmeti();
+					//pr.removeIf(n -> (pred.getSifraPredmeta().equals(predmet.getSifraPredmeta())));
+					
+					//if(pred.getSifraPredmeta().equals(predmet.getSifraPredmeta())) {
+					//	System.out.println(" iste sifre \n");
+
+						//ArrayList<Predmet> pr = (ArrayList<Predmet>) p.getPredmeti();
+						//pr.removeIf(n -> pred.getSifraPredmeta().equals(predmet.getSifraPredmeta()));
+						//for(Predmet predmett : p.getPredmeti()) System.out.println(predmett);
+				}
+
+				for(Predmet p2 : zaBrisati) {
+					p.getPredmeti().remove(p2);
+				}
+			}
+			
+	}
 	
 	
 }
