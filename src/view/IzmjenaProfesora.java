@@ -164,13 +164,7 @@ public class IzmjenaProfesora extends JDialog {
 			}
 		});
 		
-		btnUkloni.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//dispose();
-			}
-		});
+	
 		
 		buttons.add(btnDodaj);
 		buttons.add(btnUkloni);

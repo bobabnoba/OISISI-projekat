@@ -5,11 +5,12 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import model.Ocena;
 import model.Predmet;
 
 public class ATMNepolozeni extends AbstractTableModel {
 	
-	private List<Predmet> predmeti;
+	private static List<Predmet> predmeti;
 	private List<String> kolone;
 	
 	public ATMNepolozeni(List<Predmet> predmeti) {
@@ -69,5 +70,10 @@ public class ATMNepolozeni extends AbstractTableModel {
 			return null;
 		}
 	}
+
+	public static Predmet getRow(int rowIndex) {
+		return predmeti.get(rowIndex);
+	}
+
 
 }
