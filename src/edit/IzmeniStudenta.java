@@ -1,6 +1,7 @@
 package edit;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
@@ -10,10 +11,11 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -26,14 +28,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import model.Student;
 
-import view.PolozeniJTable;
 import controller.StudentiController;
-import gui.MainFrame;
 import model.Ocena;
 import model.Polozeni;
 import model.Predmet;
+import model.Student;
+import view.ATMNepolozeni;
+import view.NepolozeniTable;
+import view.PolozeniJTable;
 public class IzmeniStudenta extends JFrame {
 
 
@@ -63,6 +66,9 @@ public class IzmeniStudenta extends JFrame {
 		private JTextField txtIndeks;
 		private JTextField txtDatumRodjenja;
 		private Date datumRodjenjaa = new Date();
+		
+		private NepolozeniTable nepolozeniTable;
+
 	
 public IzmeniStudenta(Student student) {		
 	
@@ -648,6 +654,7 @@ public IzmeniStudenta(Student student) {
 	JPanel izmena = new JPanel();
 	JPanel polozeniBot = new JPanel();
 	JPanel polozeni = new JPanel();
+	
 	polozeni.setLayout(new BoxLayout(polozeni, BoxLayout.Y_AXIS));
 	JPanel polozeniTop = new JPanel();
 	polozeniTop.setLayout(new BoxLayout(polozeniTop, BoxLayout.X_AXIS));
@@ -676,13 +683,15 @@ public IzmeniStudenta(Student student) {
 	JPanel center = new JPanel();
 	center.add(showPolozeni(student));
 	
+	JPanel nepolozeniTab = showNepolozeni(student);
+
 	tabs.add("izmena", izmena);
 	polozeni.add(polozeniTop);
 	polozeni.add(center);
 	polozeni.add(polozeniBot);
 	polozeni.add(polozeniBot2);
 	tabs.add("polozeni", polozeni);
-	
+	tabs.add("Nepoloženi", nepolozeniTab);
 	
 	pack();
 
@@ -731,6 +740,59 @@ public void azuriraj(String akcija, int vrednost) {
 	model1.fireTableDataChanged();
 	validate();
 	
+}
+
+public JPanel showNepolozeni(Student student) {
+	JPanel panel = new JPanel();
+	panel.setBackground(Color.WHITE);
+	JScrollPane nepol = showNepolozeniTable(student);
+	//nepol.setBackground(Color.WHITE);
+	//nepol.setBorder(new EmptyBorder(20, 30, 30, 30));
+	JPanel buttons = new JPanel();
+	JButton btnDodaj = new  JButton("Dodaj");
+	JButton btnObrisi = new JButton("Obriši");
+	JButton btnPolaganje = new JButton("Polaganje");
+
+	btnPolaganje.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			btnPolaganje.setBackground(Color.magenta);
+			//int row = nepolozeniTable.convertRowIndexToModel(nepolozeniTable.getSelectedRow());
+			int row = nepolozeniTable.getSelectedRow();
+			if(row != -1) {
+				Predmet predmet = new ATMNepolozeni(student.getSpisakNepolozenihIspita()).getSelectedPredmet(row);
+				//UpisOcjene uo = new UpisOcjene(predmet, student, nepolozeniTable);
+				//updateNepol();
+				//uo.setVisible(true);
+			} else {
+				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet za koji unosite ocjenu!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+
+			}
+		}
+	});
+	
+	buttons.add(btnDodaj);
+	buttons.add(btnObrisi);
+	buttons.add(btnPolaganje);
+	buttons.setBorder(new EmptyBorder(10, 20, 10, 20));
+	buttons.setBackground(Color.WHITE);
+	panel.add(buttons, BorderLayout.NORTH);
+	panel.add(nepol, BorderLayout.CENTER);
+	return panel;
+}
+
+public JScrollPane showNepolozeniTable(Student student) {
+	nepolozeniTable = new NepolozeniTable(student);
+	JScrollPane ret = new JScrollPane(nepolozeniTable);
+	updateNepol();
+	return ret;
+}
+
+public void updateNepol() {
+	ATMNepolozeni model = (ATMNepolozeni) nepolozeniTable.getModel();
+	model.fireTableDataChanged();
+	validate();
 }
 
 }
