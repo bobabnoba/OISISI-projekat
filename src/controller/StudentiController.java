@@ -59,5 +59,15 @@ public class StudentiController {
 		BazaStudenata.getInstance().dodajPredmetStudentu(student,ispis);
 	}
 	
+	public void ukloniIzNepolozenih(Predmet predmet) {
+		BazaStudenata.getInstance().ukloniIzNepolozenih(predmet);
+		MainFrame.getInstance().azurirajPrikaz("", -1);
+	}
+	
+	public void ukloniIzPolozenih(Predmet predmet) {
+		BazaStudenata.getInstance().ukloniIzPolozenih(predmet);
+		MainFrame.getInstance().azurirajPrikaz("", -1);
+	}
+	
 }
 

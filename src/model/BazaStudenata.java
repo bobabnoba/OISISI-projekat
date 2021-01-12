@@ -247,30 +247,30 @@ public class BazaStudenata {
 		
 		this.studenti = new ArrayList<Student>();
 		
-		studenti.add(new Student("Marko", "Milosevic", "ra2",d1 , "Karađorđeva 83, Novi Sad", "021333555", "marko.milosevic@mailinator.com", "2020", 1, "b" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Marija", "Milic", "ra3", d2 , "Stražilovska 12, Novi Sad", "0215552222", "marija.milic@mailinator.com", "2019", 2, "s" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Marko", "Milosevic", "ra2",d1 , "KaraÄ‘orÄ‘eva 83, Novi Sad", "021333555", "marko.milosevic@mailinator.com", "2020", 1, "b" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Marija", "Milic", "ra3", d2 , "StraÅ¾ilovska 12, Novi Sad", "0215552222", "marija.milic@mailinator.com", "2019", 2, "s" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
 		studenti.add(new Student("Nikola", "Nikolic", "ra3", d3  , "Knez Mihajlova 16, Beograd", "021135463", "nikola.nikolic@mailinator.com", "2017", 1, "b" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
 		studenti.add(new Student("Pera", "Peric", "ra134", d4 , "Gogoljeva 3, Novi Sad", "021903463", "pera.peric@mailinator.com", "2015", 3, "s" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Sofija", "Ilic", "ra5",d5 , "Miše Dimitrijevića 44, Novi Sad ", "021731067", "sofija.ilic@mailinator.com", "2019", 3, "b" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Sofija", "Ilic", "ra5",d5 , "MiÅ¡e DimitrijeviÄ‡a 44, Novi Sad ", "021731067", "sofija.ilic@mailinator.com", "2019", 3, "b" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
 		studenti.add(new Student("Martina", "Lukic", "ra8",d6 , "Vojvode Stepe 180, Beograd", "0114333800", "martina.lukic@mailinator.com", "2018", 3, "s" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Stojan", "Stojakovic", "ra10", d7 , "1300 Kaplara, Šabac", "0113130007", "stojan.stojakovic@mailinator.com", "2017", 1, "b" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Milan", "Milanovic", "ra12", d8  , "Surepova 12, Šabac", "015313061", "milan.milanovic@mailinator.com", "2017", 2, "s" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
-		studenti.add(new Student("Miroslav", "Milic", "ra16", d9 , "Milovana Glišića, Valjevo", "021351091", "miroslav.milic@mailinator.com", "2019", 2, "b" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Stojan", "Stojakovic", "ra10", d7 , "1300 Kaplara, Å abac", "0113130007", "stojan.stojakovic@mailinator.com", "2017", 1, "b" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Milan", "Milanovic", "ra12", d8  , "Surepova 12, Å abac", "015313061", "milan.milanovic@mailinator.com", "2017", 2, "s" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
+		studenti.add(new Student("Miroslav", "Milic", "ra16", d9 , "Milovana GliÅ¡iÄ‡a, Valjevo", "021351091", "miroslav.milic@mailinator.com", "2019", 2, "b" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
 		studenti.add(new Student("Stefan", "Gojic", "ra21",d10 , "Bulevar Mihajla Pupina, Novi Sad ", "015324500", "stefan.gojic@mailinator.com", "2015", 3, "s" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Anastasija", "Jokic", "ra9",d11 , "Braće Ribnikar 12, Novi Sad", "0112333900", "anastasija.jokic@mailinator.com", "2020", 3, "b" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Bogdan", "Bogdanovic", "ra4", d12 , "Cara Dušana 42, Subotica", "021231114", "bogdan.bogdanovic@mailinator.com", "2017", 3, "s" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Ana", "Dabovic", "ra30", d13  , "Marka Kraljevića 1, Kikinda", "014303007", "ana.dabovic@mailinator.com", "2019", 1, "b" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
-		studenti.add(new Student("Mika", "Mikic", "ra1", d14 , "Nikole Stojanovića 2, Kraljevo", "015101909", "mika.mikic@mailinator.com", "2020", 1, "s" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Jovan", "Deretic", "ra11",d15 , "Marka Bratića  99, Niš ", "002200300", "jovan.deretic@mailinator.com", "2018", 4, "b" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Nikola", "Miskovic", "ra12",d16 , "Cara Dušana 12, Banja Luka", "022123456", "nikola.miskovic@mailinator.com", "2018", 4, "s" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Martin", "Stojanovic", "ra13", d17 , "Borisa Bačkog 1, Bijeljina", "024321775", "martin.stojanovic@mailinator.com", "2018", 4, "s" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Tomislav", "Novakovic", "ra14", d18  , "Mirka Maksića 10, Kruševac", "0111188379", "tomislav.novakovic@mailinator.com", "2018", 4, "b" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
+		studenti.add(new Student("Anastasija", "Jokic", "ra9",d11 , "BraÄ‡e Ribnikar 12, Novi Sad", "0112333900", "anastasija.jokic@mailinator.com", "2020", 3, "b" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Bogdan", "Bogdanovic", "ra4", d12 , "Cara DuÅ¡ana 42, Subotica", "021231114", "bogdan.bogdanovic@mailinator.com", "2017", 3, "s" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Ana", "Dabovic", "ra30", d13  , "Marka KraljeviÄ‡a 1, Kikinda", "014303007", "ana.dabovic@mailinator.com", "2019", 1, "b" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
+		studenti.add(new Student("Mika", "Mikic", "ra1", d14 , "Nikole StojanoviÄ‡a 2, Kraljevo", "015101909", "mika.mikic@mailinator.com", "2020", 1, "s" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Jovan", "Deretic", "ra11",d15 , "Marka BratiÄ‡a  99, NiÅ¡ ", "002200300", "jovan.deretic@mailinator.com", "2018", 4, "b" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Nikola", "Miskovic", "ra12",d16 , "Cara DuÅ¡ana 12, Banja Luka", "022123456", "nikola.miskovic@mailinator.com", "2018", 4, "s" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Martin", "Stojanovic", "ra13", d17 , "Borisa BaÄ�kog 1, Bijeljina", "024321775", "martin.stojanovic@mailinator.com", "2018", 4, "s" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Tomislav", "Novakovic", "ra14", d18  , "Mirka MaksiÄ‡a 10, KruÅ¡evac", "0111188379", "tomislav.novakovic@mailinator.com", "2018", 4, "b" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
 		studenti.add(new Student("Lena", "Ivic", "ra154", d19 , "Stari Most 6, Sremska Mitrovica", "024333555", "lena.ivic@mailinator.com", "2016", 4, "b" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
 		studenti.add(new Student("Jovan", "Lazic", "ra23",d20 , "Nevesinjskih ustanika 10, Nevesinje ", "0251189479", "jovan.lazic@mailinator.com", "2020", 1, "b" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Isidora", "Mikic", "ra1",d21 , "Radničка  11, Novi Sad", "0111122366", "isidora.mikic@mailinator.com", "2019", 2, "b" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
-		studenti.add(new Student("Vladimir", "Ilic", "sw4", d22 , "Miloša Obilića 1, Beograd", "0111122366", "vladimir.ilic@mailinator.com", "2014", 4, "b" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Isidora", "Mikic", "ra1",d21 , "RadniÄ�ÐºÐ°  11, Novi Sad", "0111122366", "isidora.mikic@mailinator.com", "2019", 2, "b" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Vladimir", "Ilic", "sw4", d22 , "MiloÅ¡a ObiliÄ‡a 1, Beograd", "0111122366", "vladimir.ilic@mailinator.com", "2014", 4, "b" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
 		studenti.add(new Student("Mirko", "Alicic", "sw17", d23  , "Heroja Pinkija 112, Novi Sad", "0121122368", "mirko.alicic@mailinator.com", "2015", 3, "s" , 0.0 ,new ArrayList<Ocena>() , new ArrayList<Predmet>()   ));
-		studenti.add(new Student("Milisav", "Perkovic", "sw17", d24 , "Pavla Bakića 26, Novi Sad", "0121122369", "milisav.pejkovic@mailinator.com", "2016", 4, "s" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
+		studenti.add(new Student("Milisav", "Perkovic", "sw17", d24 , "Pavla BakiÄ‡a 26, Novi Sad", "0121122369", "milisav.pejkovic@mailinator.com", "2016", 4, "s" , 0.0 ,new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
 		studenti.add(new Student("Purisa", "Djordjevic", "sw27",d25 , "Pavla Papa 1, Novi Sad ", "0111543370", "purisa.djordjevic@mailinator.com", "2018", 2, "b" , 0.0, new ArrayList<Ocena>()  , new ArrayList<Predmet>()  ));
 		studenti.add(new Student("Mikica", "Kovacevic", "ra226",d26 , "Valentina Vodnika 112, Novi Sad", "0111992371", "mikica.kovacevic@mailinator.com", "2017", 3, "s" , 0.0, new ArrayList<Ocena>(), new ArrayList<Predmet>()  ));
 		studenti.add(new Student("Milos", "Milic", "sw12", d27 , "Neznanog junaka 12, Beograd", "0118172372", "milos.milic@mailinator.com", "2020", 1, "s" , 0.0  ,new ArrayList<Ocena>() , new ArrayList<Predmet>()  ));
@@ -383,7 +383,27 @@ public class BazaStudenata {
 		this.getStudentByIndeks(student.getIndeks()).getSpisakNepolozenihIspita().add(BazaPredmeta.getInstance().getPredmetBySifra(str[0]));
 	}}
 	
+	public void ukloniIzNepolozenih(Predmet predmet) {
+		List<Predmet> zaBrisanje = new ArrayList<Predmet>();
+		for(Student s : this.studenti) {
+			for(Predmet pred : s.getSpisakNepolozenihIspita()) {
+				if(pred.getSifraPredmeta().equals(predmet.getSifraPredmeta()))
+					zaBrisanje.add(pred);
+			}
+			for(Predmet p : zaBrisanje)
+				s.getSpisakNepolozenihIspita().remove(p);
+		}
+	}
 	
+	//mozda ce i ovde trebati odraditi kao za prof i nepolozene!!
+	public void ukloniIzPolozenih(Predmet predmet) {
+		for(Student s : this.studenti) {
+			for(Ocena o : s.getSpisakPolozenihIspita()) {
+				if(o.getPredmet().equals(predmet))
+					s.getSpisakPolozenihIspita().remove(o);
+			}
+		}
+	}
 	
 	
 

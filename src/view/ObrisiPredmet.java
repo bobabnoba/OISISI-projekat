@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.PredmetiController;
+import controller.ProfesoriController;
+import controller.StudentiController;
 import gui.MainFrame;
 import model.Predmet;
 
@@ -94,12 +96,10 @@ public class ObrisiPredmet extends JDialog {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				StudentiController.getInstance().ukloniIzNepolozenih(predmet);
+				StudentiController.getInstance().ukloniIzPolozenih(predmet); 
 				PredmetiController.getInstance().ukloniPredmetIzTabele(predmet);
-				//for(Student s : BazaStudenata.getInstance().getStudenti()) {
-					//getSifrePredmeta kao funkcija koja ima listu sifri predmeta koje student nije polozio
-					//if(s.getSpisakNepolozenihIspita().getSifrePredmeta().equals(predmet.getSifraPredmeta())
-					//		s.getSpisakNepolozenihIspita().remove(predmet);
-				//}
+				ProfesoriController.getInstance().ukloniSaProfesora(predmet);
 				
 					
 					

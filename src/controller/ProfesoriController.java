@@ -51,5 +51,10 @@ private static ProfesoriController instance = null;
 		BazaProfesora.getInstance().dodajPredmetProfesoru(profesor, nazivPred);
 	}
 	
+	public void ukloniSaProfesora(Predmet predmet) {
+		BazaProfesora.getInstance().ukloniPredmet(predmet);
+		MainFrame.getInstance().updateViewProf();
+	
+	}
 	
 }
