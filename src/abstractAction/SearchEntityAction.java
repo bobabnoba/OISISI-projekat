@@ -102,7 +102,16 @@ public class SearchEntityAction extends AbstractAction {
 			//MainFrame.getInstance().updateViewProf();
 			break;
 		case 2:
-	
+			String[] arg = Toolbar.textField.getText().trim().split(" ");
+			if(arg.length > 1) {
+				JOptionPane.showMessageDialog(null, "Argument pretrage mora biti u formatu: dio_naziva!","Pogre�an unos", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			if(arg.length == 0) {
+				PredmetiTable.newFilter("");
+				return;
+			}
+			PredmetiTable.newFilter(arg[0]);
 			break;
 		default: 
 			break;
