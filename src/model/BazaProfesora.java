@@ -1,5 +1,8 @@
 package model;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -154,6 +157,17 @@ public class BazaProfesora {
 			}
 			
 	}
-	
+	public void serializeProfesor() {
+		try {
+			FileOutputStream fosProfesor = new FileOutputStream("profesori.ser");
+			ObjectOutputStream outProfesor = new ObjectOutputStream(fosProfesor);
+			outProfesor.writeObject(BazaProfesora.getInstance().getProfesori());
+			
+			outProfesor.close();
+			fosProfesor.close();
+		}catch(IOException exp) {
+			exp.printStackTrace();
+		}
+	}
 	
 }

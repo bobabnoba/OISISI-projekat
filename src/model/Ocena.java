@@ -1,10 +1,16 @@
 package model;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class Ocena {
+public class Ocena implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private List<Student> studentKojiJePolozio = new ArrayList<Student>();
 	

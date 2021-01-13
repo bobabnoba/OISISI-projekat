@@ -3,6 +3,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -12,6 +14,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableRowSorter;
 
+import model.BazaPredmeta;
+import model.BazaProfesora;
+import model.BazaStudenata;
 import view.ATMPredmeti;
 import view.ATMProfesori;
 import view.AbstractTableModelStudenti;
@@ -75,6 +80,54 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		rowStud = tabelaStudenata.getSelectedRow();
+		
+		this.addWindowListener(new WindowListener(){
+
+			@Override
+			public void windowActivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowClosed(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				//dodati option pane?? 
+				BazaPredmeta.getInstance().serializePredmet();
+				BazaProfesora.getInstance().serializeProfesor();
+				BazaStudenata.getInstance().serializeStudent();
+			}
+
+			@Override
+			public void windowDeactivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowDeiconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowIconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				// TODO deserijalizacija
+				
+			}
+			
+		});
 		
 	}
 	

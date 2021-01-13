@@ -1,5 +1,8 @@
 package model;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,6 +120,19 @@ private static BazaPredmeta instance = null;
 			}
 		}
 		return retVal;	
+	}
+	
+	public void serializePredmet() {
+		try {
+			FileOutputStream fosPredmet = new FileOutputStream("predmeti.ser");
+			ObjectOutputStream outPredemt = new ObjectOutputStream(fosPredmet);
+			outPredemt.writeObject(BazaPredmeta.getInstance().getPredmeti());
+			
+			outPredemt.close();
+			fosPredmet.close();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

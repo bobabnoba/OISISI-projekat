@@ -1,5 +1,8 @@
 package model;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -405,6 +408,18 @@ public class BazaStudenata {
 		}
 	}
 	
+	public void serializeStudent() {
+		try {
+			FileOutputStream fosStudent = new FileOutputStream("studenti.ser");
+			ObjectOutputStream outStudent = new ObjectOutputStream(fosStudent);
+			outStudent.writeObject(BazaStudenata.getInstance().getStudenti());
+			
+			outStudent.close();
+			fosStudent.close();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 
 }

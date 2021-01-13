@@ -1,7 +1,7 @@
 package model;
 
 
-import java.text.SimpleDateFormat;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -9,9 +9,13 @@ import java.util.Date;
 enum status { B, S };
 
 
-public class Student {
+public class Student implements Serializable{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//private SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
 
 	private String ime;
