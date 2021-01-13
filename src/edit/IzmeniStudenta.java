@@ -521,7 +521,7 @@ public IzmeniStudenta(Student student) {
 	
 	panTrenutnaGod.add(lblTrenutnaGod);
 	panTrenutnaGod.add(combo);
-	combo.setSelectedIndex(0);
+	//combo.setSelectedIndex(0);
 	
 	
 	JPanel panFinansiranje = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -583,11 +583,10 @@ public IzmeniStudenta(Student student) {
 	}
 	
 	
-	if (status == "") {
-		combo2.setSelectedIndex(0);
-	}else if (status == "b") {
+	
+	if (status.trim().equals("b")) {
 		combo2.setSelectedIndex(1);
-	}else if (status == "s") {
+	}else if (status.trim().equals("s")) {
 		combo2.setSelectedIndex(2);
 	}
 	
@@ -613,7 +612,7 @@ public IzmeniStudenta(Student student) {
 	txtIndeks.addFocusListener(focus);
 	txtGodUpisa.addFocusListener(focus);
 	combo.addFocusListener(focus);
-	combo2.addFocusListener(focus);
+	//combo2.addFocusListener(focus);
 	
 	JButton btnCancel=new JButton("Odustani");
 	btnCancel.addActionListener(new ActionListener() {
