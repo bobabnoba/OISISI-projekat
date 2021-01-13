@@ -25,9 +25,9 @@ private static ProfesoriController instance = null;
 	private ProfesoriController() {
 	}
 	
-	public void dodajProfesora(String prezime, String ime, Date datRodj, String adresa, String email, String blk, Titula titula, Zvanje zvanje, ArrayList<Predmet> predmeti) {
+	public void dodajProfesora(String prezime, String ime, Date datRodj, String adresa, String telefon, String email, String adresaKanc, String blk, Titula titula, Zvanje zvanje, ArrayList<Predmet> predmeti) {
 		List<Predmet> p = (List<Predmet>) predmeti;
-		BazaProfesora.getInstance().dodajProfesora(prezime, ime, datRodj, adresa, email, blk, titula, zvanje, p);
+		BazaProfesora.getInstance().dodajProfesora(prezime, ime, datRodj, adresa, telefon, email, adresaKanc, blk, titula, zvanje, p);
 		MainFrame.getInstance().updateViewProf();
 	}
 	
@@ -41,9 +41,9 @@ private static ProfesoriController instance = null;
 		MainFrame.getInstance().updateViewProf();
 	}
 	
-	public void izmijeniProfesora(String prezime, String ime, Date datRodj, String adresa, String email, String blk, Titula titula, Zvanje zvanje, ArrayList<Predmet> predmeti) {
+	public void izmijeniProfesora(String prezime, String ime, Date datRodj, String adresa, String telefon, String email, String adresaKanc, String blk, Titula titula, Zvanje zvanje, ArrayList<Predmet> predmeti) {
 		List<Predmet> p = (List<Predmet>) predmeti;
-		BazaProfesora.getInstance().izmijeniProfesora(prezime, ime, datRodj, adresa, email, blk, titula, zvanje, p);
+		BazaProfesora.getInstance().izmijeniProfesora(prezime, ime, datRodj, adresa, telefon, email, adresaKanc, blk, titula, zvanje, p);
 		MainFrame.getInstance().updateViewProf();
 	}
 	

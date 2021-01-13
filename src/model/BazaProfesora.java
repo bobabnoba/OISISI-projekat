@@ -52,11 +52,11 @@ public class BazaProfesora {
 		pred2.add(BazaPredmeta.getInstance().getPredmet(3));
 		pred2.add(BazaPredmeta.getInstance().getPredmet(0));
 		try {
-			this.profesori.add(new Profesor("MirkoviÄ‡", "Mirko", sdf.parse("12.12.1987."), 
-					"PuÅ¡kinova 14, Novi Sad", "mirkom@uns.ac.rs", "45J697E2", Titula.DR, Zvanje.REDOVNI, pred));
-			this.profesori.add(new Profesor("MarkoviÄ‡", "Marko",sdf.parse("03.07.1974."), 
+			this.profesori.add(new Profesor("Mirković", "Mirko", sdf.parse("12.12.1987."), 
+					"Puškinova 14, Novi Sad", "0664139899", "mirkom@uns.ac.rs", "NTP", "45J697E2", Titula.DR, Zvanje.REDOVNI, pred));
+			/*this.profesori.add(new Profesor("MarkoviÄ‡", "Marko",sdf.parse("03.07.1974."), 
 					"RumenaÄ�ki put 66, Novi Sad", "markom@uns.ac.rs", "6E43RJ77", Titula.PROF, Zvanje.REDOVNI, pred2));
-		} catch (ParseException e) {
+		*/} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -108,9 +108,8 @@ public class BazaProfesora {
 			return null;
 		}
 	}
-	public void dodajProfesora(String prezime, String ime, Date datumRodjenja, String adresa, String email, String blk,
-			Titula titula, Zvanje zvanje, List<Predmet> predmeti) {
-		this.profesori.add(new Profesor(prezime, ime, datumRodjenja, adresa, email, blk, titula, zvanje, predmeti));
+	public void dodajProfesora(String prezime, String ime, Date datRodj, String adresa, String telefon, String email, String adresaKanc, String blk, Titula titula, Zvanje zvanje, List<Predmet> predmeti) {
+		this.profesori.add(new Profesor(prezime, ime, datRodj, adresa, telefon, email, adresaKanc, blk, titula, zvanje, predmeti));
 	}
 	
 	public void izbrisiProfesora(String id) {
@@ -122,15 +121,16 @@ public class BazaProfesora {
 		}
 	}
 	
-	public void izmijeniProfesora(String prezime, String ime, Date datumRodjenja, String adresa, String email, String blk,
-			Titula titula, Zvanje zvanje, List<Predmet> predmeti) {
+	public void izmijeniProfesora(String prezime, String ime, Date datRodj, String adresa, String telefon, String email, String adresaKanc, String blk, Titula titula, Zvanje zvanje, List<Predmet> predmeti) {
 		for(Profesor p : this.profesori) {
 			if(p.getBrojLicneKarte().equals(blk)) {
 				p.setPrezime(prezime);
 				p.setIme(ime);
-				p.setDatumRodjenja(datumRodjenja);
-				p.setAdresa(adresa);
+				p.setDatumRodjenja(datRodj);
+				p.setAdresaStanovanja(adresa);
+				p.setTelefon(telefon);
 				p.setEmail(email);
+				p.setAdresaKancelarije(adresaKanc);
 				p.setTitula(titula);
 				p.setZvanje(zvanje);
 				p.setPredmeti(predmeti);

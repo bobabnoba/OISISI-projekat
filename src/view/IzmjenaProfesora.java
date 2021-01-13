@@ -61,6 +61,10 @@ public class IzmjenaProfesora extends JDialog {
 	private JComboBox<Titula> cbTitula;
 	private JLabel lblZvanje;
 	private JComboBox<Zvanje> cbZvanje;
+	private JLabel lblAdresaKanc;
+	private JTextField tfAdresaKanc;
+	private JLabel lblTelefon;
+	private JTextField tfTelefon;
 	
 	private JButton btnOK;
 	private JButton btnCancel;
@@ -73,7 +77,7 @@ public class IzmjenaProfesora extends JDialog {
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension d = new Dimension();
 		d = kit.getScreenSize();
-		d.setSize(d.width/2.2, d.height/1.4);
+		d.setSize(d.width/2.2, d.height/1.2);
 		setSize(d);
 		setTitle("Izmjena profesora");
 		
@@ -84,6 +88,7 @@ public class IzmjenaProfesora extends JDialog {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		createTabbedPane(profesor);
+		
 	}
 	
 	private void createTabbedPane(Profesor profesor) {
@@ -225,15 +230,25 @@ public class IzmjenaProfesora extends JDialog {
 		tfDatRodj.setText(sdf.format(p.getDatumRodjenja()));
 		tfDatRodj.addFocusListener(focus);
 		
-		lblAdresa = new JLabel("Adresa*");
+		lblAdresa = new JLabel("Adresa stanovanja*");
 		tfAdresa = new JTextField(30);
-		tfAdresa.setText(p.getAdresa());
+		tfAdresa.setText(p.getAdresaStanovanja());
 		tfAdresa.addFocusListener(focus);
+		
+		lblTelefon = new JLabel("Kontakt telefon*");
+		tfTelefon = new JTextField(30);
+		tfTelefon.setText(p.getTelefon());
+		tfTelefon.addFocusListener(focus);
 		
 		lblEmail = new JLabel("Email*");
 		tfEmail = new JTextField(30);
 		tfEmail.setText(p.getEmail());
 		tfEmail.addFocusListener(focus);
+		
+		lblAdresaKanc = new JLabel("Adresa kancelarije*");
+		tfAdresaKanc = new JTextField(30);
+		tfAdresaKanc.setText(p.getAdresaKancelarije());
+		tfAdresaKanc.addFocusListener(focus);
 		
 		lblBrLK = new JLabel("Broj lične karte*");
 		tfBrLK = new JTextField(30);
@@ -260,8 +275,12 @@ public class IzmjenaProfesora extends JDialog {
 		panelPolja.add(tfDatRodj, " wrap");
 		panelPolja.add(lblAdresa);
 		panelPolja.add(tfAdresa, "wrap");
+		panelPolja.add(lblTelefon);
+		panelPolja.add(tfTelefon, "wrap");
 		panelPolja.add(lblEmail);
 		panelPolja.add(tfEmail, "wrap");
+		panelPolja.add(lblAdresaKanc);
+		panelPolja.add(tfAdresaKanc, "wrap");
 		panelPolja.add(lblBrLK);
 		panelPolja.add(tfBrLK, "wrap");
 		panelPolja.add(lblTitula);
@@ -345,7 +364,7 @@ btnOK.addMouseListener(new MouseListener() {
 				String zvanje_str = cbZvanje.getSelectedItem().toString();
 				Zvanje zvanje = Zvanje.valueOf(zvanje_str);
 					
-				ProfesoriController.getInstance().izmijeniProfesora(tfPrezime.getText(), tfIme.getText(), datumRodjenja, tfAdresa.getText(), tfEmail.getText(), tfBrLK.getText(), titula, zvanje, new ArrayList<Predmet>());
+				ProfesoriController.getInstance().izmijeniProfesora(tfPrezime.getText(), tfIme.getText(), datumRodjenja, tfAdresa.getText(), tfTelefon.getText(), tfEmail.getText(), tfAdresaKanc.getText(), tfBrLK.getText(), titula, zvanje, new ArrayList<Predmet>());
 				
 				dispose();
 				

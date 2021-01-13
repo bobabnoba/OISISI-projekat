@@ -14,8 +14,10 @@ public class Profesor implements Serializable{
 	private String prezime;
 	private String ime;
 	private Date datumRodjenja;
-	private String adresa;
+	private String adresaStanovanja;
+	private String telefon;
 	private String email;
+	private String adresaKancelarije;
 	private String brojLicneKarte;
 	private Titula titula;
 	private Zvanje zvanje;
@@ -25,14 +27,17 @@ public class Profesor implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Profesor(String prezime, String ime, Date datumRodjenja, String adresa, String email, String brojLicneKarte,
-			Titula titula, Zvanje zvanje, List<Predmet> predmeti) {
+	public Profesor(String prezime, String ime, Date datumRodjenja, String adresaStanovanja, String telefon,
+			String email, String adresaKancelarije, String brojLicneKarte, Titula titula, Zvanje zvanje,
+			List<Predmet> predmeti) {
 		super();
 		this.prezime = prezime;
 		this.ime = ime;
 		this.datumRodjenja = datumRodjenja;
-		this.adresa = adresa;
+		this.adresaStanovanja = adresaStanovanja;
+		this.telefon = telefon;
 		this.email = email;
+		this.adresaKancelarije = adresaKancelarije;
 		this.brojLicneKarte = brojLicneKarte;
 		this.titula = titula;
 		this.zvanje = zvanje;
@@ -71,12 +76,28 @@ public class Profesor implements Serializable{
 		this.datumRodjenja = datumRodjenja;
 	}
 
-	public String getAdresa() {
-		return adresa;
+	public String getAdresaStanovanja() {
+		return adresaStanovanja;
 	}
 
-	public void setAdresa(String adresa) {
-		this.adresa = adresa;
+	public void setAdresaStanovanja(String adresaStanovanja) {
+		this.adresaStanovanja = adresaStanovanja;
+	}
+
+	public String getTelefon() {
+		return telefon;
+	}
+
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
+	}
+
+	public String getAdresaKancelarije() {
+		return adresaKancelarije;
+	}
+
+	public void setAdresaKancelarije(String adresaKancelarije) {
+		this.adresaKancelarije = adresaKancelarije;
 	}
 
 	public String getEmail() {
@@ -129,11 +150,11 @@ public class Profesor implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Profesor [prezime=" + prezime + ", ime=" + ime + ", datumRodjenja=" + datumRodjenja + ", adresa="
-				+ adresa + ", email=" + email + ", brojLicneKarte=" + brojLicneKarte + ", titula=" + titula
-				+ ", zvanje=" + zvanje + ", predmeti=" + predmeti + "]";
+		return "Profesor [prezime=" + prezime + ", ime=" + ime + ", datumRodjenja=" + datumRodjenja
+				+ ", adresaStanovanja=" + adresaStanovanja + ", telefon=" + telefon + ", email=" + email
+				+ ", adresaKancelarije=" + adresaKancelarije + ", brojLicneKarte=" + brojLicneKarte + ", titula="
+				+ titula + ", zvanje=" + zvanje + ", predmeti=" + predmeti + "]";
 	}
-	
 	
 	
 }
