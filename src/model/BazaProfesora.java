@@ -193,4 +193,8 @@ public class BazaProfesora {
 			c.printStackTrace();
 		}
 	}
+	
+	public void ukloniPredmetSaProf(Profesor profesor, Predmet predmet){
+		this.getProfesor(profesor.getBrojLicneKarte()).getPredmeti().remove(predmet);
+	}
 }

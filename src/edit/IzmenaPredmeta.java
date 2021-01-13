@@ -19,13 +19,12 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import controller.PredmetiController;
-import controller.StudentiController;
+import controller.ProfesoriController;
 import gui.MainFrame;
 import model.BazaProfesora;
 import model.Predmet;
@@ -403,6 +402,9 @@ public class IzmenaPredmeta extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				Profesor profesor = predmet.getPredmetniProfesor();
+				ProfesoriController.getInstance().ukloniPredmetSaProf(profesor, predmet);
+				
 				labProf.setText("");
 				labProf.setVisible(false);
 				predmet.setPredmetniProfesor(null);
