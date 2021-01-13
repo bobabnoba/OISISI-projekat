@@ -25,9 +25,12 @@ public class MyApp {
 		StudentiController.getInstance();
 		MainFrame.getInstance();*/
 		
+		
 		MainFrame mframe = MainFrame.getInstance();
+		mframe.azurirajPrikaz(null, -1);
 		mframe.setVisible(true);
 		
+
 		
 		
 		/*
@@ -77,7 +80,7 @@ public class MyApp {
 		
 		
 		
-		MainFrame.getInstance();
+		
 		
 	}
 

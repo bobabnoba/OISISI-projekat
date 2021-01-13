@@ -501,19 +501,7 @@ public IzmeniStudenta(Student student) {
 				} else {
 					trenutnaGodinaStudija = 0 ;
 				}
-			try {
-    			if (2021 - (Integer.parseInt(godinaUpisa)  ) <  trenutnaGodinaStudija ){
-    				losUnos2.setText("<html>Proverite godinu upisa<br>"
-    						+ " i trenutnu godinu studija!"
-    						);
-    					godinaUpisa = "";
-    					txtGodUpisa.setText("");
-    					losUnos2.setVisible(true);
-            			panCenter.add(losUnos2);
-    			}
-    			} catch (Exception ex) {
-    				godinaUpisa = "";
-    			}
+			
 		}
 		
 		
