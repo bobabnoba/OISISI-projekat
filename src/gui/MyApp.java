@@ -27,7 +27,18 @@ public class MyApp {
 		
 		
 		MainFrame mframe = MainFrame.getInstance();
-		mframe.azurirajPrikaz(null, -1);
+		MainFrame.getInstance().updateViewProf();
+	
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
 		mframe.setVisible(true);
 		
 

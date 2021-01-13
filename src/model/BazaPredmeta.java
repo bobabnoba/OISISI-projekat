@@ -147,7 +147,7 @@ private static BazaPredmeta instance = null;
 			@SuppressWarnings("unchecked")
 			ArrayList<Predmet> predmeti = (ArrayList<Predmet>) predmetIn.readObject();
 			BazaPredmeta.getInstance().setPredmeti(predmeti);
-			MainFrame.getInstance().updateViewProf();
+			MainFrame.getInstance().updateViewPred();
 			
 			fOUTPredmet.close();
 			predmetIn.close();
