@@ -1,10 +1,14 @@
 package model;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import gui.MainFrame;
 
 public class BazaPredmeta {
 	
@@ -132,6 +136,25 @@ private static BazaPredmeta instance = null;
 			fosPredmet.close();
 		}catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void deserijalizacijaPredmeta(){
+		try{
+			System.out.println("\n\n");
+			FileInputStream fOUTPredmet = new FileInputStream("predmeti.ser");
+			ObjectInputStream predmetIn= new ObjectInputStream(fOUTPredmet);
+			@SuppressWarnings("unchecked")
+			ArrayList<Predmet> predmeti = (ArrayList<Predmet>) predmetIn.readObject();
+			BazaPredmeta.getInstance().setPredmeti(predmeti);
+			MainFrame.getInstance().updateViewProf();
+			
+			fOUTPredmet.close();
+			predmetIn.close();
+		}catch(IOException exp) {
+			exp.printStackTrace();
+		}catch(ClassNotFoundException c) {
+			c.printStackTrace();
 		}
 	}
 

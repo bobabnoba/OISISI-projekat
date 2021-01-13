@@ -9,10 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import edit.IzmenaPredmeta;
 import edit.IzmeniStudenta;
 import gui.MainFrame;
+import model.BazaPredmeta;
 import model.BazaProfesora;
 import model.BazaStudenata;
+import model.Predmet;
 import model.Profesor;
 import model.Student;
 import view.IzmjenaProfesora;
@@ -53,8 +56,18 @@ public class EditEntityAction  extends AbstractAction {
 		}
 		break;
 	case 2:
-		//izmjena predmeta
-		break;
+		
+		if(!MainFrame.getInstance().indexCheckStud()) {
+			int rows = MainFrame.getInstance().selectedPred();
+			Predmet predmet= BazaPredmeta.getInstance().getRow(rows);
+			IzmenaPredmeta ipr = new IzmenaPredmeta(predmet);
+			ipr.setLocationRelativeTo(MainFrame.getInstance());
+			ipr.setVisible(true);
+			} else {
+				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet koji želite da editujete!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
+
+			}
+        	break;
 	default: 
 		break;
 		}

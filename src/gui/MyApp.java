@@ -30,7 +30,7 @@ public class MyApp {
 		
 		
 		
-		
+		/*
 			
 		Ocena o11 = new Ocena(10, new Date(), BazaStudenata.getInstance().getStudent(3), BazaPredmeta.getInstance().getPredmet(4));
 		Ocena o12 = new Ocena(9, new Date(), BazaStudenata.getInstance().getStudent(3), BazaPredmeta.getInstance().getPredmet(2));
@@ -73,7 +73,7 @@ public class MyApp {
 		BazaStudenata.getInstance().getStudent(25).getSpisakNepolozenihIspita().add(BazaPredmeta.getInstance().getPredmet(18));
 
 
-		
+		*/
 		
 		
 		

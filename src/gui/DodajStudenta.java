@@ -375,20 +375,20 @@ public class DodajStudenta extends JFrame{
 				// TODO Auto-generated method stub
 				mailAdresa  = txtMail.getText();
 				try {
-					txtMail.getText().matches("[a-z0-9]+\\@uns.ac.rs");
+					txtMail.getText().matches("[a-z0-9]+\\@mailinator.com");
 					losUnos2.setText("    ");
 
         		}catch (Exception ex) {
         			losUnos2.setText("<html>Lose unet mail!<br>"
         					+ "Mora se zavrsiti sa <br>"
-        					+ "@uns.ac.rs");
+        					+ "@mailinator.com");
         			
         			mailAdresa = "";
         		}
-				if (!txtMail.getText().matches("[a-z0-9]+\\@uns.ac.rs")) {
+				if (!txtMail.getText().matches("[a-z0-9]+\\@mailinator.com")) {
 					losUnos2.setText("<html>Lose unet mail!<br>"
 							+  "Mora se zavrsiti sa <br>"
-							+ "@uns.ac.rs");
+							+ "@mailinator.com");
 					losUnos2.setVisible(true);
         			panCenter.add(losUnos2);
 					mailAdresa = "";	

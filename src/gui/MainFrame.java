@@ -124,7 +124,9 @@ public class MainFrame extends JFrame {
 			@Override
 			public void windowOpened(WindowEvent arg0) {
 				// TODO deserijalizacija
-				
+				BazaPredmeta.getInstance().deserijalizacijaPredmeta();
+				BazaProfesora.getInstance().deserijalizacijaProfesora();
+				BazaStudenata.getInstance().deserijalizacijaStudenta();
 			}
 			
 		});

@@ -1,7 +1,9 @@
 package model;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -9,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import gui.MainFrame;
 
 public class BazaProfesora {
 	
@@ -48,10 +52,10 @@ public class BazaProfesora {
 		pred2.add(BazaPredmeta.getInstance().getPredmet(3));
 		pred2.add(BazaPredmeta.getInstance().getPredmet(0));
 		try {
-			this.profesori.add(new Profesor("Mirković", "Mirko", sdf.parse("12.12.1987."), 
-					"Puškinova 14, Novi Sad", "mirkom@uns.ac.rs", "45J697E2", Titula.DR, Zvanje.REDOVNI, pred));
-			this.profesori.add(new Profesor("Marković", "Marko",sdf.parse("03.07.1974."), 
-					"Rumenački put 66, Novi Sad", "markom@uns.ac.rs", "6E43RJ77", Titula.PROF, Zvanje.REDOVNI, pred2));
+			this.profesori.add(new Profesor("MirkoviÄ‡", "Mirko", sdf.parse("12.12.1987."), 
+					"PuÅ¡kinova 14, Novi Sad", "mirkom@uns.ac.rs", "45J697E2", Titula.DR, Zvanje.REDOVNI, pred));
+			this.profesori.add(new Profesor("MarkoviÄ‡", "Marko",sdf.parse("03.07.1974."), 
+					"RumenaÄ�ki put 66, Novi Sad", "markom@uns.ac.rs", "6E43RJ77", Titula.PROF, Zvanje.REDOVNI, pred2));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -170,4 +174,22 @@ public class BazaProfesora {
 		}
 	}
 	
+	public void deserijalizacijaProfesora(){
+		try{
+			System.out.println("\n\n");
+			FileInputStream fOUTProfesor = new FileInputStream("profesori.ser");
+			ObjectInputStream profesorIn= new ObjectInputStream(fOUTProfesor);
+			@SuppressWarnings("unchecked")
+			ArrayList<Profesor> profesori = (ArrayList<Profesor>) profesorIn.readObject();
+			BazaProfesora.getInstance().setProfesori(profesori);
+			MainFrame.getInstance().updateViewProf();
+			
+			fOUTProfesor.close();
+			profesorIn.close();
+		}catch(IOException exp) {
+			exp.printStackTrace();
+		}catch(ClassNotFoundException c) {
+			c.printStackTrace();
+		}
+	}
 }

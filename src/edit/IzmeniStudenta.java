@@ -883,6 +883,8 @@ public JPanel showNepolozeni(Student student) {
 				UpisOcjene uo = new UpisOcjene(predmet, student);
 				updateNepol();
 				uo.setVisible(true);
+			//azuriranje tabele studenata
+				
 			} else {
 				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet za koji unosite ocjenu!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
 				

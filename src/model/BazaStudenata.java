@@ -1,7 +1,9 @@
 package model;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -12,6 +14,8 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import gui.MainFrame;
 
 public class BazaStudenata {
 	
@@ -421,5 +425,27 @@ public class BazaStudenata {
 		}
 	}
 	
+	public void setStudenti(List<Student> studenti) {
+		this.studenti = studenti;
+	}
+	
+	public void deserijalizacijaStudenta(){
+		try{
+			System.out.println("\n\n");
+			FileInputStream fOUTStudent = new FileInputStream("studenti.ser");
+			ObjectInputStream studentIn= new ObjectInputStream(fOUTStudent);
+			@SuppressWarnings("unchecked")
+			ArrayList<Student> studenti= (ArrayList<Student>) studentIn.readObject();
+			BazaStudenata.getInstance().setStudenti(studenti);
+			MainFrame.getInstance().updateViewProf();
+			
+			fOUTStudent.close();
+			studentIn.close();
+		}catch(IOException exp) {
+			exp.printStackTrace();
+		}catch(ClassNotFoundException c) {
+			c.printStackTrace();
+		}
+	}
 
 }
