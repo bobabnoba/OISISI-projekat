@@ -42,15 +42,13 @@ public class ObrisiPredmet extends JDialog {
 		
 		this.setModal(true);
 		this.setResizable(false);
-		//this.setLocationRelativeTo(null);
-		//this.setLocationRelativeTo(this.getParent());
-		this.setLocationRelativeTo(MainFrame.getInstance());
 		getContentPane().setBackground(Color.WHITE);
 		
 		initComponents();
 		
 		pack();
 		
+		this.setLocationRelativeTo(MainFrame.getInstance());
 	}
 	
 	private void initComponents() {

@@ -108,7 +108,7 @@ public class UpisOcjene extends JDialog {
 			
 			setLayout(new BorderLayout());
 			
-			lblSifra = new JLabel("�ifra*");
+			lblSifra = new JLabel("Šifra*");
 			tfSifra = new JTextField(20);
 			tfSifra.setText(p.getSifraPredmeta());
 			tfSifra.setEditable(false);

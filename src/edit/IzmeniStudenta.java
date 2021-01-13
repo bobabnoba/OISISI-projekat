@@ -862,8 +862,6 @@ public JPanel showNepolozeni(Student student) {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			btnPolaganje.setBackground(Color.magenta);
-			//int row = nepolozeniTable.convertRowIndexToModel(nepolozeniTable.getSelectedRow());
 			int row = nepolozeniTable.getSelectedRow();
 			if(row != -1) {
 				Predmet predmet = new ATMNepolozeni(student.getSpisakNepolozenihIspita()).getSelectedPredmet(row);

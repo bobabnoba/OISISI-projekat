@@ -188,7 +188,7 @@ public class IzmenaPredmeta extends JFrame{
 		JPanel panSemestar = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblSemestar= new JLabel("Semestar:");
 		lblSemestar.setPreferredSize(dim);
-		String[] semestri = { " ","ZIMSKI", "LJETNJI"};
+		String[] semestri = { " ","ZIMSKI", "LETNJI"};
 		final JComboBox<String> combo2 = new JComboBox<String>(semestri);
 		
 		panSemestar.add(lblSemestar);

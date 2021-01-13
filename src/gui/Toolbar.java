@@ -1,10 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,6 +14,8 @@ import abstractAction.EditEntityAction;
 import abstractAction.SearchEntityAction;
 
 public class Toolbar extends JToolBar {
+	
+	
 	public static JTextField textField;
 	public Toolbar(final JFrame parent) {
 	super(SwingConstants.HORIZONTAL);
