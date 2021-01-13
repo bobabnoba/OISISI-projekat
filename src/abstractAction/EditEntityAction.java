@@ -57,7 +57,7 @@ public class EditEntityAction  extends AbstractAction {
 		break;
 	case 2:
 		
-		if(!MainFrame.getInstance().indexCheckStud()) {
+		if(!MainFrame.getInstance().indexCheckPred()) {
 			int rows = MainFrame.getInstance().selectedPred();
 			Predmet predmet= BazaPredmeta.getInstance().getRow(rows);
 			IzmenaPredmeta ipr = new IzmenaPredmeta(predmet);

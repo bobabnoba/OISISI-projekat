@@ -389,6 +389,7 @@ public class IzmenaPredmeta extends JFrame{
 				int row = profT.convertRowIndexToModel(profT.getSelectedRow());
 				Profesor profesor = BazaProfesora.getInstance().getRow(row);
 				predmet.setPredmetniProfesor(profesor);
+				profesor.getPredmeti().add(predmet);
 				labProf.setText("Profesor: " + profesor.getIme() + " " + profesor.getPrezime());
 				labProf.setVisible(true);
 				plus.setEnabled(false);
