@@ -2,7 +2,7 @@ package model;
 
 public enum Titula {
 
-	PROF("Prof. dr"), DR("dr"), MR("mr"), MSC("MSc"), BSc("BSc");
+	PROF_DR("Prof. dr"), DR("dr"), MR("mr"), MSC("MSc"), BSc("BSc");
 
 	private String naziv;
 	

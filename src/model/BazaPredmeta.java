@@ -39,7 +39,7 @@ private static BazaPredmeta instance = null;
 	public void initPred() {
 		this.predmeti = new ArrayList<Predmet>();
 		this.predmeti.add(new Predmet("E232", "Modelovanje i simulacija sistema", 8, 3, Semestar.ZIMSKI));
-		this.predmeti.add(new Predmet("H308", "Industrijska robotika", 8, 3, Semestar.LJETNJI));
+		this.predmeti.add(new Predmet("H308", "Industrijska robotika", 8, 3, Semestar.LETNJI));
 		this.predmeti.add(new Predmet("M119", "Energetske transformacije", 5, 2, Semestar.ZIMSKI));
 		this.predmeti.add(new Predmet("E104", "Mehanika", 5, 1, Semestar.ZIMSKI));
 	}
@@ -98,7 +98,7 @@ private static BazaPredmeta instance = null;
 	}
 	
 	public void dodajPredmet(String sifra, String naziv, Semestar semestar, int godStud, Profesor predProf, int espb, List<Student> pol, List<Student> nisuPol) {
-		this.predmeti.add(new Predmet(sifra, naziv, semestar, godStud, predProf, espb, pol, nisuPol));
+		this.predmeti.add(new Predmet(sifra, naziv, semestar, godStud, null, espb, pol, nisuPol));
 	}
 	
 	public void ukloniPredmetIzTabele(Predmet predmet) {

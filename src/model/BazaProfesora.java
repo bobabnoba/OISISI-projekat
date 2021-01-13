@@ -141,6 +141,7 @@ public class BazaProfesora {
 	
 	public void dodajPredmetProfesoru(Profesor profesor, String nazivPredmeta) {
 		this.getProfesor(profesor.getBrojLicneKarte()).getPredmeti().add(BazaPredmeta.getInstance().findByName(nazivPredmeta));
+		BazaPredmeta.getInstance().findByName(nazivPredmeta).setPredmetniProfesor(profesor);
 	}
 	
 	public void ukloniPredmet( Predmet predmet) {

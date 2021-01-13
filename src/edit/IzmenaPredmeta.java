@@ -275,7 +275,7 @@ public class IzmenaPredmeta extends JFrame{
 		
 		if(predmet.getSemestar() == Semestar.ZIMSKI) {
 			combo2.setSelectedIndex(1);
-		}else if (predmet.getSemestar() == Semestar.LJETNJI) {
+		}else if (predmet.getSemestar() == Semestar.LETNJI) {
 			combo2.setSelectedIndex(2);
 		}
 		

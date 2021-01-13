@@ -1,7 +1,7 @@
 package model;
 
 public enum Semestar {
-	LJETNJI("ljetnji"), ZIMSKI("zimski");
+	LETNJI("letnji"), ZIMSKI("zimski");
 		
 		private String naziv;
 		
