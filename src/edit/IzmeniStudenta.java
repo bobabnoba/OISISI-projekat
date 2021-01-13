@@ -882,8 +882,8 @@ public JPanel showNepolozeni(Student student) {
 				Predmet predmet = new ATMNepolozeni(student.getSpisakNepolozenihIspita()).getSelectedPredmet(row);
 				UpisOcjene uo = new UpisOcjene(predmet, student);
 				updateNepol();
+				MainFrame.getInstance().azurirajPrikaz("", -1);
 				uo.setVisible(true);
-			//azuriranje tabele studenata
 				
 			} else {
 				JOptionPane.showMessageDialog(new JFrame(), "Potrebno je selektovati predmet za koji unosite ocjenu!", "Predmet nije izabran!", JOptionPane.ERROR_MESSAGE);
